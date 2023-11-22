@@ -204,15 +204,6 @@ public class App extends Application {
         });
 
         // Scene 2 (Pokedex)
-        Label labelScene2 = new Label("This is scene 2");
-        Button buttonScene2 = new Button("Go to scene 1");
-
-        buttonScene2.setOnAction(event -> 
-        {
-            primaryStage.setScene(scene1);
-        });
-
-
         /////////////////////////////////////////////////
 
         // Header code
@@ -244,15 +235,74 @@ public class App extends Application {
         hb_hometaskbarSc2.setAlignment(Pos.CENTER);
         hb_hometaskbarSc2.setPadding(new Insets(10,0,20,0));
 
-        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, labelScene2, buttonScene2);
-        scene2 = new Scene(layout2, 890, 800);
-        scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
         // Home button functionality
         bttnHomeSc2.setOnAction(event ->
         {
             primaryStage.setScene(scene1);
         });
+
+        // Pokedex Entries
+
+        // Row 1
+        Image treecko = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\treecko.jpg");
+        ImageView treeckoImageView = new ImageView(treecko);
+        treeckoImageView.setPreserveRatio(true);
+        treeckoImageView.setFitWidth(200);
+
+        Image grovyle = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\grovyle.jpg");
+        ImageView grovyleImageView = new ImageView(grovyle);
+        grovyleImageView.setPreserveRatio(true);
+        grovyleImageView.setFitWidth(200);
+
+        Image sceptile = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\sceptile.jpg");
+        ImageView sceptileImageView = new ImageView(sceptile);
+        sceptileImageView.setPreserveRatio(true);
+        sceptileImageView.setFitWidth(200);
+
+        HBox sc2Row1 = new HBox(150, treeckoImageView, grovyleImageView, sceptileImageView);
+        sc2Row1.setAlignment(Pos.TOP_CENTER);
+        
+        // Row 2
+        Image treecko1 = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\treecko.jpg");
+        ImageView treeckoImageView1 = new ImageView(treecko1);
+        treeckoImageView1.setPreserveRatio(true);
+        treeckoImageView1.setFitWidth(200);
+
+        Image grovyle1 = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\grovyle.jpg");
+        ImageView grovyleImageView1 = new ImageView(grovyle1);
+        grovyleImageView1.setPreserveRatio(true);
+        grovyleImageView1.setFitWidth(200);
+
+        Image sceptile1 = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\sceptile.jpg");
+        ImageView sceptileImageView1 = new ImageView(sceptile1);
+        sceptileImageView1.setPreserveRatio(true);
+        sceptileImageView1.setFitWidth(200);
+
+        HBox sc2Row2 = new HBox(150, treeckoImageView1, grovyleImageView1, sceptileImageView1);
+        sc2Row2.setAlignment(Pos.CENTER);
+    
+        // Row 3
+        Image treecko2 = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\treecko.jpg");
+        ImageView treeckoImageView2 = new ImageView(treecko2);
+        treeckoImageView2.setPreserveRatio(true);
+        treeckoImageView2.setFitWidth(200);
+
+        Image grovyle2 = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\grovyle.jpg");
+        ImageView grovyleImageView2 = new ImageView(grovyle2);
+        grovyleImageView2.setPreserveRatio(true);
+        grovyleImageView2.setFitWidth(200);
+
+        Image sceptile2 = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\sceptile.jpg");
+        ImageView sceptileImageView2 = new ImageView(sceptile2);
+        sceptileImageView2.setPreserveRatio(true);
+        sceptileImageView2.setFitWidth(200);
+
+        HBox sc2Row3 = new HBox(150, treeckoImageView2, grovyleImageView2, sceptileImageView2);
+        sc2Row3.setAlignment(Pos.BOTTOM_CENTER);
+
+        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, sc2Row1, sc2Row2, sc2Row3);
+        scene2 = new Scene(layout2, 890, 800);
+        scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         /////////////////////////////////////////////////
 
 
