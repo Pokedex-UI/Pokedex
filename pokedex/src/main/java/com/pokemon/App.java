@@ -71,12 +71,13 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
     @Override
     public void start(Stage primaryStage) throws IOException {
 
         Image dbTitleImg1 = new Image("file:///D:/CPP/CS 2450 UI/PokePics/dbtitle11.png");
         Image dbTitleImg2 = new Image("file:///D:/CPP/CS 2450 UI/PokePics/dbtitle22.png");
+
+        Label missionStatement = new Label("mission statement here");
 
         ImageView imageView1 = new ImageView(dbTitleImg1);
         imageView1.setFitWidth(140);
@@ -97,10 +98,10 @@ public class App extends Application {
 
         Button bttnHome = new Button("Home");
         bttnHome.getStyleClass().add("bttn-label");
-        Button bttnQA = new Button("Pokédex Q&A");
-        bttnQA.getStyleClass().add("bttn-label");
-        Button bttnAbout = new Button("About/Contact US");
-        bttnAbout.getStyleClass().add("bttn-label");
+        // Button bttnQA = new Button("Pokédex Q&A");
+        // bttnQA.getStyleClass().add("bttn-label");
+        // Button bttnAbout = new Button("About/Contact US");
+        // bttnAbout.getStyleClass().add("bttn-label");
 
 
         Menu pokedexMenu = new Menu("Pokédex");
@@ -113,10 +114,13 @@ public class App extends Application {
         homeMenuBar.getMenus().addAll(pokedexMenu);
         homeMenuBar.getStyleClass().add("bttn-label");
 
-        HBox hb_hometaskbar = new HBox(10,bttnHome,homeMenuBar,bttnQA,bttnAbout);
+        HBox hb_hometaskbar = new HBox(565,bttnHome,homeMenuBar);
         hb_hometaskbar.setAlignment(Pos.CENTER);
-        hb_hometaskbar.setPadding(new Insets(10,0,0,0));
+        hb_hometaskbar.setPadding(new Insets(10,0,20,0));
 
+        HBox hb_missionStatement = new HBox(10, missionStatement);
+        hb_missionStatement.setAlignment(Pos.CENTER);
+        hb_missionStatement.setPadding(new Insets(10,0,0,0));
 
 
         Image fireImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/fire.png");
@@ -168,18 +172,18 @@ public class App extends Application {
 
         Text txtWater = new Text(380,610,"Water");
         txtWater.setFont(font);
-        txtWater.setFill(Color.BLUEVIOLET);
+        txtWater.setFill(Color.LIGHTBLUE);
         txtWater.setStroke(Color.BLACK);
         txtWater.setStrokeWidth(1);
 
         Text txtGrass = new Text(640,600,"Grass");
         txtGrass.setFont(font);
-        txtGrass.setFill(Color.GREENYELLOW);
+        txtGrass.setFill(Color.GREEN);
         txtGrass.setStroke(Color.BLACK);
         txtGrass.setStrokeWidth(1);
 
 
-        VBox rootVB = new VBox(hb_homeTitle,hb_hometaskbar,hb_3pokedex);
+        VBox rootVB = new VBox(hb_homeTitle,hb_hometaskbar,hb_missionStatement, hb_3pokedex);
 
         Group rootGRP = new Group(txtFire,txtWater,txtGrass,rootVB,recFire , recWater,recGrass);
 
