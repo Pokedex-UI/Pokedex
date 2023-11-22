@@ -191,6 +191,33 @@ public class App extends Application {
         Scene scene = new Scene(rootGRP, 890, 800);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
+
+
+
+        // Scene 2 (Pokedex)
+        Label labelScene2 = new Label("This is scene 2");
+        Button buttonScene2 = new Button("Go to scene 1");
+
+        buttonScene2.setOnAction(event -> 
+        {
+            primaryStage.setScene(scene);
+        });
+
+        VBox layout2 = new VBox(20, labelScene2, buttonScene2);
+        Scene scene2 = new Scene(layout2, 890, 800);
+
+        /*
+            Functionality to move between scenes:
+                - Click on Pokedex
+                - Click on Fire Pokedex
+                - Moves to Fire Pokedex scene
+        */ 
+        
+        fireItem.setOnAction(event ->
+        {
+            primaryStage.setScene(scene2);
+        });
+
         primaryStage.setTitle("Pokédex APP");
         primaryStage.setScene(scene);
         primaryStage.show();
