@@ -185,7 +185,8 @@ public class App extends Application {
 
         VBox rootVB = new VBox(hb_homeTitle,hb_hometaskbar,hb_missionStatement, hb_3pokedex);
 
-        Group rootGRP = new Group(txtFire,txtWater,txtGrass,rootVB,recFire , recWater,recGrass);
+        Pane rootGRP = new Pane(txtFire,txtWater,txtGrass,rootVB,recFire , recWater,recGrass);
+        rootGRP.setStyle("-fx-background-color: #e0dede;");
 
         Scene scene = new Scene(rootGRP, 890, 800);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
