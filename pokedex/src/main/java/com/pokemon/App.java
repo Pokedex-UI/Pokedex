@@ -71,9 +71,13 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+    Scene scene1, scene2;
+
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+        // Header code
         Image dbTitleImg1 = new Image("file:///D:/CPP/CS 2450 UI/PokePics/dbtitle11.png");
         Image dbTitleImg2 = new Image("file:///D:/CPP/CS 2450 UI/PokePics/dbtitle22.png");
 
@@ -96,20 +100,18 @@ public class App extends Application {
         hb_homeTitle.getStyleClass().add("hbox-with-gradient");
         hb_homeTitle.setAlignment(Pos.CENTER);
 
+        // Home Button
         Button bttnHome = new Button("Home");
         bttnHome.getStyleClass().add("bttn-label");
-        // Button bttnQA = new Button("Pokédex Q&A");
-        // bttnQA.getStyleClass().add("bttn-label");
-        // Button bttnAbout = new Button("About/Contact US");
-        // bttnAbout.getStyleClass().add("bttn-label");
 
-
+        // Pokedex menu items
         Menu pokedexMenu = new Menu("Pokédex");
         MenuItem fireItem = new MenuItem("Fire Pokédex");
         MenuItem waterItem = new MenuItem("Water Pokédex");
         MenuItem grassItem = new MenuItem("Grass Pokédex");
         pokedexMenu.getItems().addAll(fireItem,waterItem,grassItem);
 
+        // Pokedex menu styling
         MenuBar homeMenuBar = new MenuBar();
         homeMenuBar.getMenus().addAll(pokedexMenu);
         homeMenuBar.getStyleClass().add("bttn-label");
@@ -122,11 +124,10 @@ public class App extends Application {
         hb_missionStatement.setAlignment(Pos.CENTER);
         hb_missionStatement.setPadding(new Insets(10,0,0,0));
 
-
+        // 3 Pokedex layout
         Image fireImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/fire.png");
         Image waterImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/water.png");
         Image grassImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/grass.png");
-
 
         ImageView imageViewFire = new ImageView(fireImg);
         imageViewFire.setFitWidth(200);
@@ -144,7 +145,6 @@ public class App extends Application {
         imageViewGrass.getStyleClass().add("shadow3-label");        //-----------------HERE
 
         HBox hb_3pokedex = new HBox(60,imageViewFire,imageViewWater,imageViewGrass);
-       // hb_3pokedex.setAlignment(Pos.BOTTOM_CENTER);
         hb_3pokedex.setPadding(new Insets(80,0,0,90));
 
         Rectangle recFire = new Rectangle(80,250,230,380);
@@ -182,29 +182,15 @@ public class App extends Application {
         txtGrass.setStroke(Color.BLACK);
         txtGrass.setStrokeWidth(1);
 
+        // Set scene with vboxes and panes
 
         VBox rootVB = new VBox(hb_homeTitle,hb_hometaskbar,hb_missionStatement, hb_3pokedex);
 
         Pane rootGRP = new Pane(txtFire,txtWater,txtGrass,rootVB,recFire , recWater,recGrass);
         rootGRP.setStyle("-fx-background-color: #e0dede;");
 
-        Scene scene = new Scene(rootGRP, 890, 800);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
-
-
-
-        // Scene 2 (Pokedex)
-        Label labelScene2 = new Label("This is scene 2");
-        Button buttonScene2 = new Button("Go to scene 1");
-
-        buttonScene2.setOnAction(event -> 
-        {
-            primaryStage.setScene(scene);
-        });
-
-        VBox layout2 = new VBox(20, labelScene2, buttonScene2);
-        Scene scene2 = new Scene(layout2, 890, 800);
+        scene1 = new Scene(rootGRP, 890, 800);
+        scene1.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         /*
             Functionality to move between scenes:
@@ -212,14 +198,66 @@ public class App extends Application {
                 - Click on Fire Pokedex
                 - Moves to Fire Pokedex scene
         */ 
-        
         fireItem.setOnAction(event ->
         {
             primaryStage.setScene(scene2);
         });
 
+        // Scene 2 (Pokedex)
+        Label labelScene2 = new Label("This is scene 2");
+        Button buttonScene2 = new Button("Go to scene 1");
+
+        buttonScene2.setOnAction(event -> 
+        {
+            primaryStage.setScene(scene1);
+        });
+
+
+        /////////////////////////////////////////////////
+
+        // Header code
+        Label lbl_dbTitleSc2 = new Label("Pokédex Database");
+        lbl_dbTitleSc2.getStyleClass().add("title-label");
+
+        HBox hb_homeTitleSc2 = new HBox(lbl_dbTitleSc2);
+        hb_homeTitleSc2.getStyleClass().add("hbox-with-gradient");
+        hb_homeTitleSc2.setAlignment(Pos.CENTER);
+
+        //// Menubar code
+        // Home Button
+        Button bttnHomeSc2 = new Button("Home");
+        bttnHomeSc2.getStyleClass().add("bttn-label");
+
+        // Pokedex menu items
+        Menu pokedexMenuSc2 = new Menu("Pokédex");
+        MenuItem fireItemSc2 = new MenuItem("Fire Pokédex");
+        MenuItem waterItemSc2 = new MenuItem("Water Pokédex");
+        MenuItem grassItemSc2 = new MenuItem("Grass Pokédex");
+        pokedexMenuSc2.getItems().addAll(fireItemSc2,waterItemSc2,grassItemSc2);
+
+        // Pokedex menu styling
+        MenuBar homeMenuBarSc2 = new MenuBar();
+        homeMenuBarSc2.getMenus().addAll(pokedexMenuSc2);
+        homeMenuBarSc2.getStyleClass().add("bttn-label");
+
+        HBox hb_hometaskbarSc2 = new HBox(565,bttnHomeSc2,homeMenuBarSc2);
+        hb_hometaskbarSc2.setAlignment(Pos.CENTER);
+        hb_hometaskbarSc2.setPadding(new Insets(10,0,20,0));
+
+        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, labelScene2, buttonScene2);
+        scene2 = new Scene(layout2, 890, 800);
+        scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+        // Home button functionality
+        bttnHomeSc2.setOnAction(event ->
+        {
+            primaryStage.setScene(scene1);
+        });
+        /////////////////////////////////////////////////
+
+
         primaryStage.setTitle("Pokédex APP");
-        primaryStage.setScene(scene);
+        primaryStage.setScene(scene1);
         primaryStage.show();
     }
 
