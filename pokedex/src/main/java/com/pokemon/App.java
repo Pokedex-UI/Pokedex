@@ -16,6 +16,7 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.LinearGradient;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,6 +36,7 @@ import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -122,71 +124,150 @@ public class App extends Application {
         hb_missionStatement.setAlignment(Pos.CENTER);
         hb_missionStatement.setPadding(new Insets(10,0,0,0));
 
-
+        // Home- Cards Images
         Image fireImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/fire.png");
         Image waterImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/water.png");
         Image grassImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/grass.png");
 
+        Image backgroundImage = new Image("file:///D:/CPP/CS 2450 UI/PokePics/firebk.png");
+
+
 
         ImageView imageViewFire = new ImageView(fireImg);
         imageViewFire.setFitWidth(200);
-        imageViewFire.setFitHeight(290);
+        imageViewFire.setFitHeight(300);
         imageViewFire.getStyleClass().add("shadow-label");        //-----------------HERE
+        imageViewFire.setX(90);
+        imageViewFire.setY(280);
 
         ImageView imageViewWater = new ImageView(waterImg);
         imageViewWater.setFitWidth(200);
-        imageViewWater.setFitHeight(350);
+        imageViewWater.setFitHeight(370);
         imageViewWater.getStyleClass().add("shadow2-label");        //-----------------HERE
+        imageViewWater.setX(350);
+        imageViewWater.setY(240);
 
         ImageView imageViewGrass = new ImageView(grassImg);
         imageViewGrass.setFitWidth(200);
         imageViewGrass.setFitHeight(270);
         imageViewGrass.getStyleClass().add("shadow3-label");        //-----------------HERE
+        imageViewGrass.setX(615);
+        imageViewGrass.setY(290);
 
-        HBox hb_3pokedex = new HBox(60,imageViewFire,imageViewWater,imageViewGrass);
+      //  HBox hb_3pokedex = new HBox(60,imageViewFire,imageViewWater,imageViewGrass);
        // hb_3pokedex.setAlignment(Pos.BOTTOM_CENTER);
-        hb_3pokedex.setPadding(new Insets(80,0,0,90));
+       // hb_3pokedex.setPadding(new Insets(80,0,0,90));
 
-        Rectangle recFire = new Rectangle(80,250,230,380);
-        recFire.setFill(null);
+
+        // Home- Cards Rectangles
+                             // Rectangle(X,Y,Weidth, Height)
+        Rectangle recFire = new Rectangle(80,280,230,380);
         recFire.setStroke(Color.BLACK);
         recFire.getStyleClass().add("shadow-label");        //-----------------HERE
+        ImagePattern myip =new ImagePattern(backgroundImage);
+        recFire.setFill(myip);
 
-        Rectangle recWater = new Rectangle(340,250,230,380);
+        Rectangle recWater = new Rectangle(340,280,230,380);
         recWater.setFill(null);
         recWater.setStroke(Color.BLACK);
         recWater.getStyleClass().add("shadow2-label");        //-----------------HERE
 
-        Rectangle recGrass = new Rectangle(600,250,230,380);
+        Rectangle recGrass = new Rectangle(600,280,230,380);
         recGrass.setFill(null);
         recGrass.setStroke(Color.BLACK);
         recGrass.getStyleClass().add("shadow3-label");        //-----------------HERE
 
+        // Home- Cards Text
         Font font = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 75);
 
-        Text txtFire = new Text(140,610,"Fire");
+        Font biggerFont = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 130);
+
+        Text txtFire = new Text(140,640,"Fire");
         txtFire.setFont(font);
         txtFire.setFill(Color.BROWN);
         txtFire.setStroke(Color.BLACK);
         txtFire.setStrokeWidth(1);
 
-        Text txtWater = new Text(380,610,"Water");
+        Text txtWater = new Text(380,640,"Water");
         txtWater.setFont(font);
         txtWater.setFill(Color.LIGHTBLUE);
         txtWater.setStroke(Color.BLACK);
         txtWater.setStrokeWidth(1);
 
-        Text txtGrass = new Text(640,600,"Grass");
+        Text txtGrass = new Text(640,630,"Grass");
         txtGrass.setFont(font);
         txtGrass.setFill(Color.GREEN);
         txtGrass.setStroke(Color.BLACK);
         txtGrass.setStrokeWidth(1);
 
+        // Home- Cards Events
+        imageViewFire.setOnMouseEntered(event -> {
+        imageViewFire.setFitWidth(280);
+        imageViewFire.setFitHeight(360);
+        imageViewFire.setX(40);
+        imageViewFire.setY(200);
 
-        VBox rootVB = new VBox(hb_homeTitle,hb_hometaskbar,hb_missionStatement, hb_3pokedex);
+        txtFire.setFont(biggerFont);
+        txtFire.setX(50);
+        });
 
-        Pane rootGRP = new Pane(txtFire,txtWater,txtGrass,rootVB,recFire , recWater,recGrass);
+        imageViewFire.setOnMouseExited(event -> {
+        imageViewFire.setFitWidth(200);
+        imageViewFire.setFitHeight(300);
+        imageViewFire.setX(90);
+        imageViewFire.setY(280);
+
+        txtFire.setFont(font);
+        txtFire.setX(140);
+        });
+
+        recFire.setOnMouseEntered(event -> {
+        imageViewFire.setFitWidth(280);
+        imageViewFire.setFitHeight(360);
+        imageViewFire.setX(40);
+        imageViewFire.setY(200);
+
+        txtFire.setFont(biggerFont);
+        txtFire.setX(50);
+        });
+
+        recFire.setOnMouseExited(event -> {
+        imageViewFire.setFitWidth(200);
+        imageViewFire.setFitHeight(300);
+        imageViewFire.setX(90);
+        imageViewFire.setY(280);
+
+        txtFire.setFont(font);
+        txtFire.setX(140);
+        });
+
+        txtFire.setOnMouseEntered(event -> {
+        imageViewFire.setFitWidth(280);
+        imageViewFire.setFitHeight(360);
+        imageViewFire.setX(40);
+        imageViewFire.setY(200);
+
+        txtFire.setFont(biggerFont);
+        txtFire.setX(50);
+        });
+
+        txtFire.setOnMouseExited(event -> {
+        imageViewFire.setFitWidth(200);
+        imageViewFire.setFitHeight(300);
+        imageViewFire.setX(90);
+        imageViewFire.setY(280);
+
+        txtFire.setFont(font);
+        txtFire.setX(140);
+        });
+
+
+        VBox rootVB = new VBox(hb_homeTitle,hb_hometaskbar,hb_missionStatement);
+
+        Group rootGRP = new Group(rootVB,
+        recFire , recWater,recGrass, txtFire,txtWater,txtGrass, imageViewFire, imageViewWater, imageViewGrass);
         rootGRP.setStyle("-fx-background-color: #e0dede;");
+
 
         Scene scene = new Scene(rootGRP, 890, 800);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
