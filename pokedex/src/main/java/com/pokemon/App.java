@@ -80,8 +80,8 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Image dbTitleImg1 = new Image("file:///D:/CPP/CS 2450 UI/PokePics/dbtitle11.png");
-        Image dbTitleImg2 = new Image("file:///D:/CPP/CS 2450 UI/PokePics/dbtitle22.png");
+        Image dbTitleImg1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
+        Image dbTitleImg2 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
 
       //  Label missionStatement = new Label("mission statement here");
 
@@ -112,11 +112,11 @@ public class App extends Application {
         cardContainer = new HBox(0); // Set the spacing between cards
 
         // Add your cards (rectangles with images and text) to the cardContainer
-        addCard("\nMy Fire Poke\t     637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:///D:/CPP/CS 2450 UI/PokePics/fire.png");
-        addCard("\nMy Water Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:///D:/CPP/CS 2450 UI/PokePics/firebk.png");
-        addCard("\nMy Grass Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:///D:/CPP/CS 2450 UI/PokePics/grass.png");
-        addCard("\nMy Koky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:///D:/CPP/CS 2450 UI/PokePics/dbtitle11.png");
-        addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:///D:/CPP/CS 2450 UI/PokePics/water.png");
+        addCard("\nMy Fire Poke\t     637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\fire.png");
+        addCard("\nMy Water Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firebk.png");
+        addCard("\nMy Grass Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\grass.png");
+        addCard("\nMy Koky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
+        addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
 
 
         ScrollPane FeaturePokeScrollPane = new ScrollPane();
@@ -124,12 +124,12 @@ public class App extends Application {
         FeaturePokeScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         FeaturePokeScrollPane.setLayoutY(900);
 
-        Image leftArrImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/leftArr.png");
+        Image leftArrImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\leftArr.png");
         ImageView buttnImage = new ImageView(leftArrImg);
         buttnImage.setFitWidth(40);
         buttnImage.setFitHeight(80);
 
-        Image rightArrImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/rightArr.png");
+        Image rightArrImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\rightArr.png");
         ImageView buttnImage2 = new ImageView(rightArrImg);
         buttnImage2.setFitWidth(40);
         buttnImage2.setFitHeight(80);
@@ -173,19 +173,12 @@ public class App extends Application {
         hb_horizScrollBar_buttons.setLayoutY(1000);
         hb_horizScrollBar_buttons.setPadding(new Insets(15,0,0,0));
 
-        Image featurePokeImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/featurepokemon2.png");
+        Image featurePokeImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\featurepokemon2.png");
 
         Rectangle recFeaturePoke = new Rectangle(0,690,1000,350);
                 recFeaturePoke.setArcWidth(20);
         recFeaturePoke.setArcHeight(20);
         recFeaturePoke.setFill(new ImagePattern(featurePokeImg));
-
-
-
-
-
-
-
 
         Menu pokedexMenu = new Menu("Pokédex");
         MenuItem fireItem = new MenuItem("Fire Pokédex");
@@ -213,17 +206,16 @@ public class App extends Application {
   //      Image backgroundImage = new Image("file:///D:/CPP/CS 2450 UI/PokePics/firebk.png");
 
 
+        Image fireImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firecard2copy.jpg");
+        Image fireImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firecardcopy2.jpg");
 
-        Image fireImgbg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/firecard2copy.jpg");
-        Image fireImgfg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/firecardcopy2.jpg");
+        Image waterImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\watercard.jpg");
+        Image waterImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\watercard2.jpg");
 
-        Image waterImgbg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/watercard.jpg");
-        Image waterImgfg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/watercard2.jpg");
+        Image grassImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\grasscard.jpg");
+        Image grassImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\grasscard2.jpg");
 
-        Image grassImgbg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/grasscard.jpg");
-        Image grassImgfg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/grasscard2.jpg");
-
-        Image backdrop1 = new Image("file:///D:/CPP/CS 2450 UI/PokePics/backdrop2.jpg");
+        Image backdrop1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\backdrop2.jpg");
         //ImageView  = new ImageView(backdrop1);
 
 /*
