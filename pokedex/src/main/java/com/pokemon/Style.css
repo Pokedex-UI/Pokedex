@@ -22,11 +22,16 @@
 }
 
 .bttn-label {
-    -fx-background-color: linear-gradient(to right, #FFD700, #FFA500); 
-    -fx-background-radius: 5; 
+    -fx-background-color: linear-gradient(to right, #FFD700, #FFA500);
+    -fx-background-radius: 5;
     -fx-text-fill: black;
     -fx-font-size: 30px;
     -fx-font-weight: bold;
+}
+
+.menu-item {
+    -fx-text-fill: #ffffff; /* Set text color for menu items */
+    -fx-font-size: 14px; /* Set font size for menu items */
 }
 
 .blkshadow-label {
@@ -36,17 +41,17 @@
 
 .shadow-label {
     /* Style for labels with shadow effect */
-    -fx-effect: dropshadow(gaussian, rgba(228, 0, 0, 0.907), 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(228, 0, 0, 0.95), 10, 0, 0, 0);
 }
 
 .shadow2-label {
     /* Style for labels with shadow effect */
-    -fx-effect: dropshadow(gaussian, rgba(23, 0, 228, 0.838), 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(23, 0, 228, 0.95), 10, 0, 0, 0);
 }
 
 .shadow3-label {
     /* Style for labels with shadow effect */
-    -fx-effect: dropshadow(gaussian, rgba(0, 228, 61, 0.866), 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(0, 228, 61, 0.95), 10, 0, 0, 0);
 }
 
 
