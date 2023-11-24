@@ -669,6 +669,20 @@ public class App extends Application {
         blaizkenVBox.setAlignment(Pos.CENTER);
 
         /*
+            Footer:
+            Changed lbl_footer to lbl_footerFire (Fire Pokedex page)
+            Changed footerBackground to footerBackgroundFire (Fire Pokedex page)
+         */
+        Label lbl_footerFire  = new Label("All content & design ©AbaJEthan licended under Devika Maini CS2450");
+        lbl_footerFire.setLayoutX(120);
+        lbl_footerFire.setLayoutY(1530);
+        lbl_footerFire.getStyleClass().add("footer-text");
+
+        Rectangle footerBackgroundFire = new Rectangle(0, 1500, 900, 100);
+        footerBackgroundFire.setFill(Color.web("#717e8e"));
+
+        Group footerGroupFire = new Group(footerBackgroundFire, lbl_footerFire);
+        /*
             Hbox rows
         */
         HBox pokedexRow3 = new HBox(255, torchicVBox, combuskenVBox, blaizkenVBox);
@@ -681,7 +695,7 @@ public class App extends Application {
         VBox pokedexVbox = new VBox(50, sc2Row1, pokedexRow1, sc2Row2, pokedexRow2, sc2Row3, pokedexRow3);
 
         // VBox that puts everything together
-        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, pokedexVbox);
+        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, pokedexVbox, footerGroupFire);
         layout2.setStyle("-fx-background-color: white");
 
         // Add the rootGRP to a ScrollPane to allow scrolling
