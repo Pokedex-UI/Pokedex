@@ -331,7 +331,7 @@ public class App extends Application {
         Font slightlyBiggerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 20);
 
 
-        Text txtMissionHeader = new Text("Bringing the world together through Pokémon");
+        Text txtMissionHeader = new Text("Welcome to the Pokemon Database!");
         txtMissionHeader.setFont(missionHeaderFont);
         txtMissionHeader.setX(155);
         txtMissionHeader.setY(300);
