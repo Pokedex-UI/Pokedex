@@ -83,7 +83,6 @@ public class App extends Application {
         Image dbTitleImg1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
         Image dbTitleImg2 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
 
-      //  Label missionStatement = new Label("mission statement here");
 
         ImageView imageView1 = new ImageView(dbTitleImg1);
         imageView1.setFitWidth(140);
@@ -97,6 +96,15 @@ public class App extends Application {
         Label lbl_dbTitle = new Label("Pokédex Database");
         lbl_dbTitle.getStyleClass().add("title-label");
 
+        //Footer stuff
+        Label lbl_footer  = new Label("All content & design ©AbaJEthan licended under Devika Maini CS2450");
+        lbl_footer.setLayoutX(120);
+        lbl_footer.setLayoutY(1530);
+        lbl_footer.getStyleClass().add("footer-text");
+
+        Rectangle footerBackground = new Rectangle(0, 1500, 900, 100);
+        footerBackground.setFill(Color.web("#717e8e"));
+    
 
         HBox hb_homeTitle = new HBox(40,imageView1,lbl_dbTitle,imageView2);
         hb_homeTitle.getStyleClass().add("hbox-with-gradient");
@@ -104,10 +112,7 @@ public class App extends Application {
 
         Button bttnHome = new Button("Home");
         bttnHome.getStyleClass().add("bttn-label");
-        // Button bttnQA = new Button("Pokédex Q&A");
-        // bttnQA.getStyleClass().add("bttn-label");
-        // Button bttnAbout = new Button("About/Contact US");
-        // bttnAbout.getStyleClass().add("bttn-label");
+        // bttnHome.setPrefWidth(300);
 
         cardContainer = new HBox(0); // Set the spacing between cards
 
@@ -118,11 +123,11 @@ public class App extends Application {
         addCard("\nMy Koky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
         addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
 
-
+        //Feature pokemon functionality
         ScrollPane FeaturePokeScrollPane = new ScrollPane();
         FeaturePokeScrollPane.setContent(cardContainer);
         FeaturePokeScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        FeaturePokeScrollPane.setLayoutY(900);
+        FeaturePokeScrollPane.setLayoutY(1100);
 
         Image leftArrImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\leftArr.png");
         ImageView buttnImage = new ImageView(leftArrImg);
@@ -170,28 +175,30 @@ public class App extends Application {
             scrollRight();});
 
         HBox hb_horizScrollBar_buttons = new HBox(735,leftButton, rightButton);
-        hb_horizScrollBar_buttons.setLayoutY(1000);
+        hb_horizScrollBar_buttons.setLayoutY(1200);
         hb_horizScrollBar_buttons.setPadding(new Insets(15,0,0,0));
 
         Image featurePokeImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\featurepokemon2.png");
 
-        Rectangle recFeaturePoke = new Rectangle(0,690,1000,350);
-                recFeaturePoke.setArcWidth(20);
+        Rectangle recFeaturePoke = new Rectangle(0,890,1000,350);
+        recFeaturePoke.setArcWidth(20);
         recFeaturePoke.setArcHeight(20);
         recFeaturePoke.setFill(new ImagePattern(featurePokeImg));
 
-        Menu pokedexMenu = new Menu("Pokédex");
+        Menu pokedexMenu = new Menu("              Pokédex                ");
         MenuItem fireItem = new MenuItem("Fire Pokédex");
         MenuItem waterItem = new MenuItem("Water Pokédex");
         MenuItem grassItem = new MenuItem("Grass Pokédex");
+        pokedexMenu.getStyleClass().add("menu");
         pokedexMenu.getItems().addAll(fireItem,waterItem,grassItem);
 
         MenuBar homeMenuBar = new MenuBar();
         homeMenuBar.getMenus().addAll(pokedexMenu);
         homeMenuBar.getStyleClass().add("bttn-label");
 
-        HBox hb_hometaskbar = new HBox(565,bttnHome,homeMenuBar);
+        HBox hb_hometaskbar = new HBox(bttnHome,homeMenuBar);
         hb_hometaskbar.setAlignment(Pos.CENTER);
+        hb_hometaskbar.setMinWidth(800);
         hb_hometaskbar.setPadding(new Insets(10,0,20,0));
 
    //     HBox hb_missionStatement = new HBox(10, missionStatement);
@@ -212,7 +219,7 @@ public class App extends Application {
         Image waterImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\watercard.jpg");
         Image waterImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\watercard2.jpg");
 
-        Image grassImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\grasscard.jpg");
+        Image grassImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\sceptile.jpg");
         Image grassImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\grasscard2.jpg");
 
         Image backdrop1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\backdrop2.jpg");
@@ -252,60 +259,60 @@ public class App extends Application {
 
         // Home- Cards Rectangles
                              // Rectangle(X,Y,Weidth, Height)
-        Rectangle recFire = new Rectangle(80,280,230,190);
+        Rectangle recFire = new Rectangle(80,480,230,190);
         recFire.setStroke(Color.BLACK);
         recFire.setArcWidth(20);
         recFire.setArcHeight(20);
         recFire.setFill(new ImagePattern(fireImgbg));
 
-        Rectangle recFireText = new Rectangle(80,460,230,300);
+        Rectangle recFireText = new Rectangle(80,660,230,300);
         recFireText.setFill(Color.LIGHTSALMON);
         recFireText.setStroke(Color.LIGHTSALMON);
 
 
-      Rectangle recFirefrntgrnd= new Rectangle(77,280,238,484);
+      Rectangle recFirefrntgrnd= new Rectangle(77,480,238,484);
       recFirefrntgrnd.setFill(new ImagePattern(fireImgfg));
       recFirefrntgrnd.setArcWidth(20);
       recFirefrntgrnd.setArcHeight(20);
-      recFirefrntgrnd.setOpacity(0.0);
+      recFirefrntgrnd.setOpacity(1.0);
       recFirefrntgrnd.getStyleClass().add("shadow-label");
       recFirefrntgrnd.setStroke(Color.BLACK);
 
 
-      Rectangle recWater = new Rectangle(340,280,230,190);
+      Rectangle recWater = new Rectangle(340,480,230,190);
       recWater.setStroke(Color.BLACK);
       recWater.setArcWidth(20);
       recWater.setArcHeight(20);
       recWater.setFill(new ImagePattern(waterImgbg));
 
-      Rectangle recWaterText = new Rectangle(340,460,230,300);
+      Rectangle recWaterText = new Rectangle(340,660,230,300);
       recWaterText.setFill(Color.LIGHTSKYBLUE);
       recWaterText.setStroke(Color.LIGHTSKYBLUE);
 
-      Rectangle recWaterfrntgrnd= new Rectangle(337,280,238,484);
+      Rectangle recWaterfrntgrnd= new Rectangle(337,480,238,484);
       recWaterfrntgrnd.setFill(new ImagePattern(waterImgfg));
       recWaterfrntgrnd.setArcWidth(20);
       recWaterfrntgrnd.setArcHeight(20);
-      recWaterfrntgrnd.setOpacity(0.0);
+      recWaterfrntgrnd.setOpacity(1.0);
       recWaterfrntgrnd.getStyleClass().add("shadow2-label");
       recWaterfrntgrnd.setStroke(Color.BLACK);
 
 
-        Rectangle recGrass = new Rectangle(600,280,230,190);
+        Rectangle recGrass = new Rectangle(600,480,230,190);
         recGrass.setStroke(Color.BLACK);
         recGrass.setArcWidth(20);
         recGrass.setArcHeight(20);
         recGrass.setFill(new ImagePattern(grassImgbg));
 
-        Rectangle recGrassText = new Rectangle(600,460,230,300);
+        Rectangle recGrassText = new Rectangle(600,660,230,300);
         recGrassText.setFill(Color.LIGHTGREEN);
         recGrassText.setStroke(Color.LIGHTGREEN);
 
-        Rectangle recGrassfrntgrnd= new Rectangle(600,280,238,484);
+        Rectangle recGrassfrntgrnd= new Rectangle(600,480,238,484);
         recGrassfrntgrnd.setFill(new ImagePattern(grassImgfg));
         recGrassfrntgrnd.setArcWidth(20);
         recGrassfrntgrnd.setArcHeight(20);
-        recGrassfrntgrnd.setOpacity(0.0);
+        recGrassfrntgrnd.setOpacity(1.0);
         recGrassfrntgrnd.getStyleClass().add("shadow3-label");
         recGrassfrntgrnd.setStroke(Color.BLACK);
 
@@ -314,39 +321,42 @@ public class App extends Application {
 
         Font biggerFont = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 130);
 
-        Font missionHeaderFont = Font.font("SERIF", FontWeight.BOLD, FontPosture.REGULAR, 24);
+        Font missionHeaderFont = Font.font("SERIF", FontWeight.BOLD, FontPosture.REGULAR, 30);
 
         Font biggerFont2 = Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 32);
 
-        Font smallerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 14);
+        Font smallerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 14);        
+        
+        Font slightlyBiggerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 20);
+
 
         Text txtMissionHeader = new Text("Bringing the world together through Pokémon");
         txtMissionHeader.setFont(missionHeaderFont);
-        txtMissionHeader.setX(175);
-        txtMissionHeader.setY(130);
+        txtMissionHeader.setX(155);
+        txtMissionHeader.setY(300);
 
         Text txtMissionBody = new Text("The world of Pokémon connects people across the globe,beloved by kids, adults, \nand every Trainer in between! These incredible creatures have crossed \nborders and language barriers to reach the hearts of millions for over 25 years, \nbringing people together through the joy of play and discovery.");
-        txtMissionBody.setFont(smallerFont);
-        txtMissionBody.setX(175);
-        txtMissionBody.setY(150);
+        txtMissionBody.setFont(slightlyBiggerFont);
+        txtMissionBody.setX(155);
+        txtMissionBody.setY(320);
 
 
-        Text txtFireTitle =new Text(85,520,"Add Title Here");
+        Text txtFireTitle =new Text(85,720," CHARIZARD");
         txtFireTitle.setFont(biggerFont2);
 
-        Text txtFireDescrip =new Text(85,560,"Add here some text...");
+        Text txtFireDescrip =new Text(85,760,"Fire types are notoriously rare in the \nearly stages of the games so choosing \nthe Fire variation starter is often \na plus. This is Abanob's favorite type!");
         txtFireDescrip.setFont(smallerFont);
 
-        Text txtWaterTitle =new Text(344,520,"Add Title Here");
+        Text txtWaterTitle =new Text(344,720,"  GYRADOS");
         txtWaterTitle.setFont(biggerFont2);
 
-        Text txtWaterDescrip =new Text(344,560,"Add here some text...");
+        Text txtWaterDescrip =new Text(344,760,"Water is the most common type with \nover 150 Pokémon, which are based on \na wide variety of fish and other \nsea-dwelling creatures.");
         txtWaterDescrip.setFont(smallerFont);
 
-        Text txtGrassTitle =new Text(605,520,"Add Title Here");
+        Text txtGrassTitle =new Text(605,720,"  SCEPTILE");
         txtGrassTitle.setFont(biggerFont2);
 
-        Text txtGrassDescrip =new Text(605,560,"Add here some text...");
+        Text txtGrassDescrip =new Text(605,760,"Grass is one of the weakest types \nstatistically, with 5 defensive \nweaknesses and 7 types that are resist-\nant to Grass moves. Furthermore, \nthree type combos paired with Grass \nhave 7 weaknesses: Grass/Psychic, \nGrass/Ice, and Grass/Dark.");
         txtGrassDescrip.setFont(smallerFont);
 
    /*     Text txtFire = new Text(100,520,"Fire");
@@ -371,50 +381,48 @@ public class App extends Application {
         FadeTransition fadeInFire = new FadeTransition(Duration.millis(200), recFirefrntgrnd);
         fadeInFire.setFromValue(0.0);
         fadeInFire.setToValue(1.0);
-
-        FadeTransition fadeInWater = new FadeTransition(Duration.millis(200), recWaterfrntgrnd);
-        fadeInWater.setFromValue(0.0);
-        fadeInWater.setToValue(1.0);
-
-        FadeTransition fadeInGrass = new FadeTransition(Duration.millis(200), recGrassfrntgrnd);
-        fadeInGrass.setFromValue(0.0);
-        fadeInGrass.setToValue(1.0);
-
         FadeTransition fadeOutFire = new FadeTransition(Duration.millis(100), recFirefrntgrnd);
         fadeOutFire.setFromValue(1.0);
         fadeOutFire.setToValue(0.0);
 
-        FadeTransition fadeOutWater = new FadeTransition(Duration.millis(100), recWaterfrntgrnd);
-        fadeOutWater.setFromValue(1.0);
-        fadeOutWater.setToValue(0.0);
-
+        FadeTransition fadeInGrass = new FadeTransition(Duration.millis(200), recGrassfrntgrnd);
+        fadeInGrass.setFromValue(0.0);
+        fadeInGrass.setToValue(1.0);
         FadeTransition fadeOutGrass = new FadeTransition(Duration.millis(100), recGrassfrntgrnd);
         fadeOutGrass.setFromValue(1.0);
         fadeOutGrass.setToValue(0.0);
 
+        FadeTransition fadeInWater = new FadeTransition(Duration.millis(200), recWaterfrntgrnd);
+        fadeInWater.setFromValue(0.0);
+        fadeInWater.setToValue(1.0);
+        FadeTransition fadeOutWater = new FadeTransition(Duration.millis(100), recWaterfrntgrnd);
+        fadeOutWater.setFromValue(1.0);
+        fadeOutWater.setToValue(0.0);
+
+
         // Home- 3 Cards Events
          recFirefrntgrnd.setOnMouseEntered(event -> {
-            fadeInFire.playFromStart();
-        });
-
-        recFirefrntgrnd.setOnMouseExited(event -> {
             fadeOutFire.playFromStart();
         });
 
-         recWaterfrntgrnd.setOnMouseEntered(event -> {
-                fadeInWater.playFromStart();
+        recFirefrntgrnd.setOnMouseExited(event -> {
+            fadeInFire.playFromStart();
         });
 
-        recWaterfrntgrnd.setOnMouseExited(event -> {
+         recWaterfrntgrnd.setOnMouseEntered(event -> {
                 fadeOutWater.playFromStart();
         });
 
+        recWaterfrntgrnd.setOnMouseExited(event -> {
+                fadeInWater.playFromStart();
+        });
+
         recGrassfrntgrnd.setOnMouseEntered(event -> {
-                fadeInGrass.playFromStart();
+                fadeOutGrass.playFromStart();
         });
 
         recGrassfrntgrnd.setOnMouseExited(event -> {
-                fadeOutGrass.playFromStart();
+                fadeInGrass.playFromStart();
         });
 
 /*
@@ -483,15 +491,11 @@ public class App extends Application {
         VBox rootVB = new VBox(hb_homeTitle,hb_hometaskbar);
 
         Group rootGRP = new Group(recBackgr,FeaturePokeScrollPane,recFeaturePoke, hb_horizScrollBar_buttons,txtMissionHeader,txtMissionBody,rootVB,recFire ,recFireText, recWater,recWaterText,recGrass,recGrassText,
-        txtFireDescrip,txtFireTitle,txtWaterDescrip,txtWaterTitle, txtGrassTitle,txtGrassDescrip,recFirefrntgrnd,recWaterfrntgrnd,recGrassfrntgrnd);
-/*
-        Group rootGRP = new Group(rootVB,
-        recFire , recWater,recGrass, txtFire,txtWater,txtGrass, imageViewFire, imageViewWater, imageViewGrass);
-        rootGRP.setStyle("-fx-background-color: #e0dede;");
- */
+        txtFireDescrip,txtFireTitle,txtWaterDescrip,txtWaterTitle, txtGrassTitle,txtGrassDescrip,recFirefrntgrnd,recWaterfrntgrnd,recGrassfrntgrnd, footerBackground, lbl_footer);
+
         // Add the rootGRP to a ScrollPane to allow scrolling
         ScrollPane scrollPane = new ScrollPane(rootGRP);
-   //     scrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
+        scrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
         scrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
 
         Scene scene = new Scene(scrollPane, 910, 800);
