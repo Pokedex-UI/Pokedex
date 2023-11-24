@@ -194,6 +194,7 @@ public class App2 extends Application {
         scene1 = new Scene(rootGRP, 890, 800);
         scene1.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /*
             Functionality to move between scenes:
                 - Click on Pokedex
@@ -206,7 +207,7 @@ public class App2 extends Application {
         });
 
         // Scene 2 (Pokedex)
-        /////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Header code
         Label lbl_dbTitleSc2 = new Label("Pokédex Database");
@@ -221,7 +222,6 @@ public class App2 extends Application {
         Button bttnHomeSc2 = new Button("Home");
         bttnHomeSc2.getStyleClass().add("bttn-label");
         bttnHomeSc2.setMinWidth(130); // Adjust the value as needed
-
 
         // Pokedex menu items
         Menu pokedexMenuSc2 = new Menu("Pokédex");
@@ -396,7 +396,7 @@ public class App2 extends Application {
 
         scene2 = new Scene(fireScrollPane, 890, 800);
         scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        /////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         primaryStage.setTitle("Pokédex APP");
         primaryStage.setScene(scene1);
