@@ -67,7 +67,7 @@ import java.io.IOException;
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class App2 extends Application {
     public static void main(String[] args) {
         launch();
     }
@@ -103,6 +103,8 @@ public class App extends Application {
         // Home Button
         Button bttnHome = new Button("Home");
         bttnHome.getStyleClass().add("bttn-label");
+        bttnHome.setMinWidth(130); // Adjust the value as needed
+
 
         // Pokedex menu items
         Menu pokedexMenu = new Menu("Pokédex");
@@ -116,7 +118,7 @@ public class App extends Application {
         homeMenuBar.getMenus().addAll(pokedexMenu);
         homeMenuBar.getStyleClass().add("bttn-label");
 
-        HBox hb_hometaskbar = new HBox(565,bttnHome,homeMenuBar);
+        HBox hb_hometaskbar = new HBox(560,bttnHome,homeMenuBar);
         hb_hometaskbar.setAlignment(Pos.CENTER);
         hb_hometaskbar.setPadding(new Insets(10,0,20,0));
 
@@ -197,7 +199,7 @@ public class App extends Application {
                 - Click on Pokedex
                 - Click on Fire Pokedex
                 - Moves to Fire Pokedex scene
-        */ 
+        */
         fireItem.setOnAction(event ->
         {
             primaryStage.setScene(scene2);
@@ -218,6 +220,8 @@ public class App extends Application {
         // Home Button
         Button bttnHomeSc2 = new Button("Home");
         bttnHomeSc2.getStyleClass().add("bttn-label");
+        bttnHomeSc2.setMinWidth(130); // Adjust the value as needed
+
 
         // Pokedex menu items
         Menu pokedexMenuSc2 = new Menu("Pokédex");
@@ -231,7 +235,7 @@ public class App extends Application {
         homeMenuBarSc2.getMenus().addAll(pokedexMenuSc2);
         homeMenuBarSc2.getStyleClass().add("bttn-label");
 
-        HBox hb_hometaskbarSc2 = new HBox(565,bttnHomeSc2,homeMenuBarSc2);
+        HBox hb_hometaskbarSc2 = new HBox(542,bttnHomeSc2,homeMenuBarSc2);
         hb_hometaskbarSc2.setAlignment(Pos.CENTER);
         hb_hometaskbarSc2.setPadding(new Insets(10,0,20,0));
 
@@ -244,21 +248,21 @@ public class App extends Application {
         // Pokedex Entries
 
         // Row 1
-        Image charmander = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\resources\\Fire Pokemon\\charmander.jpg");
+        Image charmander = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\charmander.jpg");
         ImageView charmanderImageView = new ImageView(charmander);
         charmanderImageView.setPreserveRatio(true);
         charmanderImageView.setFitWidth(175);
 
-        Image charmeleon = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\resources\\Fire Pokemon\\charmeleon.jpg");
+        Image charmeleon = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\charmeleon.jpg");
         ImageView charmeleonImageView = new ImageView(charmeleon);
         charmeleonImageView.setPreserveRatio(true);
         charmeleonImageView.setFitWidth(175);
 
-        Image charizard = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\resources\\Fire Pokemon\\charizard.jpg");
+        Image charizard = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\charizard.jpg");
         ImageView charizardImageView = new ImageView(charizard);
         charizardImageView.setPreserveRatio(true);
         charizardImageView.setFitWidth(175);
-        
+
         /*
             Labels and VBoxes
         */
@@ -291,17 +295,17 @@ public class App extends Application {
         /*
             Images and ImageViews
         */
-        Image cyndaquil = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\resources\\Fire Pokemon\\cyndaquil.jpg");
+        Image cyndaquil = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\cyndaquil.jpg");
         ImageView cyndaquilImageView = new ImageView(cyndaquil);
         cyndaquilImageView.setPreserveRatio(true);
         cyndaquilImageView.setFitWidth(175);
 
-        Image quilava = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\resources\\Fire Pokemon\\quilava.jpg");
+        Image quilava = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\quilava.jpg");
         ImageView quilavaImageView = new ImageView(quilava);
         quilavaImageView.setPreserveRatio(true);
         quilavaImageView.setFitWidth(175);
 
-        Image typhlosion = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\resources\\Fire Pokemon\\typhlosion.jpg");
+        Image typhlosion = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\typhlosion.jpg");
         ImageView typhlosionImageView = new ImageView(typhlosion);
         typhlosionImageView.setPreserveRatio(true);
         typhlosionImageView.setFitWidth(175);
@@ -332,22 +336,24 @@ public class App extends Application {
 
         HBox sc2Row2 = new HBox(150, cyndaquilImageView, quilavaImageView, typhlosionImageView);
         sc2Row2.setAlignment(Pos.CENTER);
-    
+
         // Row 3
-        Image torchic = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\resources\\Fire Pokemon\\torchic.jpg");
+        Image torchic = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\torchic.jpg");
         ImageView torchicImageView = new ImageView(torchic);
         torchicImageView.setPreserveRatio(true);
         torchicImageView.setFitWidth(175);
 
-        Image combusken = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\resources\\Fire Pokemon\\combusken.jpg");
+        Image combusken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\combusken.jpg");
         ImageView combuskenImageView = new ImageView(combusken);
         combuskenImageView.setPreserveRatio(true);
         combuskenImageView.setFitWidth(175);
 
-        Image blaizken = new Image("file:C:\\Users\\Josh\\Documents\\School\\CS 2450\\resources\\Fire Pokemon\\blaziken.jpg");
+        Image blaizken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\blaziken.jpg");
         ImageView blaizkenImageView = new ImageView(blaizken);
         blaizkenImageView.setPreserveRatio(true);
         blaizkenImageView.setFitWidth(175);
+
+
 
         /*
             Labels and VBoxes
@@ -383,7 +389,12 @@ public class App extends Application {
         VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, pokedexVbox);
         layout2.setStyle("-fx-background-color: white");
 
-        scene2 = new Scene(layout2, 890, 800);
+        // Add the rootGRP to a ScrollPane to allow scrolling
+        ScrollPane fireScrollPane = new ScrollPane(layout2);
+        fireScrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
+        fireScrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
+
+        scene2 = new Scene(fireScrollPane, 890, 800);
         scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         /////////////////////////////////////////////////
 
