@@ -1,3 +1,9 @@
+.root {
+    -fx-background-image: url("file:///D:/CPP/CS%202450%20UI/PokePics/backdrop2.jpg");
+    -fx-background-size: cover; /* You can adjust this property based on your requirements */
+}
+
+
 .hbox-with-gradient {
     /* Set the background gradient for the HBox */
     -fx-background-color: linear-gradient(to bottom, rgba(20, 17, 35, 0.897), rgba(255,0,0,0));
