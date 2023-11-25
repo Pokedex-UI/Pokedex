@@ -35,7 +35,17 @@
 
 .bttn-label {
     -fx-background-color: linear-gradient(to right, #FFD700, #FFA500);
-    -fx-background-radius: 5;
+  /*  -fx-background-radius: 5;  */
+    -fx-text-fill: black;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-transition: background-color 0.3s, -fx-shadow 0.3s;
+   /* -fx-pref-width: 450;*/
+}
+
+.bttn-label2 {
+    -fx-background-color: linear-gradient(to right, #FFA500, #FFD700);
+   /* -fx-background-radius: 5;  */
     -fx-text-fill: black;
     -fx-font-size: 30px;
     -fx-font-weight: bold;

@@ -88,6 +88,9 @@ public class App extends Application {
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         double centerPos = screenSize.getWidth()/4;
 
+        System.out.println("---------Center POsistion is:" +centerPos);
+
+
         Image dbTitleImg1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
         Image dbTitleImg2 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
 
@@ -120,7 +123,7 @@ public class App extends Application {
         hb_homeTitle.setAlignment(Pos.TOP_CENTER);
 
         Button bttnHome = new Button("Home");
-        bttnHome.getStyleClass().add("bttn-label");
+        bttnHome.getStyleClass().add("bttn-label2");
         bttnHome.setPrefWidth(screenSize.getWidth()/2);
         // bttnHome.setPrefWidth(300);
 
@@ -192,7 +195,7 @@ public class App extends Application {
             fadeOut_L_Bttn.playFromStart();
             scrollRight();});
 
-        HBox hb_horizScrollBar_buttons = new HBox(1550,leftButton, rightButton);
+        HBox hb_horizScrollBar_buttons = new HBox(1550,leftButton, rightButton);//--------------------------------------NOTE: You may need to change the 1550px scpace between buttons
         hb_horizScrollBar_buttons.setLayoutY(1200);
         hb_horizScrollBar_buttons.setPadding(new Insets(15,0,0,0));
 
@@ -202,7 +205,7 @@ public class App extends Application {
         recFeaturePoke.setArcWidth(20);
         recFeaturePoke.setArcHeight(20);
         recFeaturePoke.setFill(new ImagePattern(featurePokeImg));
-        recFeaturePoke.setLayoutX(centerPos);
+        recFeaturePoke.setLayoutX(centerPos-100);
 
 
         Menu pokedexMenu = new Menu("                                          Pokédex");
@@ -286,12 +289,12 @@ public class App extends Application {
         recFire.setArcWidth(20);
         recFire.setArcHeight(20);
         recFire.setFill(new ImagePattern(fireImgbg));
-recFire.setLayoutX(centerPos -129);   // 129 is the width of the frontground rectangle / 2
+recFire.setLayoutX(centerPos - (129+69));   // 129 is the width of the frontground rectangle / 2
 
         Rectangle recFireText = new Rectangle(80,660,230,300);
         recFireText.setFill(Color.LIGHTSALMON);
         recFireText.setStroke(Color.LIGHTSALMON);
-recFireText.setLayoutX(centerPos -129 );   // 129 is the width of the frontground rectangle / 2
+recFireText.setLayoutX(centerPos - (129+69));   // 129 is the width of the frontground rectangle / 2
 
       Rectangle recFirefrntgrnd= new Rectangle(77,480,238,484);
       recFirefrntgrnd.setFill(new ImagePattern(fireImgfg));
@@ -300,19 +303,19 @@ recFireText.setLayoutX(centerPos -129 );   // 129 is the width of the frontgroun
       recFirefrntgrnd.setOpacity(1.0);
       recFirefrntgrnd.getStyleClass().add("shadow-label");
       recFirefrntgrnd.setStroke(Color.BLACK);
-recFirefrntgrnd.setLayoutX(centerPos -129 );   // 129 is the width of the frontground rectangle / 2
+recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the frontground rectangle / 2
 
       Rectangle recWater = new Rectangle(340,480,230,190);
       recWater.setStroke(Color.BLACK);
       recWater.setArcWidth(20);
       recWater.setArcHeight(20);
       recWater.setFill(new ImagePattern(waterImgbg));
-      recWater.setLayoutX(centerPos);
+      recWater.setLayoutX(centerPos-69);
 
       Rectangle recWaterText = new Rectangle(340,660,230,300);
       recWaterText.setFill(Color.LIGHTSKYBLUE);
       recWaterText.setStroke(Color.LIGHTSKYBLUE);
-      recWaterText.setLayoutX(centerPos);
+      recWaterText.setLayoutX(centerPos-69);
 
       Rectangle recWaterfrntgrnd= new Rectangle(337,480,238,484);
       recWaterfrntgrnd.setFill(new ImagePattern(waterImgfg));
@@ -321,19 +324,19 @@ recFirefrntgrnd.setLayoutX(centerPos -129 );   // 129 is the width of the frontg
       recWaterfrntgrnd.setOpacity(1.0);
       recWaterfrntgrnd.getStyleClass().add("shadow2-label");
       recWaterfrntgrnd.setStroke(Color.BLACK);
-      recWaterfrntgrnd.setLayoutX(centerPos);
+      recWaterfrntgrnd.setLayoutX(centerPos-69);
 
       Rectangle recGrass = new Rectangle(600,480,230,190);
       recGrass.setStroke(Color.BLACK);
       recGrass.setArcWidth(20);
       recGrass.setArcHeight(20);
       recGrass.setFill(new ImagePattern(grassImgbg));
-      recGrass.setLayoutX(centerPos + 129);
+      recGrass.setLayoutX(centerPos + (129-69));
 
       Rectangle recGrassText = new Rectangle(600,660,230,300);
       recGrassText.setFill(Color.LIGHTGREEN);
       recGrassText.setStroke(Color.LIGHTGREEN);
-      recGrassText.setLayoutX(centerPos + 129);
+      recGrassText.setLayoutX(centerPos + (129-69));
 
       Rectangle recGrassfrntgrnd= new Rectangle(600,480,238,484);
       recGrassfrntgrnd.setFill(new ImagePattern(grassImgfg));
@@ -342,7 +345,7 @@ recFirefrntgrnd.setLayoutX(centerPos -129 );   // 129 is the width of the frontg
       recGrassfrntgrnd.setOpacity(1.0);
       recGrassfrntgrnd.getStyleClass().add("shadow3-label");
       recGrassfrntgrnd.setStroke(Color.BLACK);
-      recGrassfrntgrnd.setLayoutX(centerPos + 129);
+      recGrassfrntgrnd.setLayoutX(centerPos + (129-69));
 
 
         // Home- Cards Text
@@ -375,29 +378,29 @@ recFirefrntgrnd.setLayoutX(centerPos -129 );   // 129 is the width of the frontg
 
         Text txtFireTitle =new Text(85,720," CHARIZARD");
         txtFireTitle.setFont(biggerFont2);
-        txtFireTitle.setLayoutX(centerPos-129); // 129 is the width of the frontground rectangle / 2
+        txtFireTitle.setLayoutX(centerPos- (129 + 69)); // 129 is the width of the frontground rectangle / 2
 
         Text txtFireDescrip =new Text(85,760,"Fire types are notoriously rare in the \nearly stages of the games so choosing \nthe Fire variation starter is often \na plus. This is Abanob's favorite type!");
         txtFireDescrip.setFont(smallerFont);
-        txtFireDescrip.setLayoutX(centerPos-129);   // 129 is the width of the frontground rectangle / 2
+        txtFireDescrip.setLayoutX(centerPos-(129 + 69));   // 129 is the width of the frontground rectangle / 2
 
         Text txtWaterTitle =new Text(344,720,"  GYRADOS");
         txtWaterTitle.setFont(biggerFont2);
-        txtWaterTitle.setLayoutX(centerPos);
+        txtWaterTitle.setLayoutX(centerPos - 69);
 
         Text txtWaterDescrip =new Text(344,760,"Water is the most common type with \nover 150 Pokémon, which are based on \na wide variety of fish and other \nsea-dwelling creatures.");
         txtWaterDescrip.setFont(smallerFont);
-        txtWaterDescrip.setLayoutX(centerPos);
+        txtWaterDescrip.setLayoutX(centerPos -69);
 
 
         Text txtGrassTitle =new Text(605,720,"  SCEPTILE");
         txtGrassTitle.setFont(biggerFont2);
-        txtGrassTitle.setLayoutX(centerPos +129);
+        txtGrassTitle.setLayoutX(centerPos + (129 - 69));
 
 
         Text txtGrassDescrip =new Text(605,760,"Grass is one of the weakest types \nstatistically, with 5 defensive \nweaknesses and 7 types that are resist-\nant to Grass moves. Furthermore, \nthree type combos paired with Grass \nhave 7 weaknesses: Grass/Psychic, \nGrass/Ice, and Grass/Dark.");
         txtGrassDescrip.setFont(smallerFont);
-        txtGrassDescrip.setLayoutX(centerPos +129);
+        txtGrassDescrip.setLayoutX(centerPos + (129 - 69));
 
 
    /*     Text txtFire = new Text(100,520,"Fire");
