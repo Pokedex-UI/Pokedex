@@ -23,6 +23,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.SceneAntialiasing;
@@ -62,6 +63,7 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.FileChooser;
+import javafx.stage.Screen;
 import javafx.util.Duration;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
@@ -74,7 +76,7 @@ public class App extends Application {
     private HBox cardContainer;
     private int currentIndex = 0;
     private Scene scene1, scene2;
-
+    
     public static void main(String[] args) {
         launch();
     }
@@ -83,6 +85,9 @@ public class App extends Application {
 
         Image dbTitleImg1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
         Image dbTitleImg2 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
+
+        // get screensize of monitor
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 
       //  Label missionStatement = new Label("mission statement here");
 
@@ -683,7 +688,7 @@ public class App extends Application {
         fireScrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
         fireScrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
 
-        scene2 = new Scene(fireScrollPane, 890, 800);
+        scene2 = new Scene(fireScrollPane, screenSize.getWidth(), screenSize.getHeight());
         scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         /////////////////////////////////////////////////
 
@@ -703,7 +708,7 @@ public class App extends Application {
    //     scrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
         scrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
 
-        scene1 = new Scene(scrollPane, 910, 800);
+        scene1 = new Scene(scrollPane, screenSize.getWidth(), screenSize.getHeight());
         scene1.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         primaryStage.setTitle("Pokédex APP");
