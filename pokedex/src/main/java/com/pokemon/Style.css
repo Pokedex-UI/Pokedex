@@ -1,3 +1,8 @@
+.root {
+    -fx-background-image: url("file:///D:/CPP/CS%202450%20UI/PokePics/backdrop2.jpg");
+    -fx-background-size: cover; /* You can adjust this property based on your requirements */
+}
+
 .hbox-with-gradient {
     /* Set the background gradient for the HBox */
     -fx-background-color: linear-gradient(to bottom, rgba(20, 17, 35, 0.897), rgba(255,0,0,0));
@@ -7,7 +12,7 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-font-style: italic;
-    -fx-text-fill: white; 
+    -fx-text-fill: white;
 }
 
 .title-label {
@@ -35,7 +40,7 @@
     -fx-font-size: 30px;
     -fx-font-weight: bold;
     -fx-transition: background-color 0.3s, -fx-shadow 0.3s;
-    -fx-pref-width: 450;
+   /* -fx-pref-width: 450;*/
 }
 
 .bttn-label:hover, .bttn-label.bttn-label:focus {
@@ -71,8 +76,8 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 228, 61, 0.95), 10, 0, 0, 0);
 }
 
-
+/*
 .hbox-with-size {
     -fx-pref-width: 600;
     -fx-pref-height: 400;
-}
+}*/
