@@ -109,7 +109,7 @@ public class App extends Application {
 
         //Footer stuff
         Label lbl_footer  = new Label("All content & design ©AbaJEthan licended under Devika Maini CS2450");
-        lbl_footer.setLayoutX(475);
+        lbl_footer.setLayoutX(430);
         lbl_footer.setLayoutY(1530);
         lbl_footer.getStyleClass().add("footer-text");
 
@@ -742,6 +742,10 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
         VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, pokedexVbox, footerGroupFire);
         layout2.setStyle("-fx-background-color: white");
 
+        // (OPTIONAL) ADD THE BACKGROUND TO THE FIRE SCENE2
+        layout2.setStyle("-fx-background-image: url(file:///D:/CPP/CS%202450%20UI/PokePics/backdrop2.jpg);" + "-fx-background-size: cover;");
+
+
         // Add the rootGRP to a ScrollPane to allow scrolling
         ScrollPane fireScrollPane = new ScrollPane(layout2);
         fireScrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
@@ -751,23 +755,24 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
         scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        VBox rootVB = new VBox(hb_homeTitle,hb_hometaskbar);
-        rootVB.setAlignment(Pos.CENTER);
+        VBox homeTopPartVB = new VBox(hb_homeTitle,hb_hometaskbar);
+        homeTopPartVB.setAlignment(Pos.CENTER);
 
-        BorderPane rootBP = new BorderPane();
+/*         BorderPane rootBP = new BorderPane();
         rootBP.setTop(rootVB);
-        rootBP.setPrefWidth(screenSize.getWidth());
+        rootBP.setPrefWidth(screenSize.getWidth()); */
 
-        Group rootGRP = new Group(FeaturePokeScrollPane,recFeaturePoke, hb_horizScrollBar_buttons,vb_welcome,rootBP,recFire ,recFireText, recWater,recWaterText,recGrass,recGrassText,
+        Group rootGRP = new Group(FeaturePokeScrollPane,recFeaturePoke, hb_horizScrollBar_buttons,vb_welcome,homeTopPartVB,recFire ,recFireText, recWater,recWaterText,recGrass,recGrassText,
         txtFireDescrip,txtFireTitle,txtWaterDescrip,txtWaterTitle, txtGrassTitle,txtGrassDescrip,recFirefrntgrnd,recWaterfrntgrnd,recGrassfrntgrnd, footerBackground, lbl_footer);
+
+        VBox  rootVB = new VBox(rootGRP);
+        rootVB.setStyle("-fx-background-image: url(file:///D:/CPP/CS%202450%20UI/PokePics/backdrop2.jpg);" + "-fx-background-size: cover;");
 
 
         // Add the rootGRP to a ScrollPane to allow scrolling
-        ScrollPane scrollPane = new ScrollPane(rootGRP);
+        ScrollPane scrollPane = new ScrollPane(rootVB);
         scrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
         scrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
-
-
 
 
         scene1 = new Scene(scrollPane, screenSize.getWidth(), screenSize.getHeight());
