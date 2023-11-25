@@ -35,6 +35,10 @@
     -fx-font-weight: bold;
 }
 
+.menu {
+    fx-text-alignment: center;
+}
+
 .menu-item {
     -fx-text-fill: #ffffff; /* Set text color for menu items */
     -fx-font-size: 14px; /* Set font size for menu items */

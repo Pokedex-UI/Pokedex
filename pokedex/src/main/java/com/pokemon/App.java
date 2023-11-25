@@ -110,6 +110,7 @@ public class App extends Application {
 
         Button bttnHome = new Button("Home");
         bttnHome.getStyleClass().add("bttn-label");
+        bttnHome.setPrefWidth((screenSize.getWidth()) / 2);
         // Button bttnQA = new Button("Pokédex Q&A");
         // bttnQA.getStyleClass().add("bttn-label");
         // Button bttnAbout = new Button("About/Contact US");
@@ -186,7 +187,7 @@ public class App extends Application {
         recFeaturePoke.setArcHeight(20);
         recFeaturePoke.setFill(new ImagePattern(featurePokeImg));
 
-        Menu pokedexMenu = new Menu("Pokédex");
+        Menu pokedexMenu = new Menu("                                                    Pokédex");
         MenuItem fireItem = new MenuItem("Fire Pokédex");
         MenuItem waterItem = new MenuItem("Water Pokédex");
         MenuItem grassItem = new MenuItem("Grass Pokédex");
@@ -195,10 +196,12 @@ public class App extends Application {
         MenuBar homeMenuBar = new MenuBar();
         homeMenuBar.getMenus().addAll(pokedexMenu);
         homeMenuBar.getStyleClass().add("bttn-label");
+        homeMenuBar.setPrefWidth((screenSize.getWidth())/2);
 
-        HBox hb_hometaskbar = new HBox(565,bttnHome,homeMenuBar);
+        HBox hb_hometaskbar = new HBox(bttnHome,homeMenuBar);
         hb_hometaskbar.setAlignment(Pos.CENTER);
         hb_hometaskbar.setPadding(new Insets(10,0,20,0));
+
 
    //     HBox hb_missionStatement = new HBox(10, missionStatement);
    //     hb_missionStatement.setAlignment(Pos.CENTER);
