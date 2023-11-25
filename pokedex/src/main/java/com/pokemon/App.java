@@ -195,7 +195,7 @@ public class App extends Application {
             fadeOut_L_Bttn.playFromStart();
             scrollRight();});
 
-        HBox hb_horizScrollBar_buttons = new HBox(1550,leftButton, rightButton);//--------------------------------------NOTE: You may need to change the 1550px scpace between buttons
+        HBox hb_horizScrollBar_buttons = new HBox(screenSize.getWidth()/1.09,leftButton, rightButton);//--------------------------------------NOTE: You may need to change the 1550px scpace between buttons
         hb_horizScrollBar_buttons.setLayoutY(1200);
         hb_horizScrollBar_buttons.setPadding(new Insets(15,0,0,0));
 
@@ -353,13 +353,13 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
 
         Font biggerFont = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 130);
 
-        Font missionHeaderFont = Font.font("SERIF", FontWeight.BOLD, FontPosture.REGULAR, 30);
+        Font missionHeaderFont = Font.font("SERIF", FontWeight.BOLD, FontPosture.REGULAR, 32);
 
         Font biggerFont2 = Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 32);
 
         Font smallerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 14);
 
-        Font slightlyBiggerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 20);
+        Font slightlyBiggerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 22);
 
 
         Text txtMissionHeader = new Text("Welcome to the Pokemon Database!");
@@ -367,12 +367,12 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
       //  txtMissionHeader.setX(155);
       //  txtMissionHeader.setY(300);
 
-        Text txtMissionBody = new Text("The world of Pokémon connects people across the globe,beloved by kids, adults, \nand every Trainer in between! These incredible creatures have crossed \nborders and language barriers to reach the hearts of millions for over 25 years, \nbringing people together through the joy of play and discovery.");
+        Text txtMissionBody = new Text("The world of Pokémon connects people across the globe,beloved by kids, adults, \nand every Trainer in between! These incredible creatures have crossed \nborders and language barriers to reach the hearts of millions for over 25 years, \nbringing people together through the joy of play and discovery. We aim to delight \nour fans through excellentproducts and meaningful experiences.\n We hope to help make thew rold a better place for everyone by creating opportunities\n to bond and to grow through shared journeys and friendly competition!");
         txtMissionBody.setFont(slightlyBiggerFont);
       //  txtMissionBody.setX(155);
       //  txtMissionBody.setY(320);
 
-        VBox vb_welcome = new VBox(txtMissionHeader,txtMissionBody);
+        VBox vb_welcome = new VBox(10, txtMissionHeader,txtMissionBody);
       //  vb_welcome.setAlignment(Pos.CENTER);
         vb_welcome.setPadding(new Insets(200,0,0,screenSize.getWidth()/3));
 
