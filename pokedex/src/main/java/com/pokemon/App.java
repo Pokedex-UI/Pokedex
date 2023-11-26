@@ -46,6 +46,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.PhongMaterial;
@@ -57,6 +58,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape3D;
+import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -64,6 +66,7 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.FileChooser;
+import javafx.stage.Popup;
 import javafx.stage.Screen;
 import javafx.util.Duration;
 import javafx.animation.Timeline;
@@ -206,7 +209,6 @@ public class App extends Application {
         recFeaturePoke.setArcHeight(20);
         recFeaturePoke.setFill(new ImagePattern(featurePokeImg));
         recFeaturePoke.setLayoutX(centerPos-100);
-
 
         Menu pokedexMenu = new Menu("                                          Pokédex");
         MenuItem fireItem = new MenuItem("Fire Pokédex");
@@ -753,6 +755,29 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
 
         scene2 = new Scene(fireScrollPane, screenSize.getWidth(), screenSize.getHeight());
         scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+
+        //CREATES ALL POPUPS, REFRENCE THIS FOR PARAMETERS
+        //createPopup(String name, String image, String species, String height, String weight, String abilities
+        Popup charmanderPopup = createPopup(charmanderLabel.getText(), charmanderLabel.getText(), "Lizard Pokémon", "0.6m", "18.7lbs", "Blaze");
+        // Set action on ImageView click to show the popup
+        charmanderImageView.setOnMouseClicked(event -> {
+            charmanderPopup.show(charmanderImageView.getScene().getWindow());
+        });
+
+        Popup charmeleonPopup = createPopup(charmeleonLabel.getText(), charmeleonLabel.getText(), "Flame Pokémon", "1.1m", "41.9lbs", "Blaze");
+        // Set action on ImageView click to show the popup
+        charmeleonImageView.setOnMouseClicked(event -> {
+            charmeleonPopup.show(charmeleonImageView.getScene().getWindow());
+        });
+
+        Popup charizardPopup = createPopup(charizardLabel.getText(), charizardLabel.getText(), "Flame Pokémon", "1.7m", "200lbs", "Solar Power");
+        // Set action on ImageView click to show the popup
+        charizardImageView.setOnMouseClicked(event -> {
+            charizardPopup.show(charizardImageView.getScene().getWindow());
+        });
+
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         VBox homeTopPartVB = new VBox(hb_homeTitle,hb_hometaskbar);
@@ -797,6 +822,58 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
 
 
     //----------------------------------HELPER FUNCTIONS----------------------------------
+    private Popup createPopup(String name, String image, String species, String height, String weight, String abilities) {
+        // Create a popup
+        Popup popup = new Popup();
+    
+        
+        // Create content for the popup
+        StackPane popUpBackground = new StackPane();
+        VBox popUpContent = new VBox(10);
+        popUpContent.setAlignment(Pos.CENTER); // Center the content vertically
+        
+    
+        // Create a background rectangle with a light blue color
+        Image pokedexBackground = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\pokedexbg.png");
+        Rectangle background = new Rectangle(600, 650); // Set the desired width and height
+        Rectangle blackBorder = new Rectangle(610, 660);
+        blackBorder.setFill(Color.BLACK);
+        background.setFill(new ImagePattern(pokedexBackground));
+    
+        
+        // Create an ImageView with a specific size
+        ImageView popUpImageView = new ImageView("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\" + image + ".png");
+        popUpImageView.setFitWidth(400);  // Set the desired width
+        popUpImageView.setFitHeight(400); // Set the desired height
+        
+        popUpContent.getChildren().addAll(
+            new Button("Exit"),
+            createStyledLabel(name, 30, FontWeight.BOLD, Color.BLACK),
+            popUpImageView,
+            createStyledLabel("Species: " + species, 19, FontWeight.NORMAL, Color.WHITE),
+            createStyledLabel("Height: " + height, 19, FontWeight.NORMAL, Color.WHITE),
+            createStyledLabel("Weight: " + weight, 19, FontWeight.NORMAL, Color.WHITE),
+            createStyledLabel("Abilities: " + abilities, 19, FontWeight.NORMAL, Color.WHITE)
+    );
+        popUpBackground.getChildren().addAll(blackBorder, background, popUpContent);
+    
+        // Set action on button click to close the popup
+        Button exitButton = (Button) popUpContent.getChildren().get(0); // Adjust the index based on your content
+        exitButton.getStyleClass().add("bttn-label");
+        exitButton.setOnAction(event -> popup.hide());
+    
+        popup.getContent().add(popUpBackground);
+    
+        return popup;
+    }
+
+    private Label createStyledLabel(String text, double fontSize, FontWeight fontWeight, Color textColor) {
+        Label label = new Label(text);
+        label.setFont(Font.font("Arial", fontWeight, fontSize));
+        label.setTextFill(textColor);
+        return label;
+    }
+
     private void addCard(String titleTxt, String infoTxt, String imagePath) {
         Image image = new Image(imagePath);
         ImageView imageView = new ImageView(image);
