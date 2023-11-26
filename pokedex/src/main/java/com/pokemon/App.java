@@ -477,13 +477,43 @@ public class App extends Application {
         lbl_phoneNumber.setLayoutY(1630);
         lbl_phoneNumber.getStyleClass().add("footer-text");
 
+        // Images and ImageViews
+        Image discordImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\discord.png");
+        ImageView discordImageView = new ImageView(discordImage);
+        discordImageView.setPreserveRatio(true);
+        discordImageView.setFitWidth(100);
+        discordImageView.setLayoutX(1700);
+        discordImageView.setLayoutY(1570);
+
+        Image facebookImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\facebook.png");
+        ImageView facebookImageView = new ImageView(facebookImage);
+        facebookImageView.setPreserveRatio(true);
+        facebookImageView.setFitWidth(100);
+        facebookImageView.setLayoutX(1600);
+        facebookImageView.setLayoutY(1575);
+
+        Image linkedinImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\linkedin.png");
+        ImageView linkedinImageView = new ImageView(linkedinImage);
+        linkedinImageView.setPreserveRatio(true);
+        linkedinImageView.setFitWidth(100);
+        linkedinImageView.setLayoutX(1500);
+        linkedinImageView.setLayoutY(1565);
+
+        Image instagramImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\instagram.png");
+        ImageView instagramImageView = new ImageView(instagramImage);
+        instagramImageView.setPreserveRatio(true);
+        instagramImageView.setFitWidth(90);
+        instagramImageView.setLayoutX(1400);
+        instagramImageView.setLayoutY(1570);
+
 
         // Background for lbl_footer
         Rectangle footerBackground = new Rectangle(0, 1500, screenSize.getWidth(), 200);
         footerBackground.setFill(Color.web("#717e8e"));
 
         // Put lbl_footer on top of background
-        Group footerGroup = new Group(footerBackground, lbl_footerTitle, lbl_footer, lbl_phoneNumber);
+        Group footerGroup = new Group(footerBackground, lbl_footerTitle, lbl_footer, lbl_phoneNumber, discordImageView, facebookImageView, linkedinImageView,
+            instagramImageView);
 
         // HBox to put everything together
         HBox hb_footer = new HBox(footerGroup);
@@ -491,6 +521,17 @@ public class App extends Application {
 
         // 7. END FOOTER
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        /*
+            Functionality to move between scenes:
+                - Click on Pokedex
+                - Click on Fire Pokedex
+                - Moves to Fire Pokedex scene
+        */
+        fireItem.setOnAction(event ->
+        {
+            primaryStage.setScene(scene2);
+        });
 
         // Scene 2 (Pokedex)
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
