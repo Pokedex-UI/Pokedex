@@ -1,79 +1,43 @@
 package com.pokemon;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import java.io.File;
-import java.util.Random;
-import javafx.animation.Animation;
+import java.io.IOException;
+
 import javafx.animation.FadeTransition;
-import javafx.animation.ParallelTransition;
-import javafx.animation.PauseTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
-import javafx.scene.control.*;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.paint.LinearGradient;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.PerspectiveCamera;
-import javafx.scene.SceneAntialiasing;
-import javafx.scene.SubScene;
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.ScatterChart;
-import javafx.scene.chart.StackedBarChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.PhongMaterial;
-import javafx.scene.paint.Stop;
-import javafx.scene.shape.Box;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Cylinder;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Polygon;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape3D;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Translate;
-import javafx.stage.FileChooser;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
 import javafx.util.Duration;
-import javafx.animation.Timeline;
-import javafx.geometry.Insets;
-import java.io.IOException;
 
 /**
  * JavaFX App
@@ -173,19 +137,41 @@ public class App extends Application {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 3. BEGIN MISSION STATEMENT        
 
+        // Text - Welcome to the Pokemon Database!
         Text txtMissionHeader = new Text("Welcome to the Pokemon Database!");
         txtMissionHeader.setFont(missionHeaderFont);
+        txtMissionHeader.setTextAlignment(TextAlignment.CENTER);
 
-        Text txtMissionBody = new Text("The world of Pokémon connects people across the globe,beloved by kids, adults, \nand every Trainer in between! These incredible creatures have crossed \nborders and language barriers to reach the hearts of millions for over 25 years, \nbringing people together through the joy of play and discovery. We aim to delight \nour fans through excellentproducts and meaningful experiences.\n We hope to help make thew rold a better place for everyone by creating opportunities\n to bond and to grow through shared journeys and friendly competition!");
+        // Text below header
+        Text txtMissionBody = new Text("The world of Pokemon is vast, and we believe in making Pokémon information as clear and easy to digest as possible.\n" +
+                                       "On this page you will find general information about the basic types of Pokemon and see featured Pokemon as well.\n"+
+                                       "Use the menu above to get detailed Pokedex entries on information about evolution lines, abilities, and much more!");
+
         txtMissionBody.setFont(slightlyBiggerFont);
+        txtMissionBody.setTextAlignment(TextAlignment.CENTER);
 
-        VBox vb_welcome = new VBox(10, txtMissionHeader,txtMissionBody);
-        vb_welcome.setAlignment(Pos.CENTER);
-        vb_welcome.setPadding(new Insets(50,0,50,screenSize.getWidth()/3));
+        // Create two separate vboxes to hold the text objects
+        VBox vb_topHeader = new VBox(txtMissionHeader);
+        vb_topHeader.setAlignment(Pos.CENTER);
+        vb_topHeader.setPadding(new Insets(0, 0, 20, 0));
+
+        VBox vb_bottomHeader = new VBox(txtMissionBody);
+        vb_bottomHeader.setAlignment(Pos.CENTER);
+
+        // VBox to hold separate ones
+        VBox vb_missionStatement = new VBox(vb_topHeader, vb_bottomHeader);
+
+        // This is required to keep everything in the middle
+        Rectangle rectBackdrop = new Rectangle(0, 30, screenSize.getWidth(), 175);
+        rectBackdrop.setFill(Color.TRANSPARENT);
+
+        // Put everything together in a StackPane
+        StackPane stackPane = new StackPane();
+        stackPane.getChildren().addAll(rectBackdrop, vb_missionStatement);
 
         // HBox to put everything together
-        HBox hb_missionStatement = new HBox(vb_welcome);
-        hb_missionStatement.setAlignment(Pos.CENTER_LEFT);
+        HBox hb_missionStatement = new HBox(stackPane);
+        hb_missionStatement.setPadding(new Insets(30, 0, 0, 0));
 
         // 3. END MISSION STATEMENT
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
