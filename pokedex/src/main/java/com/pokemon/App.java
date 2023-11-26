@@ -16,6 +16,7 @@ import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.control.*;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.LinearGradient;
@@ -41,6 +42,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
@@ -77,6 +82,12 @@ public class App extends Application {
     private HBox cardContainer;
     private int currentIndex = 0;
     private Scene scene1, scene2;
+    private Font font = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 75);
+    private Font biggerFont = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 130);
+    private Font missionHeaderFont = Font.font("SERIF", FontWeight.BOLD, FontPosture.REGULAR, 32);
+    private Font biggerFont2 = Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 32);
+    private Font smallerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 14);
+    private Font slightlyBiggerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 22);
 
     public static void main(String[] args) {
         launch();
@@ -84,17 +95,30 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+        /* TABLE OF CONTENTS FOR HOME PAGE:
+         * 1. Header
+         * 2. Menubar
+         * 3. Mission Statement
+         * 4. 3 Pokemon Type Cards
+         * 5. Featured Pokemon Banner
+         * 6. ScrollPane
+         * 7. Footer
+        */
+
         // get screensize of monitor
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         double centerPos = screenSize.getWidth()/4;
 
         System.out.println("---------Center POsistion is:" +centerPos);
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 1. BEGIN HEADER
 
+        // Two charizard images on the header
         Image dbTitleImg1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
         Image dbTitleImg2 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
 
-
+        // ImageViews to show charizard images
         ImageView imageView1 = new ImageView(dbTitleImg1);
         imageView1.setFitWidth(140);
         imageView1.setFitHeight(100);
@@ -104,36 +128,263 @@ public class App extends Application {
         imageView2.setFitHeight(100);
         imageView2.getStyleClass().add("shadow-label");
 
+        // Label with header title
         Label lbl_dbTitle = new Label("Pokédex Database");
         lbl_dbTitle.getStyleClass().add("title-label");
 
-        //Footer stuff
-        Label lbl_footer  = new Label("All content & design ©AbaJEthan licended under Devika Maini CS2450");
-        lbl_footer.setLayoutX(430);
-        lbl_footer.setLayoutY(1530);
-        lbl_footer.getStyleClass().add("footer-text");
+        // HBox to put everything together
+        HBox hb_header = new HBox(40,imageView1,lbl_dbTitle,imageView2);
+        hb_header.getStyleClass().add("hbox-with-gradient");
+        hb_header.setAlignment(Pos.TOP_CENTER);
 
+        // 1. END HEADER
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Rectangle footerBackground = new Rectangle(0, 1500, screenSize.getWidth(), 100);
-        footerBackground.setFill(Color.web("#717e8e"));
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 2. BEGIN MENUBAR
 
-
-        HBox hb_homeTitle = new HBox(40,imageView1,lbl_dbTitle,imageView2);
-        hb_homeTitle.getStyleClass().add("hbox-with-gradient");
-        hb_homeTitle.setAlignment(Pos.TOP_CENTER);
-
+        // Home button
         Button bttnHome = new Button("Home");
         bttnHome.getStyleClass().add("bttn-label2");
         bttnHome.setPrefWidth(screenSize.getWidth()/2);
-        // bttnHome.setPrefWidth(300);
 
-        cardContainer = new HBox(0); // Set the spacing between cards
+        // Pokedex button menu
+        Menu pokedexMenu = new Menu("                                          Pokédex");
+        MenuItem fireItem = new MenuItem("Fire Pokédex");
+        MenuItem waterItem = new MenuItem("Water Pokédex");
+        MenuItem grassItem = new MenuItem("Grass Pokédex");
+        pokedexMenu.getStyleClass().add("menu");
+        pokedexMenu.getItems().addAll(fireItem,waterItem,grassItem);
+
+        // Initialize menuBar
+        MenuBar homeMenuBar = new MenuBar();
+        homeMenuBar.getMenus().addAll(pokedexMenu);
+        homeMenuBar.getStyleClass().add("bttn-label");
+        homeMenuBar.setPrefWidth((screenSize.getWidth())/2);
+
+        // HBox to put everything together
+        HBox hb_hometaskbar = new HBox(bttnHome,homeMenuBar);
+        hb_hometaskbar.setAlignment(Pos.CENTER);
+        hb_hometaskbar.setPadding(new Insets(0,0,0,0));
+
+        // 2. END MENUBAR
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 3. BEGIN MISSION STATEMENT        
+
+        Text txtMissionHeader = new Text("Welcome to the Pokemon Database!");
+        txtMissionHeader.setFont(missionHeaderFont);
+
+        Text txtMissionBody = new Text("The world of Pokémon connects people across the globe,beloved by kids, adults, \nand every Trainer in between! These incredible creatures have crossed \nborders and language barriers to reach the hearts of millions for over 25 years, \nbringing people together through the joy of play and discovery. We aim to delight \nour fans through excellentproducts and meaningful experiences.\n We hope to help make thew rold a better place for everyone by creating opportunities\n to bond and to grow through shared journeys and friendly competition!");
+        txtMissionBody.setFont(slightlyBiggerFont);
+
+        VBox vb_welcome = new VBox(10, txtMissionHeader,txtMissionBody);
+        vb_welcome.setAlignment(Pos.CENTER);
+        vb_welcome.setPadding(new Insets(50,0,50,screenSize.getWidth()/3));
+
+        // HBox to put everything together
+        HBox hb_missionStatement = new HBox(vb_welcome);
+        hb_missionStatement.setAlignment(Pos.CENTER_LEFT);
+
+        // 3. END MISSION STATEMENT
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 4. BEGIN 3 POKEMON TYPE CARDS      
+
+        // Initialize Card images
+        Image fireImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firecard2copy.jpg");
+        Image fireImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firecardcopy2.jpg");
+
+        Image waterImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\watercard.jpg");
+        Image waterImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\watercard2.jpg");
+
+        Image grassImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\sceptile.jpg");
+        Image grassImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\grasscard2.jpg");
+
+        Image backdrop1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\backdrop2.jpg");
+
+        // Initialize Card rectangles
+        // Rectangle(X,Y,Weidth, Height)
+        Rectangle recFire = new Rectangle(80,480,230,190);
+        recFire.setStroke(Color.BLACK);
+        recFire.setArcWidth(20);
+        recFire.setArcHeight(20);
+        recFire.setFill(new ImagePattern(fireImgbg));
+        recFire.setLayoutX(centerPos - (129+69));   // 129 is the width of the frontground rectangle / 2
+
+        Rectangle recFireText = new Rectangle(80,660,230,300);
+        recFireText.setFill(Color.LIGHTSALMON);
+        recFireText.setStroke(Color.LIGHTSALMON);
+        recFireText.setLayoutX(centerPos - (129+69));   // 129 is the width of the frontground rectangle / 2
+
+        Rectangle recFirefrntgrnd= new Rectangle(77,480,238,484);
+        recFirefrntgrnd.setFill(new ImagePattern(fireImgfg));
+        recFirefrntgrnd.setArcWidth(20);
+        recFirefrntgrnd.setArcHeight(20);
+        recFirefrntgrnd.setOpacity(1.0);
+        recFirefrntgrnd.getStyleClass().add("shadow-label");
+        recFirefrntgrnd.setStroke(Color.BLACK);
+        recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the frontground rectangle / 2
+
+        Rectangle recWater = new Rectangle(340,480,230,190);
+        recWater.setStroke(Color.BLACK);
+        recWater.setArcWidth(20);
+        recWater.setArcHeight(20);
+        recWater.setFill(new ImagePattern(waterImgbg));
+        recWater.setLayoutX(centerPos-69);
+
+        Rectangle recWaterText = new Rectangle(340,660,230,300);
+        recWaterText.setFill(Color.LIGHTSKYBLUE);
+        recWaterText.setStroke(Color.LIGHTSKYBLUE);
+        recWaterText.setLayoutX(centerPos-69);
+
+        Rectangle recWaterfrntgrnd= new Rectangle(337,480,238,484);
+        recWaterfrntgrnd.setFill(new ImagePattern(waterImgfg));
+        recWaterfrntgrnd.setArcWidth(20);
+        recWaterfrntgrnd.setArcHeight(20);
+        recWaterfrntgrnd.setOpacity(1.0);
+        recWaterfrntgrnd.getStyleClass().add("shadow2-label");
+        recWaterfrntgrnd.setStroke(Color.BLACK);
+        recWaterfrntgrnd.setLayoutX(centerPos-69);
+
+        Rectangle recGrass = new Rectangle(600,480,230,190);
+        recGrass.setStroke(Color.BLACK);
+        recGrass.setArcWidth(20);
+        recGrass.setArcHeight(20);
+        recGrass.setFill(new ImagePattern(grassImgbg));
+        recGrass.setLayoutX(centerPos + (129-69));
+
+        Rectangle recGrassText = new Rectangle(600,660,230,300);
+        recGrassText.setFill(Color.LIGHTGREEN);
+        recGrassText.setStroke(Color.LIGHTGREEN);
+        recGrassText.setLayoutX(centerPos + (129-69));
+
+        Rectangle recGrassfrntgrnd= new Rectangle(600,480,238,484);
+        recGrassfrntgrnd.setFill(new ImagePattern(grassImgfg));
+        recGrassfrntgrnd.setArcWidth(20);
+        recGrassfrntgrnd.setArcHeight(20);
+        recGrassfrntgrnd.setOpacity(1.0);
+        recGrassfrntgrnd.getStyleClass().add("shadow3-label");
+        recGrassfrntgrnd.setStroke(Color.BLACK);
+        recGrassfrntgrnd.setLayoutX(centerPos + (129-69));
+
+        // Home- Cards Text
+        Text txtFireTitle =new Text(85,720," CHARIZARD");
+        txtFireTitle.setFont(biggerFont2);
+        txtFireTitle.setLayoutX(centerPos- (129 + 69)); // 129 is the width of the frontground rectangle / 2
+
+        Text txtFireDescrip =new Text(85,760,"Fire types are notoriously rare in the \nearly stages of the games so choosing \nthe Fire variation starter is often \na plus. This is Abanob's favorite type!");
+        txtFireDescrip.setFont(smallerFont);
+        txtFireDescrip.setLayoutX(centerPos-(129 + 69));   // 129 is the width of the frontground rectangle / 2
+
+        Text txtWaterTitle =new Text(344,720,"  GYRADOS");
+        txtWaterTitle.setFont(biggerFont2);
+        txtWaterTitle.setLayoutX(centerPos - 69);
+
+        Text txtWaterDescrip =new Text(344,760,"Water is the most common type with \nover 150 Pokémon, which are based on \na wide variety of fish and other \nsea-dwelling creatures.");
+        txtWaterDescrip.setFont(smallerFont);
+        txtWaterDescrip.setLayoutX(centerPos -69);
+
+        Text txtGrassTitle =new Text(605,720,"  SCEPTILE");
+        txtGrassTitle.setFont(biggerFont2);
+        txtGrassTitle.setLayoutX(centerPos + (129 - 69));
+
+        Text txtGrassDescrip =new Text(605,760,"Grass is one of the weakest types \nstatistically, with 5 defensive \nweaknesses and 7 types that are resist-\nant to Grass moves. Furthermore, \nthree type combos paired with Grass \nhave 7 weaknesses: Grass/Psychic, \nGrass/Ice, and Grass/Dark.");
+        txtGrassDescrip.setFont(smallerFont);
+        txtGrassDescrip.setLayoutX(centerPos + (129 - 69));
+
+        // Home - 3 Cards Fading In/Out
+        FadeTransition fadeInFire = new FadeTransition(Duration.millis(200), recFirefrntgrnd);
+        fadeInFire.setFromValue(0.0);
+        fadeInFire.setToValue(1.0);
+        FadeTransition fadeOutFire = new FadeTransition(Duration.millis(100), recFirefrntgrnd);
+        fadeOutFire.setFromValue(1.0);
+        fadeOutFire.setToValue(0.0);
+
+        FadeTransition fadeInGrass = new FadeTransition(Duration.millis(200), recGrassfrntgrnd);
+        fadeInGrass.setFromValue(0.0);
+        fadeInGrass.setToValue(1.0);
+        FadeTransition fadeOutGrass = new FadeTransition(Duration.millis(100), recGrassfrntgrnd);
+        fadeOutGrass.setFromValue(1.0);
+        fadeOutGrass.setToValue(0.0);
+
+        FadeTransition fadeInWater = new FadeTransition(Duration.millis(200), recWaterfrntgrnd);
+        fadeInWater.setFromValue(0.0);
+        fadeInWater.setToValue(1.0);
+        FadeTransition fadeOutWater = new FadeTransition(Duration.millis(100), recWaterfrntgrnd);
+        fadeOutWater.setFromValue(1.0);
+        fadeOutWater.setToValue(0.0);
+
+        // Home- 3 Cards Events
+         recFirefrntgrnd.setOnMouseEntered(event -> {
+            fadeOutFire.playFromStart();
+        });
+
+        recFirefrntgrnd.setOnMouseExited(event -> {
+            fadeInFire.playFromStart();
+        });
+
+         recWaterfrntgrnd.setOnMouseEntered(event -> {
+                fadeOutWater.playFromStart();
+        });
+
+        recWaterfrntgrnd.setOnMouseExited(event -> {
+                fadeInWater.playFromStart();
+        });
+
+        recGrassfrntgrnd.setOnMouseEntered(event -> {
+                fadeOutGrass.playFromStart();
+        });
+
+        recGrassfrntgrnd.setOnMouseExited(event -> {
+                fadeInGrass.playFromStart();
+        });
+        
+        Group rootGRP = new Group(recFire ,recFireText, recWater,recWaterText,recGrass,recGrassText,
+        txtFireDescrip,txtFireTitle,txtWaterDescrip,txtWaterTitle, txtGrassTitle,txtGrassDescrip,recFirefrntgrnd,recWaterfrntgrnd,recGrassfrntgrnd);  
+
+        HBox hb_typeCards = new HBox(rootGRP);
+        hb_typeCards.setAlignment(Pos.CENTER);
+
+        // 4. END 3 POKEMON TYPE CARDS
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 5. BEGIN FEATURED POKEMON BANNER
+
+        Image featurePokeImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\featurepokemon2.png");
+
+        ImageView featureBanner = new ImageView(featurePokeImg);
+        featureBanner.setPreserveRatio(true);
+        featureBanner.setFitWidth(1000);
+        featureBanner.setFitHeight(350);
+        Rectangle recFeaturePoke = new Rectangle(0,0,1000,350);
+        recFeaturePoke.setArcWidth(20);
+        recFeaturePoke.setArcHeight(20);
+        recFeaturePoke.setFill(new ImagePattern(featurePokeImg));
+        recFeaturePoke.setLayoutX(centerPos-100);
+
+        // HBox to put everything together
+        HBox hb_featuredPokemonBanner = new HBox(featureBanner);
+        hb_featuredPokemonBanner.setAlignment(Pos.BASELINE_CENTER);
+        // hb_featuredPokemonBanner.setPadding(new Insets(300, 0, 0, 0));
+
+        // 5. END FEATURED POKEMON BANNER
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 6. BEGIN SCROLLPANE
+
+        // Initialize cardContainer with spacing between cards
+        cardContainer = new HBox(0);
 
         // Add your cards (rectangles with images and text) to the cardContainer
+        // addCard method at bottom of code
         addCard("\nMy Fire Poke\t     637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\fire.png");
         addCard("\nMy Water Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firebk.png");
         addCard("\nMy Grass Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\grass.png");
-        addCard("\nMy Koky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
         addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
         addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
         addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
@@ -141,14 +392,12 @@ public class App extends Application {
         addCard("\nMy Fire Poke\t     637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\fire.png");
         addCard("\nMy Water Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firebk.png");
 
-
-        //Feature pokemon functionality
+        // Feature pokemon functionality
         ScrollPane FeaturePokeScrollPane = new ScrollPane();
         FeaturePokeScrollPane.setContent(cardContainer);
         FeaturePokeScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         FeaturePokeScrollPane.setLayoutY(1100);
         FeaturePokeScrollPane.setLayoutX(0);
-
 
         Image leftArrImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\leftArr.png");
         ImageView buttnImage = new ImageView(leftArrImg);
@@ -195,599 +444,74 @@ public class App extends Application {
             fadeOut_L_Bttn.playFromStart();
             scrollRight();});
 
-        HBox hb_horizScrollBar_buttons = new HBox(screenSize.getWidth()/1.09,leftButton, rightButton);//--------------------------------------NOTE: You may need to change the 1550px scpace between buttons
+        HBox hb_horizScrollBar_buttons = new HBox(1670,leftButton, rightButton);//--------------------------------------NOTE: You may need to change the 1550px scpace between buttons
         hb_horizScrollBar_buttons.setLayoutY(1200);
-        hb_horizScrollBar_buttons.setPadding(new Insets(15,0,0,0));
 
-        Image featurePokeImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\featurepokemon2.png");
+        // Put ScrollPane and Scroll bar buttons in group together
+        Group scrollPaneGroup = new Group(FeaturePokeScrollPane, hb_horizScrollBar_buttons);
 
-        Rectangle recFeaturePoke = new Rectangle(0,890,1000,350);
-        recFeaturePoke.setArcWidth(20);
-        recFeaturePoke.setArcHeight(20);
-        recFeaturePoke.setFill(new ImagePattern(featurePokeImg));
-        recFeaturePoke.setLayoutX(centerPos-100);
+        // HBox to put everything together
+        HBox hb_scrollPane = new HBox(scrollPaneGroup);
+        hb_scrollPane.setAlignment(Pos.TOP_CENTER);
+        hb_scrollPane.setPadding(new Insets(25, 0, 75, 0));
 
+        // 6. END SCROLLPANE
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Menu pokedexMenu = new Menu("                                          Pokédex");
-        MenuItem fireItem = new MenuItem("Fire Pokédex");
-        MenuItem waterItem = new MenuItem("Water Pokédex");
-        MenuItem grassItem = new MenuItem("Grass Pokédex");
-        pokedexMenu.getStyleClass().add("menu");
-        pokedexMenu.getItems().addAll(fireItem,waterItem,grassItem);
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // 7. BEGIN FOOTER
 
+        // Labels with general information
+        Label lbl_footerTitle = new Label("Pokédex Database");
+        lbl_footerTitle.setLayoutX(100);
+        lbl_footerTitle.setLayoutY(1530);
+        lbl_footerTitle.getStyleClass().add("footer-title-text");
 
-        MenuBar homeMenuBar = new MenuBar();
-        homeMenuBar.getMenus().addAll(pokedexMenu);
-        homeMenuBar.getStyleClass().add("bttn-label");
-        homeMenuBar.setPrefWidth((screenSize.getWidth())/2);
+        Label lbl_footer  = new Label("All content & design ©AbaJEthan licensed under Devika Maini CS2450");
+        lbl_footer.setLayoutX(100);
+        lbl_footer.setLayoutY(1600);
+        lbl_footer.getStyleClass().add("footer-text");
 
-        HBox hb_hometaskbar = new HBox(bttnHome,homeMenuBar);
-        hb_hometaskbar.setAlignment(Pos.CENTER);
-    //    hb_hometaskbar.setMinWidth(800);
-        hb_hometaskbar.setPadding(new Insets(0,0,20,0));
+        Label lbl_phoneNumber = new Label("123-456-7890 | support@pokedexdatabase.com | @ 2023 Pokédex Database");
+        lbl_phoneNumber.setLayoutX(100);
+        lbl_phoneNumber.setLayoutY(1630);
+        lbl_phoneNumber.getStyleClass().add("footer-text");
 
-   //     HBox hb_missionStatement = new HBox(10, missionStatement);
-   //     hb_missionStatement.setAlignment(Pos.CENTER);
-   //     hb_missionStatement.setPadding(new Insets(10,0,0,0));
 
-        // Home- Cards Images
-    //    Image fireImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/fire.png");
-    //    Image waterImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/water.png");
-    //    Image grassImg = new Image("file:///D:/CPP/CS 2450 UI/PokePics/grass.png");
+        // Background for lbl_footer
+        Rectangle footerBackground = new Rectangle(0, 1500, screenSize.getWidth(), 200);
+        footerBackground.setFill(Color.web("#717e8e"));
 
-  //      Image backgroundImage = new Image("file:///D:/CPP/CS 2450 UI/PokePics/firebk.png");
+        // Put lbl_footer on top of background
+        Group footerGroup = new Group(footerBackground, lbl_footerTitle, lbl_footer, lbl_phoneNumber);
 
+        // HBox to put everything together
+        HBox hb_footer = new HBox(footerGroup);
+        hb_footer.setAlignment(Pos.CENTER);
 
-        Image fireImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firecard2copy.jpg");
-        Image fireImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firecardcopy2.jpg");
+        // 7. END FOOTER
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Image waterImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\watercard.jpg");
-        Image waterImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\watercard2.jpg");
+        VBox vb_HomePage = new VBox(hb_header, hb_hometaskbar, hb_missionStatement, hb_typeCards, hb_featuredPokemonBanner, hb_scrollPane, hb_footer);
+        vb_HomePage.setAlignment(Pos.CENTER);
 
-        Image grassImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\sceptile.jpg");
-        Image grassImgfg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\grasscard2.jpg");
+        Image image = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
+        ImageView imgview = new ImageView(image);
 
-        Image backdrop1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\backdrop2.jpg");
-        //ImageView  = new ImageView(backdrop1);
+        BackgroundImage bckimg = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 
-/*
-        ImageView imageViewFire = new ImageView(fireImg);
-        imageViewFire.setFitWidth(200);
-        imageViewFire.setFitHeight(300);
-        imageViewFire.getStyleClass().add("shadow-label");        //-----------------HERE
-        imageViewFire.setX(90);
-        imageViewFire.setY(280);
+        Background background = new Background(bckimg);;
 
-        ImageView imageViewWater = new ImageView(waterImg);
-        imageViewWater.setFitWidth(200);
-        imageViewWater.setFitHeight(370);
-        imageViewWater.getStyleClass().add("shadow2-label");        //-----------------HERE
-        imageViewWater.setX(350);
-        imageViewWater.setY(240);
-
-        ImageView imageViewGrass = new ImageView(grassImg);
-        imageViewGrass.setFitWidth(200);
-        imageViewGrass.setFitHeight(270);
-        imageViewGrass.getStyleClass().add("shadow3-label");        //-----------------HERE
-        imageViewGrass.setX(615);
-        imageViewGrass.setY(290);
- */
-      //  HBox hb_3pokedex = new HBox(60,imageViewFire,imageViewWater,imageViewGrass);
-       // hb_3pokedex.setAlignment(Pos.BOTTOM_CENTER);
-       // hb_3pokedex.setPadding(new Insets(80,0,0,90));
-
-/*         Rectangle recBackgr = new Rectangle();
-        recBackgr.setWidth(900);
-        recBackgr.setHeight(1500);
-        recBackgr.setFill(new ImagePattern(backdrop1)); */
-
-
-        // Home- Cards Rectangles
-                             // Rectangle(X,Y,Weidth, Height)
-        Rectangle recFire = new Rectangle(80,480,230,190);
-        recFire.setStroke(Color.BLACK);
-        recFire.setArcWidth(20);
-        recFire.setArcHeight(20);
-        recFire.setFill(new ImagePattern(fireImgbg));
-recFire.setLayoutX(centerPos - (129+69));   // 129 is the width of the frontground rectangle / 2
-
-        Rectangle recFireText = new Rectangle(80,660,230,300);
-        recFireText.setFill(Color.LIGHTSALMON);
-        recFireText.setStroke(Color.LIGHTSALMON);
-recFireText.setLayoutX(centerPos - (129+69));   // 129 is the width of the frontground rectangle / 2
-
-      Rectangle recFirefrntgrnd= new Rectangle(77,480,238,484);
-      recFirefrntgrnd.setFill(new ImagePattern(fireImgfg));
-      recFirefrntgrnd.setArcWidth(20);
-      recFirefrntgrnd.setArcHeight(20);
-      recFirefrntgrnd.setOpacity(1.0);
-      recFirefrntgrnd.getStyleClass().add("shadow-label");
-      recFirefrntgrnd.setStroke(Color.BLACK);
-recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the frontground rectangle / 2
-
-      Rectangle recWater = new Rectangle(340,480,230,190);
-      recWater.setStroke(Color.BLACK);
-      recWater.setArcWidth(20);
-      recWater.setArcHeight(20);
-      recWater.setFill(new ImagePattern(waterImgbg));
-      recWater.setLayoutX(centerPos-69);
-
-      Rectangle recWaterText = new Rectangle(340,660,230,300);
-      recWaterText.setFill(Color.LIGHTSKYBLUE);
-      recWaterText.setStroke(Color.LIGHTSKYBLUE);
-      recWaterText.setLayoutX(centerPos-69);
-
-      Rectangle recWaterfrntgrnd= new Rectangle(337,480,238,484);
-      recWaterfrntgrnd.setFill(new ImagePattern(waterImgfg));
-      recWaterfrntgrnd.setArcWidth(20);
-      recWaterfrntgrnd.setArcHeight(20);
-      recWaterfrntgrnd.setOpacity(1.0);
-      recWaterfrntgrnd.getStyleClass().add("shadow2-label");
-      recWaterfrntgrnd.setStroke(Color.BLACK);
-      recWaterfrntgrnd.setLayoutX(centerPos-69);
-
-      Rectangle recGrass = new Rectangle(600,480,230,190);
-      recGrass.setStroke(Color.BLACK);
-      recGrass.setArcWidth(20);
-      recGrass.setArcHeight(20);
-      recGrass.setFill(new ImagePattern(grassImgbg));
-      recGrass.setLayoutX(centerPos + (129-69));
-
-      Rectangle recGrassText = new Rectangle(600,660,230,300);
-      recGrassText.setFill(Color.LIGHTGREEN);
-      recGrassText.setStroke(Color.LIGHTGREEN);
-      recGrassText.setLayoutX(centerPos + (129-69));
-
-      Rectangle recGrassfrntgrnd= new Rectangle(600,480,238,484);
-      recGrassfrntgrnd.setFill(new ImagePattern(grassImgfg));
-      recGrassfrntgrnd.setArcWidth(20);
-      recGrassfrntgrnd.setArcHeight(20);
-      recGrassfrntgrnd.setOpacity(1.0);
-      recGrassfrntgrnd.getStyleClass().add("shadow3-label");
-      recGrassfrntgrnd.setStroke(Color.BLACK);
-      recGrassfrntgrnd.setLayoutX(centerPos + (129-69));
-
-
-        // Home- Cards Text
-        Font font = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 75);
-
-        Font biggerFont = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 130);
-
-        Font missionHeaderFont = Font.font("SERIF", FontWeight.BOLD, FontPosture.REGULAR, 32);
-
-        Font biggerFont2 = Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 32);
-
-        Font smallerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 14);
-
-        Font slightlyBiggerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 22);
-
-
-        Text txtMissionHeader = new Text("Welcome to the Pokemon Database!");
-        txtMissionHeader.setFont(missionHeaderFont);
-      //  txtMissionHeader.setX(155);
-      //  txtMissionHeader.setY(300);
-
-        Text txtMissionBody = new Text("The world of Pokémon connects people across the globe,beloved by kids, adults, \nand every Trainer in between! These incredible creatures have crossed \nborders and language barriers to reach the hearts of millions for over 25 years, \nbringing people together through the joy of play and discovery. We aim to delight \nour fans through excellentproducts and meaningful experiences.\n We hope to help make thew rold a better place for everyone by creating opportunities\n to bond and to grow through shared journeys and friendly competition!");
-        txtMissionBody.setFont(slightlyBiggerFont);
-      //  txtMissionBody.setX(155);
-      //  txtMissionBody.setY(320);
-
-        VBox vb_welcome = new VBox(10, txtMissionHeader,txtMissionBody);
-      //  vb_welcome.setAlignment(Pos.CENTER);
-        vb_welcome.setPadding(new Insets(200,0,0,screenSize.getWidth()/3));
-
-        Text txtFireTitle =new Text(85,720," CHARIZARD");
-        txtFireTitle.setFont(biggerFont2);
-        txtFireTitle.setLayoutX(centerPos- (129 + 69)); // 129 is the width of the frontground rectangle / 2
-
-        Text txtFireDescrip =new Text(85,760,"Fire types are notoriously rare in the \nearly stages of the games so choosing \nthe Fire variation starter is often \na plus. This is Abanob's favorite type!");
-        txtFireDescrip.setFont(smallerFont);
-        txtFireDescrip.setLayoutX(centerPos-(129 + 69));   // 129 is the width of the frontground rectangle / 2
-
-        Text txtWaterTitle =new Text(344,720,"  GYRADOS");
-        txtWaterTitle.setFont(biggerFont2);
-        txtWaterTitle.setLayoutX(centerPos - 69);
-
-        Text txtWaterDescrip =new Text(344,760,"Water is the most common type with \nover 150 Pokémon, which are based on \na wide variety of fish and other \nsea-dwelling creatures.");
-        txtWaterDescrip.setFont(smallerFont);
-        txtWaterDescrip.setLayoutX(centerPos -69);
-
-
-        Text txtGrassTitle =new Text(605,720,"  SCEPTILE");
-        txtGrassTitle.setFont(biggerFont2);
-        txtGrassTitle.setLayoutX(centerPos + (129 - 69));
-
-
-        Text txtGrassDescrip =new Text(605,760,"Grass is one of the weakest types \nstatistically, with 5 defensive \nweaknesses and 7 types that are resist-\nant to Grass moves. Furthermore, \nthree type combos paired with Grass \nhave 7 weaknesses: Grass/Psychic, \nGrass/Ice, and Grass/Dark.");
-        txtGrassDescrip.setFont(smallerFont);
-        txtGrassDescrip.setLayoutX(centerPos + (129 - 69));
-
-
-   /*     Text txtFire = new Text(100,520,"Fire");
-        txtFire.setFont(biggerFont);
-        txtFire.setFill(Color.WHITE);
-        txtFire.setStroke(Color.BLACK);
-        txtFire.setStrokeWidth(1);
-
-        Text txtWater = new Text(380,640,"Water");
-        txtWater.setFont(font);
-        txtWater.setFill(Color.LIGHTBLUE);
-        txtWater.setStroke(Color.BLACK);
-        txtWater.setStrokeWidth(1);
-
-        Text txtGrass = new Text(640,630,"Grass");
-        txtGrass.setFont(font);
-        txtGrass.setFill(Color.GREEN);
-        txtGrass.setStroke(Color.BLACK);
-        txtGrass.setStrokeWidth(1);  */
-
-        // Home - 3 Cards Fading In/Out
-        FadeTransition fadeInFire = new FadeTransition(Duration.millis(200), recFirefrntgrnd);
-        fadeInFire.setFromValue(0.0);
-        fadeInFire.setToValue(1.0);
-        FadeTransition fadeOutFire = new FadeTransition(Duration.millis(100), recFirefrntgrnd);
-        fadeOutFire.setFromValue(1.0);
-        fadeOutFire.setToValue(0.0);
-
-        FadeTransition fadeInGrass = new FadeTransition(Duration.millis(200), recGrassfrntgrnd);
-        fadeInGrass.setFromValue(0.0);
-        fadeInGrass.setToValue(1.0);
-        FadeTransition fadeOutGrass = new FadeTransition(Duration.millis(100), recGrassfrntgrnd);
-        fadeOutGrass.setFromValue(1.0);
-        fadeOutGrass.setToValue(0.0);
-
-        FadeTransition fadeInWater = new FadeTransition(Duration.millis(200), recWaterfrntgrnd);
-        fadeInWater.setFromValue(0.0);
-        fadeInWater.setToValue(1.0);
-        FadeTransition fadeOutWater = new FadeTransition(Duration.millis(100), recWaterfrntgrnd);
-        fadeOutWater.setFromValue(1.0);
-        fadeOutWater.setToValue(0.0);
-
-
-        // Home- 3 Cards Events
-         recFirefrntgrnd.setOnMouseEntered(event -> {
-            fadeOutFire.playFromStart();
-        });
-
-        recFirefrntgrnd.setOnMouseExited(event -> {
-            fadeInFire.playFromStart();
-        });
-
-         recWaterfrntgrnd.setOnMouseEntered(event -> {
-                fadeOutWater.playFromStart();
-        });
-
-        recWaterfrntgrnd.setOnMouseExited(event -> {
-                fadeInWater.playFromStart();
-        });
-
-        recGrassfrntgrnd.setOnMouseEntered(event -> {
-                fadeOutGrass.playFromStart();
-        });
-
-        recGrassfrntgrnd.setOnMouseExited(event -> {
-                fadeInGrass.playFromStart();
-        });
-
-/*
-        // Home- Cards Events
-        imageViewFire.setOnMouseEntered(event -> {
-        imageViewFire.setFitWidth(280);
-        imageViewFire.setFitHeight(360);
-        imageViewFire.setX(40);
-        imageViewFire.setY(200);
-
-        txtFire.setFont(biggerFont);
-        txtFire.setX(50);
-        });
-
-        imageViewFire.setOnMouseExited(event -> {
-        imageViewFire.setFitWidth(200);
-        imageViewFire.setFitHeight(300);
-        imageViewFire.setX(90);
-        imageViewFire.setY(280);
-
-        txtFire.setFont(font);
-        txtFire.setX(140);
-        });
-
-        recFire.setOnMouseEntered(event -> {
-        imageViewFire.setFitWidth(280);
-        imageViewFire.setFitHeight(360);
-        imageViewFire.setX(40);
-        imageViewFire.setY(200);
-
-        txtFire.setFont(biggerFont);
-        txtFire.setX(50);
-        });
-
-        recFire.setOnMouseExited(event -> {
-        imageViewFire.setFitWidth(200);
-        imageViewFire.setFitHeight(300);
-        imageViewFire.setX(90);
-        imageViewFire.setY(280);
-
-        txtFire.setFont(font);
-        txtFire.setX(140);
-        });
-
-        txtFire.setOnMouseEntered(event -> {
-        imageViewFire.setFitWidth(280);
-        imageViewFire.setFitHeight(360);
-        imageViewFire.setX(40);
-        imageViewFire.setY(200);
-
-        txtFire.setFont(biggerFont);
-        txtFire.setX(50);
-        });
-
-        txtFire.setOnMouseExited(event -> {
-        imageViewFire.setFitWidth(200);
-        imageViewFire.setFitHeight(300);
-        imageViewFire.setX(90);
-        imageViewFire.setY(280);
-
-        txtFire.setFont(font);
-        txtFire.setX(140);
-        });
- */
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /*
-            Functionality to move between scenes:
-                - Click on Pokedex
-                - Click on Fire Pokedex
-                - Moves to Fire Pokedex scene
-        */
-        fireItem.setOnAction(event ->
-        {
-            primaryStage.setScene(scene2);
-        });
-
-        // Scene 2 (Pokedex)
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Header code
-        Label lbl_dbTitleSc2 = new Label("Pokédex Database");
-        lbl_dbTitleSc2.getStyleClass().add("title-label");
-
-        HBox hb_homeTitleSc2 = new HBox(lbl_dbTitleSc2);
-        hb_homeTitleSc2.getStyleClass().add("hbox-with-gradient");
-        hb_homeTitleSc2.setAlignment(Pos.CENTER);
-
-        //// Menubar code
-        // Home Button
-        Button bttnHomeSc2 = new Button("Home");
-        bttnHomeSc2.getStyleClass().add("bttn-label");
-        bttnHomeSc2.setMinWidth(130); // Adjust the value as needed
-
-        // Pokedex menu items
-        Menu pokedexMenuSc2 = new Menu("Pokédex");
-        MenuItem fireItemSc2 = new MenuItem("Fire Pokédex");
-        MenuItem waterItemSc2 = new MenuItem("Water Pokédex");
-        MenuItem grassItemSc2 = new MenuItem("Grass Pokédex");
-        pokedexMenuSc2.getItems().addAll(fireItemSc2,waterItemSc2,grassItemSc2);
-
-        // Pokedex menu styling
-        MenuBar homeMenuBarSc2 = new MenuBar();
-        homeMenuBarSc2.getMenus().addAll(pokedexMenuSc2);
-        homeMenuBarSc2.getStyleClass().add("bttn-label");
-
-
-        HBox hb_hometaskbarSc2 = new HBox(542,bttnHomeSc2,homeMenuBarSc2);
-        hb_hometaskbarSc2.setAlignment(Pos.CENTER);
-        hb_hometaskbarSc2.setPadding(new Insets(10,0,20,0));
-
-        // Home button functionality
-        bttnHomeSc2.setOnAction(event ->
-        {
-            primaryStage.setScene(scene1);
-        });
-
-        // Pokedex Entries
-
-        // Row 1
-        Image charmander = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\charmander.jpg");
-        ImageView charmanderImageView = new ImageView(charmander);
-        charmanderImageView.setPreserveRatio(true);
-        charmanderImageView.setFitWidth(175);
-
-        Image charmeleon = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\charmeleon.jpg");
-        ImageView charmeleonImageView = new ImageView(charmeleon);
-        charmeleonImageView.setPreserveRatio(true);
-        charmeleonImageView.setFitWidth(175);
-
-        Image charizard = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\charizard.jpg");
-        ImageView charizardImageView = new ImageView(charizard);
-        charizardImageView.setPreserveRatio(true);
-        charizardImageView.setFitWidth(175);
-
-        /*
-            Labels and VBoxes
-        */
-        Label charmanderLabel = new Label("Charmander");
-        Label charmanderGen = new Label("Generation 1");
-        VBox charmanderVBox = new VBox(charmanderLabel, charmanderGen);
-        charmanderVBox.setAlignment(Pos.CENTER);
-
-        Label charmeleonLabel = new Label("Charmeleon");
-        Label charmeleonGen = new Label("Generation 3");
-        VBox charmeleonVBox = new VBox(charmeleonLabel, charmeleonGen);
-        charmeleonVBox.setAlignment(Pos.CENTER);
-
-        Label charizardLabel = new Label("Charizard");
-        Label charizardGen = new Label("Generation 3");
-        VBox charizardVBox = new VBox(charizardLabel, charizardGen);
-        charizardVBox.setAlignment(Pos.CENTER);
-
-        /*
-            Hbox rows
-        */
-        HBox pokedexRow1 = new HBox(255, charmanderVBox, charmeleonVBox, charizardVBox);
-        pokedexRow1.setAlignment(Pos.CENTER);
-
-        HBox sc2Row1 = new HBox(150, charmanderImageView, charmeleonImageView, charizardImageView);
-        sc2Row1.setAlignment(Pos.CENTER);
-
-        // Row 2
-
-        /*
-            Images and ImageViews
-        */
-        Image cyndaquil = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\cyndaquil.jpg");
-        ImageView cyndaquilImageView = new ImageView(cyndaquil);
-        cyndaquilImageView.setPreserveRatio(true);
-        cyndaquilImageView.setFitWidth(175);
-
-        Image quilava = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\quilava.jpg");
-        ImageView quilavaImageView = new ImageView(quilava);
-        quilavaImageView.setPreserveRatio(true);
-        quilavaImageView.setFitWidth(175);
-
-        Image typhlosion = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\typhlosion.jpg");
-        ImageView typhlosionImageView = new ImageView(typhlosion);
-        typhlosionImageView.setPreserveRatio(true);
-        typhlosionImageView.setFitWidth(175);
-
-        /*
-            Labels and VBoxes
-        */
-        Label cyndaquilLabel = new Label("Cyndaquil");
-        Label cyndaquilGen = new Label("Generation 2");
-        VBox cyndaquilVBox = new VBox(cyndaquilLabel, cyndaquilGen);
-        cyndaquilVBox.setAlignment(Pos.CENTER);
-
-        Label quilavaLabel = new Label("Quilava");
-        Label quilavaGen = new Label("Generation 2");
-        VBox quilavaVBox = new VBox(quilavaLabel, quilavaGen);
-        quilavaVBox.setAlignment(Pos.CENTER);
-
-        Label typhlosionLabel = new Label("Typhlosion");
-        Label typhlosionGen = new Label("Generation 2");
-        VBox typhlosionVBox = new VBox(typhlosionLabel, typhlosionGen);
-        typhlosionVBox.setAlignment(Pos.CENTER);
-
-        /*
-            Hbox rows
-        */
-        HBox pokedexRow2 = new HBox(255, cyndaquilVBox, quilavaVBox, typhlosionVBox);
-        pokedexRow2.setAlignment(Pos.CENTER);
-
-        HBox sc2Row2 = new HBox(150, cyndaquilImageView, quilavaImageView, typhlosionImageView);
-        sc2Row2.setAlignment(Pos.CENTER);
-
-        // Row 3
-        Image torchic = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\torchic.jpg");
-        ImageView torchicImageView = new ImageView(torchic);
-        torchicImageView.setPreserveRatio(true);
-        torchicImageView.setFitWidth(175);
-
-        Image combusken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\combusken.jpg");
-        ImageView combuskenImageView = new ImageView(combusken);
-        combuskenImageView.setPreserveRatio(true);
-        combuskenImageView.setFitWidth(175);
-
-        Image blaizken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\blaziken.jpg");
-        ImageView blaizkenImageView = new ImageView(blaizken);
-        blaizkenImageView.setPreserveRatio(true);
-        blaizkenImageView.setFitWidth(175);
-
-
-
-        /*
-            Labels and VBoxes
-        */
-        Label torchicLabel = new Label("Torchic");
-        Label torchicGen = new Label("Generation 3");
-        VBox torchicVBox = new VBox(torchicLabel, torchicGen);
-        torchicVBox.setAlignment(Pos.CENTER);
-
-        Label combuskenLabel = new Label("Combusken");
-        Label combuskenGen = new Label("Generation 3");
-        VBox combuskenVBox = new VBox(combuskenLabel, combuskenGen);
-        combuskenVBox.setAlignment(Pos.CENTER);
-
-        Label blaizkenLabel = new Label("Blaziken");
-        Label blaizkenGen = new Label("Generation 3");
-        VBox blaizkenVBox = new VBox(blaizkenLabel, blaizkenGen);
-        blaizkenVBox.setAlignment(Pos.CENTER);
-
-        /*
-            Footer:
-            Changed lbl_footer to lbl_footerFire (Fire Pokedex page)
-            Changed footerBackground to footerBackgroundFire (Fire Pokedex page)
-         */
-        Label lbl_footerFire  = new Label("All content & design ©AbaJEthan licended under Devika Maini CS2450");
-        lbl_footerFire.setLayoutX(475);
-        lbl_footerFire.setLayoutY(1530);
-        lbl_footerFire.getStyleClass().add("footer-text");
-
-        Rectangle footerBackgroundFire = new Rectangle(0, 1500, screenSize.getWidth(), 100);
-        footerBackgroundFire.setFill(Color.web("#717e8e"));
-
-        Group footerGroupFire = new Group(footerBackgroundFire, lbl_footerFire);
-        /*
-            Hbox rows
-        */
-        HBox pokedexRow3 = new HBox(255, torchicVBox, combuskenVBox, blaizkenVBox);
-        pokedexRow3.setAlignment(Pos.CENTER);
-
-        HBox sc2Row3 = new HBox(150, torchicImageView, combuskenImageView, blaizkenImageView);
-        sc2Row3.setAlignment(Pos.CENTER);
-
-        // VBox that puts the pokedex together
-        VBox pokedexVbox = new VBox(50, sc2Row1, pokedexRow1, sc2Row2, pokedexRow2, sc2Row3, pokedexRow3);
-
-        // VBox that puts everything together
-        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, pokedexVbox, footerGroupFire);
-        layout2.setStyle("-fx-background-color: white");
-
-        // (OPTIONAL) ADD THE BACKGROUND TO THE FIRE SCENE2
-        layout2.setStyle("-fx-background-image: url(file:///D:/CPP/CS%202450%20UI/PokePics/backdrop2.jpg);" + "-fx-background-size: cover;");
-
+        vb_HomePage.setStyle("-fx-background-image: url(file:///C:/Users/Josh/Documents/School/CS%202450/FinalProject/Pokedex/pokedex/src/main/java/com/resources/Abanob/backdrop2.jpg);" + "-fx-background-size: cover;");
 
         // Add the rootGRP to a ScrollPane to allow scrolling
-        ScrollPane fireScrollPane = new ScrollPane(layout2);
-        fireScrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
-        fireScrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
-
-        scene2 = new Scene(fireScrollPane, screenSize.getWidth(), screenSize.getHeight());
-        scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        VBox homeTopPartVB = new VBox(hb_homeTitle,hb_hometaskbar);
-        homeTopPartVB.setAlignment(Pos.CENTER);
-
-/*         BorderPane rootBP = new BorderPane();
-        rootBP.setTop(rootVB);
-        rootBP.setPrefWidth(screenSize.getWidth()); */
-
-        Group rootGRP = new Group(FeaturePokeScrollPane,recFeaturePoke, hb_horizScrollBar_buttons,vb_welcome,homeTopPartVB,recFire ,recFireText, recWater,recWaterText,recGrass,recGrassText,
-        txtFireDescrip,txtFireTitle,txtWaterDescrip,txtWaterTitle, txtGrassTitle,txtGrassDescrip,recFirefrntgrnd,recWaterfrntgrnd,recGrassfrntgrnd, footerBackground, lbl_footer);
-
-        VBox  rootVB = new VBox(rootGRP);
-        rootVB.setStyle("-fx-background-image: url(file:///D:/CPP/CS%202450%20UI/PokePics/backdrop2.jpg);" + "-fx-background-size: cover;");
-
-
-        // Add the rootGRP to a ScrollPane to allow scrolling
-        ScrollPane scrollPane = new ScrollPane(rootVB);
-        scrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
+        ScrollPane scrollPane = new ScrollPane(vb_HomePage);
+        scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
         scrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
-
+        scrollPane.setBackground(background);
 
         scene1 = new Scene(scrollPane, screenSize.getWidth(), screenSize.getHeight());
         scene1.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-
-/*         scene1.widthProperty().addListener((observable, oldValue, newValue) -> {
-            // Update button size based on the new width
-            bttnHome.setPrefWidth(newValue.doubleValue() / 2);
-            homeMenuBarSc2.setPrefWidth(newValue.doubleValue() / 2);
-
-        });
- */
-
-
-
 
         primaryStage.setTitle("Pokédex APP");
         primaryStage.setScene(scene1);
