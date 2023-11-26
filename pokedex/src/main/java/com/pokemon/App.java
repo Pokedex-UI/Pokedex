@@ -369,7 +369,7 @@ public class App extends Application {
         // HBox to put everything together
         HBox hb_featuredPokemonBanner = new HBox(featureBanner);
         hb_featuredPokemonBanner.setAlignment(Pos.BASELINE_CENTER);
-        // hb_featuredPokemonBanner.setPadding(new Insets(300, 0, 0, 0));
+        hb_featuredPokemonBanner.setPadding(new Insets(25, 0, 0, 0));
 
         // 5. END FEATURED POKEMON BANNER
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
