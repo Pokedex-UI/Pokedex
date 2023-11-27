@@ -50,6 +50,11 @@
    /* -fx-pref-width: 450;*/
 }
 
+.bttn-label2:hover, .bttn-label.bttn-label:focus {
+    -fx-background-color: linear-gradient(to right, derive(#FFD700, -25%), derive(#FFA500, -25%));
+    -fx-text-fill: white;
+}
+
 .bttn-label:hover, .bttn-label.bttn-label:focus {
     -fx-background-color: linear-gradient(to right, derive(#FFD700, -25%), derive(#FFA500, -25%));
     -fx-text-fill: white;

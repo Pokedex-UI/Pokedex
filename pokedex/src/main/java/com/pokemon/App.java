@@ -560,11 +560,12 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
         //// Menubar code
         // Home Button
         Button bttnHomeSc2 = new Button("Home");
-        bttnHomeSc2.getStyleClass().add("bttn-label");
-        bttnHomeSc2.setMinWidth(130); // Adjust the value as needed
+        bttnHomeSc2.getStyleClass().add("bttn-label2");
+        bttnHomeSc2.setPrefWidth(screenSize.getWidth()/2);
+
 
         // Pokedex menu items
-        Menu pokedexMenuSc2 = new Menu("Pokédex");
+        Menu pokedexMenuSc2 = new Menu("                                          Pokédex");
         MenuItem fireItemSc2 = new MenuItem("Fire Pokédex");
         MenuItem waterItemSc2 = new MenuItem("Water Pokédex");
         MenuItem grassItemSc2 = new MenuItem("Grass Pokédex");
@@ -574,11 +575,12 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
         MenuBar homeMenuBarSc2 = new MenuBar();
         homeMenuBarSc2.getMenus().addAll(pokedexMenuSc2);
         homeMenuBarSc2.getStyleClass().add("bttn-label");
+        homeMenuBarSc2.setPrefWidth((screenSize.getWidth())/2);
 
 
-        HBox hb_hometaskbarSc2 = new HBox(542,bttnHomeSc2,homeMenuBarSc2);
+        HBox hb_hometaskbarSc2 = new HBox(bttnHomeSc2,homeMenuBarSc2);
         hb_hometaskbarSc2.setAlignment(Pos.CENTER);
-        hb_hometaskbarSc2.setPadding(new Insets(10,0,20,0));
+        hb_hometaskbarSc2.setPadding(new Insets(0,0,20,0));
 
         // Home button functionality
         bttnHomeSc2.setOnAction(event ->
@@ -689,10 +691,10 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
         combuskenImageView.setPreserveRatio(true);
         combuskenImageView.setFitWidth(175);
 
-        Image blaizken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\blaziken.jpg");
-        ImageView blaizkenImageView = new ImageView(blaizken);
-        blaizkenImageView.setPreserveRatio(true);
-        blaizkenImageView.setFitWidth(175);
+        Image blaziken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\blaziken.jpg");
+        ImageView blazikenImageView = new ImageView(blaziken);
+        blazikenImageView.setPreserveRatio(true);
+        blazikenImageView.setFitWidth(175);
 
 
 
@@ -709,10 +711,10 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
         VBox combuskenVBox = new VBox(combuskenLabel, combuskenGen);
         combuskenVBox.setAlignment(Pos.CENTER);
 
-        Label blaizkenLabel = new Label("Blaziken");
-        Label blaizkenGen = new Label("Generation 3");
-        VBox blaizkenVBox = new VBox(blaizkenLabel, blaizkenGen);
-        blaizkenVBox.setAlignment(Pos.CENTER);
+        Label blazikenLabel = new Label("Blaziken");
+        Label blazikenGen = new Label("Generation 3");
+        VBox blazikenVBox = new VBox(blazikenLabel, blazikenGen);
+        blazikenVBox.setAlignment(Pos.CENTER);
 
         /*
             Footer:
@@ -731,10 +733,10 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
         /*
             Hbox rows
         */
-        HBox pokedexRow3 = new HBox(255, torchicVBox, combuskenVBox, blaizkenVBox);
+        HBox pokedexRow3 = new HBox(255, torchicVBox, combuskenVBox, blazikenVBox);
         pokedexRow3.setAlignment(Pos.CENTER);
 
-        HBox sc2Row3 = new HBox(150, torchicImageView, combuskenImageView, blaizkenImageView);
+        HBox sc2Row3 = new HBox(150, torchicImageView, combuskenImageView, blazikenImageView);
         sc2Row3.setAlignment(Pos.CENTER);
 
         // VBox that puts the pokedex together
@@ -758,6 +760,7 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
 
 
         //CREATES ALL POPUPS, REFRENCE THIS FOR PARAMETERS
+        //INSERT POKEMON POPUPS HERE
         //createPopup(String name, String image, String species, String height, String weight, String abilities
         Popup charmanderPopup = createPopup(charmanderLabel.getText(), charmanderLabel.getText(), "Lizard Pokémon", "0.6m", "18.7lbs", "Blaze");
         // Set action on ImageView click to show the popup
@@ -775,6 +778,36 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
         // Set action on ImageView click to show the popup
         charizardImageView.setOnMouseClicked(event -> {
             charizardPopup.show(charizardImageView.getScene().getWindow());
+        });
+
+        Popup cyndaquilPopup = createPopup(cyndaquilLabel.getText(),cyndaquilLabel.getText(), "Fire Mouse Pokémon", "0.5m", "17.4lbs", "Blaze");
+        cyndaquilImageView.setOnMouseClicked(event -> {
+            cyndaquilPopup.show(cyndaquilImageView.getScene().getWindow());
+        });
+
+        Popup quilavaPopup = createPopup(quilavaLabel.getText(),quilavaLabel.getText(), "Volcano Pokémon", "0.9m", "41.9lbs", "Blaze");
+        quilavaImageView.setOnMouseClicked(event -> {
+            quilavaPopup.show(quilavaImageView.getScene().getWindow());
+        });
+
+        Popup typhlosionPopup = createPopup(typhlosionLabel.getText(),typhlosionLabel.getText(), "Volcano Pokémon", "1.7m", "175.3lbs", "Flash Fire");
+        typhlosionImageView.setOnMouseClicked(event -> {
+            typhlosionPopup.show(typhlosionImageView.getScene().getWindow());
+        });
+
+        Popup torchicPopup = createPopup(torchicLabel.getText(),torchicLabel.getText(), "Chick Pokémon", "0.4m", "5.3lbs", "Blaze");
+        torchicImageView.setOnMouseClicked(event -> {
+            torchicPopup.show(torchicImageView.getScene().getWindow());
+        });
+
+        Popup combuskenPopup = createPopup(combuskenLabel.getText(),combuskenLabel.getText(), "Young Fowl Pokémon", "0.9m", "43.3lbs", "Blaze");
+        combuskenImageView.setOnMouseClicked(event -> {
+            combuskenPopup.show(combuskenImageView.getScene().getWindow());
+        });
+
+        Popup blazikenPopup = createPopup(blazikenLabel.getText(),blazikenLabel.getText(), "Blaze Pokémon", "1.9m", "114.3lbs", "Speed Boost");
+        blazikenImageView.setOnMouseClicked(event -> {
+            blazikenPopup.show(blazikenImageView.getScene().getWindow());
         });
 
 
@@ -826,26 +859,22 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
         // Create a popup
         Popup popup = new Popup();
     
-        
-        // Create content for the popup
+        //Popup background is the image background
+        //Popup content has the actual images and text
         StackPane popUpBackground = new StackPane();
         VBox popUpContent = new VBox(10);
         popUpContent.setAlignment(Pos.CENTER); // Center the content vertically
-        
     
-        // Create a background rectangle with a light blue color
         Image pokedexBackground = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\pokedexbg.png");
-        Rectangle background = new Rectangle(600, 650); // Set the desired width and height
+        Rectangle background = new Rectangle(600, 650);
         Rectangle blackBorder = new Rectangle(610, 660);
         blackBorder.setFill(Color.BLACK);
         background.setFill(new ImagePattern(pokedexBackground));
     
-        
-        // Create an ImageView with a specific size
         ImageView popUpImageView = new ImageView("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\" + image + ".png");
-        popUpImageView.setFitWidth(400);  // Set the desired width
-        popUpImageView.setFitHeight(400); // Set the desired height
-        
+        popUpImageView.setFitWidth(400);  
+        popUpImageView.setFitHeight(400); 
+    
         popUpContent.getChildren().addAll(
             new Button("Exit"),
             createStyledLabel(name, 30, FontWeight.BOLD, Color.BLACK),
@@ -854,15 +883,31 @@ recFirefrntgrnd.setLayoutX(centerPos - (129+69));   // 129 is the width of the f
             createStyledLabel("Height: " + height, 19, FontWeight.NORMAL, Color.WHITE),
             createStyledLabel("Weight: " + weight, 19, FontWeight.NORMAL, Color.WHITE),
             createStyledLabel("Abilities: " + abilities, 19, FontWeight.NORMAL, Color.WHITE)
-    );
+        );
+    
         popUpBackground.getChildren().addAll(blackBorder, background, popUpContent);
+    
+        // Set up fade-in animation
+        popUpBackground.setOpacity(0.0);
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(500), popUpBackground);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
     
         // Set action on button click to close the popup
         Button exitButton = (Button) popUpContent.getChildren().get(0); // Adjust the index based on your content
         exitButton.getStyleClass().add("bttn-label");
-        exitButton.setOnAction(event -> popup.hide());
+        exitButton.setOnAction(event -> {
+            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), popUpBackground);
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+            fadeOut.setOnFinished(e -> popup.hide());
+            fadeOut.play();
+        });
     
         popup.getContent().add(popUpBackground);
+    
+        // Play the fade-in animation when the popup is shown
+        popup.setOnShown(e -> fadeIn.play());
     
         return popup;
     }
