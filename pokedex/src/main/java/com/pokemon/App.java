@@ -1,6 +1,7 @@
 package com.pokemon;
 
 import java.io.IOException;
+import java.net.URI;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
@@ -25,16 +26,19 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Popup;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -505,6 +509,22 @@ public class App extends Application {
         HBox hb_footer = new HBox(footerGroup);
         hb_footer.setAlignment(Pos.CENTER);
 
+        instagramImageView.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.instagram.com/pokemon/");
+        });
+
+        facebookImageView.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.facebook.com/Pokemon/");
+        });
+
+        linkedinImageView.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.linkedin.com/company/pokemon/");
+        });
+
+        discordImageView.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.discord.com/");
+        });
+
         // 7. END FOOTER
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -533,11 +553,12 @@ public class App extends Application {
         //// Menubar code
         // Home Button
         Button bttnHomeSc2 = new Button("Home");
-        bttnHomeSc2.getStyleClass().add("bttn-label");
-        bttnHomeSc2.setMinWidth(130); // Adjust the value as needed
+        bttnHomeSc2.getStyleClass().add("bttn-label2");
+        bttnHomeSc2.setPrefWidth(screenSize.getWidth()/2);
+
 
         // Pokedex menu items
-        Menu pokedexMenuSc2 = new Menu("Pokédex");
+        Menu pokedexMenuSc2 = new Menu("                                          Pokédex");
         MenuItem fireItemSc2 = new MenuItem("Fire Pokédex");
         MenuItem waterItemSc2 = new MenuItem("Water Pokédex");
         MenuItem grassItemSc2 = new MenuItem("Grass Pokédex");
@@ -547,11 +568,12 @@ public class App extends Application {
         MenuBar homeMenuBarSc2 = new MenuBar();
         homeMenuBarSc2.getMenus().addAll(pokedexMenuSc2);
         homeMenuBarSc2.getStyleClass().add("bttn-label");
+        homeMenuBarSc2.setPrefWidth((screenSize.getWidth())/2);
 
 
-        HBox hb_hometaskbarSc2 = new HBox(542,bttnHomeSc2,homeMenuBarSc2);
+        HBox hb_hometaskbarSc2 = new HBox(bttnHomeSc2,homeMenuBarSc2);
         hb_hometaskbarSc2.setAlignment(Pos.CENTER);
-        hb_hometaskbarSc2.setPadding(new Insets(10,0,20,0));
+        hb_hometaskbarSc2.setPadding(new Insets(0,0,20,0));
 
         // Home button functionality
         bttnHomeSc2.setOnAction(event ->
@@ -651,24 +673,6 @@ public class App extends Application {
         HBox sc2Row2 = new HBox(150, cyndaquilImageView, quilavaImageView, typhlosionImageView);
         sc2Row2.setAlignment(Pos.CENTER);
 
-        // Row 3
-        Image torchic = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\torchic.jpg");
-        ImageView torchicImageView = new ImageView(torchic);
-        torchicImageView.setPreserveRatio(true);
-        torchicImageView.setFitWidth(175);
-
-        Image combusken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\combusken.jpg");
-        ImageView combuskenImageView = new ImageView(combusken);
-        combuskenImageView.setPreserveRatio(true);
-        combuskenImageView.setFitWidth(175);
-
-        Image blaizken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\blaziken.jpg");
-        ImageView blaizkenImageView = new ImageView(blaizken);
-        blaizkenImageView.setPreserveRatio(true);
-        blaizkenImageView.setFitWidth(175);
-
-
-
         /*
             Labels and VBoxes
         */
@@ -682,39 +686,180 @@ public class App extends Application {
         VBox combuskenVBox = new VBox(combuskenLabel, combuskenGen);
         combuskenVBox.setAlignment(Pos.CENTER);
 
-        Label blaizkenLabel = new Label("Blaziken");
-        Label blaizkenGen = new Label("Generation 3");
-        VBox blaizkenVBox = new VBox(blaizkenLabel, blaizkenGen);
-        blaizkenVBox.setAlignment(Pos.CENTER);
+        Label blazikenLabel = new Label("Blaziken");
+        Label blazikenGen = new Label("Generation 3");
+        VBox blazikenVBox = new VBox(blazikenLabel, blazikenGen);
+        blazikenVBox.setAlignment(Pos.CENTER);
 
+        // Row 3
+        Image torchic = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\torchic.jpg");
+        ImageView torchicImageView = new ImageView(torchic);
+        torchicImageView.setPreserveRatio(true);
+        torchicImageView.setFitWidth(175);
+
+        Image combusken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\combusken.jpg");
+        ImageView combuskenImageView = new ImageView(combusken);
+        combuskenImageView.setPreserveRatio(true);
+        combuskenImageView.setFitWidth(175);
+
+        Image blaziken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\blaziken.jpg");
+        ImageView blazikenImageView = new ImageView(blaziken);
+        blazikenImageView.setPreserveRatio(true);
+        blazikenImageView.setFitWidth(175);
+
+        //POKEDEX POPUPS
+        
+        //CREATES ALL POPUPS, REFRENCE THIS FOR PARAMETERS
+        //INSERT POKEMON POPUPS HERE
+        //createPopup(String name, String image, String species, String height, String weight, String abilities
+        Popup charmanderPopup = createPopup(charmanderLabel.getText(), charmanderLabel.getText(), "Lizard Pokémon", "0.6m", "18.7lbs", "Blaze");
+        // Set action on ImageView click to show the popup
+        charmanderImageView.setOnMouseClicked(event -> {
+            charmanderPopup.show(charmanderImageView.getScene().getWindow());
+        });
+
+        Popup charmeleonPopup = createPopup(charmeleonLabel.getText(), charmeleonLabel.getText(), "Flame Pokémon", "1.1m", "41.9lbs", "Blaze");
+        // Set action on ImageView click to show the popup
+        charmeleonImageView.setOnMouseClicked(event -> {
+            charmeleonPopup.show(charmeleonImageView.getScene().getWindow());
+        });
+
+        Popup charizardPopup = createPopup(charizardLabel.getText(), charizardLabel.getText(), "Flame Pokémon", "1.7m", "200lbs", "Solar Power");
+        // Set action on ImageView click to show the popup
+        charizardImageView.setOnMouseClicked(event -> {
+            charizardPopup.show(charizardImageView.getScene().getWindow());
+        });
+
+        Popup cyndaquilPopup = createPopup(cyndaquilLabel.getText(),cyndaquilLabel.getText(), "Fire Mouse Pokémon", "0.5m", "17.4lbs", "Blaze");
+        cyndaquilImageView.setOnMouseClicked(event -> {
+            cyndaquilPopup.show(cyndaquilImageView.getScene().getWindow());
+        });
+
+        Popup quilavaPopup = createPopup(quilavaLabel.getText(),quilavaLabel.getText(), "Volcano Pokémon", "0.9m", "41.9lbs", "Blaze");
+        quilavaImageView.setOnMouseClicked(event -> {
+            quilavaPopup.show(quilavaImageView.getScene().getWindow());
+        });
+
+        Popup typhlosionPopup = createPopup(typhlosionLabel.getText(),typhlosionLabel.getText(), "Volcano Pokémon", "1.7m", "175.3lbs", "Flash Fire");
+        typhlosionImageView.setOnMouseClicked(event -> {
+            typhlosionPopup.show(typhlosionImageView.getScene().getWindow());
+        });
+
+        Popup torchicPopup = createPopup(torchicLabel.getText(),torchicLabel.getText(), "Chick Pokémon", "0.4m", "5.3lbs", "Blaze");
+        torchicImageView.setOnMouseClicked(event -> {
+            torchicPopup.show(torchicImageView.getScene().getWindow());
+        });
+
+        Popup combuskenPopup = createPopup(combuskenLabel.getText(),combuskenLabel.getText(), "Young Fowl Pokémon", "0.9m", "43.3lbs", "Blaze");
+        combuskenImageView.setOnMouseClicked(event -> {
+            combuskenPopup.show(combuskenImageView.getScene().getWindow());
+        });
+
+        Popup blazikenPopup = createPopup(blazikenLabel.getText(),blazikenLabel.getText(), "Blaze Pokémon", "1.9m", "114.3lbs", "Speed Boost");
+        blazikenImageView.setOnMouseClicked(event -> {
+            blazikenPopup.show(blazikenImageView.getScene().getWindow());
+        });
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+    //FIRE FOOTER START
+////////////////////////////////////////////////////////////////////////////////////////
         /*
             Footer:
             Changed lbl_footer to lbl_footerFire (Fire Pokedex page)
             Changed footerBackground to footerBackgroundFire (Fire Pokedex page)
          */
-        Label lbl_footerFire  = new Label("All content & design ©AbaJEthan licended under Devika Maini CS2450");
-        lbl_footerFire.setLayoutX(475);
-        lbl_footerFire.setLayoutY(1530);
-        lbl_footerFire.getStyleClass().add("footer-text");
+     // Labels with general information
+        Label lbl_footerTitleF = new Label("Pokédex Database");
+        lbl_footerTitleF.setLayoutX(100);
+        lbl_footerTitleF.setLayoutY(1530);
+        lbl_footerTitleF.getStyleClass().add("footer-title-text");
 
-        Rectangle footerBackgroundFire = new Rectangle(0, 1500, screenSize.getWidth(), 100);
-        footerBackgroundFire.setFill(Color.web("#717e8e"));
+        Label lbl_footerF  = new Label("All content & design ©AbaJEthan licensed under Devika Maini CS2450");
+        lbl_footerF.setLayoutX(100);
+        lbl_footerF.setLayoutY(1600);
+        lbl_footerF.getStyleClass().add("footer-text");
 
-        Group footerGroupFire = new Group(footerBackgroundFire, lbl_footerFire);
+        Label lbl_phoneNumberF = new Label("123-456-7890 | support@pokedexdatabase.com | @ 2023 Pokédex Database");
+        lbl_phoneNumberF.setLayoutX(100);
+        lbl_phoneNumberF.setLayoutY(1630);
+        lbl_phoneNumberF.getStyleClass().add("footer-text");
+
+        // Images and ImageViews
+        Image discordImageF = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\discord.png");
+        ImageView discordImageViewF = new ImageView(discordImageF);
+        discordImageViewF.setPreserveRatio(true);
+        discordImageViewF.setFitWidth(100);
+        discordImageViewF.setLayoutX(1700);
+        discordImageViewF.setLayoutY(1570);
+
+        Image facebookImageF = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\facebook.png");
+        ImageView facebookImageViewF = new ImageView(facebookImageF);
+        facebookImageViewF.setPreserveRatio(true);
+        facebookImageViewF.setFitWidth(100);
+        facebookImageViewF.setLayoutX(1600);
+        facebookImageViewF.setLayoutY(1575);
+
+        Image linkedinImageF = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\linkedin.png");
+        ImageView linkedinImageViewF = new ImageView(linkedinImageF);
+        linkedinImageViewF.setPreserveRatio(true);
+        linkedinImageViewF.setFitWidth(100);
+        linkedinImageViewF.setLayoutX(1500);
+        linkedinImageViewF.setLayoutY(1565);
+
+        Image instagramImageF = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\instagram.png");
+        ImageView instagramImageViewF = new ImageView(instagramImageF);
+        instagramImageViewF.setPreserveRatio(true);
+        instagramImageViewF.setFitWidth(90);
+        instagramImageViewF.setLayoutX(1400);
+        instagramImageViewF.setLayoutY(1570);
+
+
+        // Background for lbl_footer
+        Rectangle footerBackgroundF = new Rectangle(0, 1500, screenSize.getWidth(), 200);
+        footerBackgroundF.setFill(Color.web("#717e8e"));
+
+        // Put lbl_footer on top of background
+        Group footerGroupF = new Group(footerBackgroundF, lbl_footerTitleF, lbl_footerF, lbl_phoneNumberF, discordImageViewF, facebookImageViewF, linkedinImageViewF,
+            instagramImageViewF);
+
+        // HBox to put everything together
+        HBox hb_footerF = new HBox(footerGroupF);
+        hb_footerF.setAlignment(Pos.CENTER);
+
+        instagramImageViewF.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.instagram.com/pokemon/");
+        });
+
+        facebookImageViewF.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.facebook.com/Pokemon/");
+        });
+
+        linkedinImageViewF.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.linkedin.com/company/pokemon/");
+        });
+
+        discordImageViewF.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.discord.com/");
+        });
+
+////////////////////////////////////////////////////////////////////////////////////////
+    //FIRE FOOTER END
+////////////////////////////////////////////////////////////////////////////////////////
         /*
             Hbox rows
         */
-        HBox pokedexRow3 = new HBox(255, torchicVBox, combuskenVBox, blaizkenVBox);
+        HBox pokedexRow3 = new HBox(255, torchicVBox, combuskenVBox, blazikenVBox);
         pokedexRow3.setAlignment(Pos.CENTER);
 
-        HBox sc2Row3 = new HBox(150, torchicImageView, combuskenImageView, blaizkenImageView);
+        HBox sc2Row3 = new HBox(150, torchicImageView, combuskenImageView, blazikenImageView);
         sc2Row3.setAlignment(Pos.CENTER);
 
         // VBox that puts the pokedex together
         VBox pokedexVbox = new VBox(50, sc2Row1, pokedexRow1, sc2Row2, pokedexRow2, sc2Row3, pokedexRow3);
 
         // VBox that puts everything together
-        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, pokedexVbox, footerGroupFire);
+        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, pokedexVbox, hb_footerF);
         layout2.setStyle("-fx-background-color: white");
 
         // (OPTIONAL) ADD THE BACKGROUND TO THE FIRE SCENE2
@@ -760,6 +905,70 @@ public class App extends Application {
 
 
     //----------------------------------HELPER FUNCTIONS----------------------------------
+    private Popup createPopup(String name, String image, String species, String height, String weight, String abilities) {
+        // Create a popup
+        Popup popup = new Popup();
+    
+        //Popup background is the image background
+        //Popup content has the actual images and text
+        StackPane popUpBackground = new StackPane();
+        VBox popUpContent = new VBox(10);
+        popUpContent.setAlignment(Pos.CENTER); // Center the content vertically
+    
+        Image pokedexBackground = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\pokedexbg.png");
+        Rectangle background = new Rectangle(600, 650);
+        Rectangle blackBorder = new Rectangle(610, 660);
+        blackBorder.setFill(Color.BLACK);
+        background.setFill(new ImagePattern(pokedexBackground));
+    
+        ImageView popUpImageView = new ImageView("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\" + image + ".png");
+        popUpImageView.setFitWidth(400);  
+        popUpImageView.setFitHeight(400); 
+    
+        popUpContent.getChildren().addAll(
+            new Button("Exit"),
+            createStyledLabel(name, 30, FontWeight.BOLD, Color.BLACK),
+            popUpImageView,
+            createStyledLabel("Species: " + species, 19, FontWeight.NORMAL, Color.WHITE),
+            createStyledLabel("Height: " + height, 19, FontWeight.NORMAL, Color.WHITE),
+            createStyledLabel("Weight: " + weight, 19, FontWeight.NORMAL, Color.WHITE),
+            createStyledLabel("Abilities: " + abilities, 19, FontWeight.NORMAL, Color.WHITE)
+        );
+    
+        popUpBackground.getChildren().addAll(blackBorder, background, popUpContent);
+    
+        // Set up fade-in animation
+        popUpBackground.setOpacity(0.0);
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(500), popUpBackground);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+    
+        // Set action on button click to close the popup
+        Button exitButton = (Button) popUpContent.getChildren().get(0); // Adjust the index based on your content
+        exitButton.getStyleClass().add("bttn-label");
+        exitButton.setOnAction(event -> {
+            FadeTransition fadeOut = new FadeTransition(Duration.millis(500), popUpBackground);
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+            fadeOut.setOnFinished(e -> popup.hide());
+            fadeOut.play();
+        });
+    
+        popup.getContent().add(popUpBackground);
+    
+        // Play the fade-in animation when the popup is shown
+        popup.setOnShown(e -> fadeIn.play());
+    
+        return popup;
+    }
+
+    private Label createStyledLabel(String text, double fontSize, FontWeight fontWeight, Color textColor) {
+        Label label = new Label(text);
+        label.setFont(Font.font("Arial", fontWeight, fontSize));
+        label.setTextFill(textColor);
+        return label;
+    }
+
     private void addCard(String titleTxt, String infoTxt, String imagePath) {
         Image image = new Image(imagePath);
         ImageView imageView = new ImageView(image);
