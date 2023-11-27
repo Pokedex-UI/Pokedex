@@ -1,5 +1,3 @@
-
-
 .hbox-with-gradient {
     /* Set the background gradient for the HBox */
     -fx-background-color: linear-gradient(to bottom, rgba(20, 17, 35, 0.897), rgba(255,0,0,0));
@@ -7,6 +5,13 @@
 
 .footer-text {
     -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-text-fill: white;
+}
+
+.footer-title-text {
+    -fx-font-size: 50px;
     -fx-font-weight: bold;
     -fx-font-style: italic;
     -fx-text-fill: white;
