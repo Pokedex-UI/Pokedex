@@ -450,81 +450,7 @@ public class App extends Application {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 7. BEGIN FOOTER
-
-        // Labels with general information
-        Label lbl_footerTitle = new Label("Pokédex Database");
-        lbl_footerTitle.setLayoutX(100);
-        lbl_footerTitle.setLayoutY(1530);
-        lbl_footerTitle.getStyleClass().add("footer-title-text");
-
-        Label lbl_footer  = new Label("All content & design ©AbaJEthan licensed under Devika Maini CS2450");
-        lbl_footer.setLayoutX(100);
-        lbl_footer.setLayoutY(1600);
-        lbl_footer.getStyleClass().add("footer-text");
-
-        Label lbl_phoneNumber = new Label("123-456-7890 | support@pokedexdatabase.com | @ 2023 Pokédex Database");
-        lbl_phoneNumber.setLayoutX(100);
-        lbl_phoneNumber.setLayoutY(1630);
-        lbl_phoneNumber.getStyleClass().add("footer-text");
-
-        // Images and ImageViews
-        Image discordImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\discord.png");
-        ImageView discordImageView = new ImageView(discordImage);
-        discordImageView.setPreserveRatio(true);
-        discordImageView.setFitWidth(100);
-        discordImageView.setLayoutX(1700);
-        discordImageView.setLayoutY(1570);
-
-        Image facebookImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\facebook.png");
-        ImageView facebookImageView = new ImageView(facebookImage);
-        facebookImageView.setPreserveRatio(true);
-        facebookImageView.setFitWidth(100);
-        facebookImageView.setLayoutX(1600);
-        facebookImageView.setLayoutY(1575);
-
-        Image linkedinImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\linkedin.png");
-        ImageView linkedinImageView = new ImageView(linkedinImage);
-        linkedinImageView.setPreserveRatio(true);
-        linkedinImageView.setFitWidth(100);
-        linkedinImageView.setLayoutX(1500);
-        linkedinImageView.setLayoutY(1565);
-
-        Image instagramImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\instagram.png");
-        ImageView instagramImageView = new ImageView(instagramImage);
-        instagramImageView.setPreserveRatio(true);
-        instagramImageView.setFitWidth(90);
-        instagramImageView.setLayoutX(1400);
-        instagramImageView.setLayoutY(1570);
-
-
-        // Background for lbl_footer
-        Rectangle footerBackground = new Rectangle(0, 1500, screenSize.getWidth(), 200);
-        footerBackground.setFill(Color.web("#717e8e"));
-
-        // Put lbl_footer on top of background
-        Group footerGroup = new Group(footerBackground, lbl_footerTitle, lbl_footer, lbl_phoneNumber, discordImageView, facebookImageView, linkedinImageView,
-            instagramImageView);
-
-        // HBox to put everything together
-        HBox hb_footer = new HBox(footerGroup);
-        hb_footer.setAlignment(Pos.CENTER);
-
-        instagramImageView.setOnMouseClicked(event -> {
-            getHostServices().showDocument("https://www.instagram.com/pokemon/");
-        });
-
-        facebookImageView.setOnMouseClicked(event -> {
-            getHostServices().showDocument("https://www.facebook.com/Pokemon/");
-        });
-
-        linkedinImageView.setOnMouseClicked(event -> {
-            getHostServices().showDocument("https://www.linkedin.com/company/pokemon/");
-        });
-
-        discordImageView.setOnMouseClicked(event -> {
-            getHostServices().showDocument("https://www.discord.com/");
-        });
-
+        HBox hb_footer = createFooter();
         // 7. END FOOTER
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -627,7 +553,6 @@ public class App extends Application {
         sc2Row1.setAlignment(Pos.CENTER);
 
         // Row 2
-
         /*
             Images and ImageViews
         */
@@ -770,79 +695,7 @@ public class App extends Application {
             Changed footerBackground to footerBackgroundFire (Fire Pokedex page)
          */
      // Labels with general information
-        Label lbl_footerTitleF = new Label("Pokédex Database");
-        lbl_footerTitleF.setLayoutX(100);
-        lbl_footerTitleF.setLayoutY(1530);
-        lbl_footerTitleF.getStyleClass().add("footer-title-text");
-
-        Label lbl_footerF  = new Label("All content & design ©AbaJEthan licensed under Devika Maini CS2450");
-        lbl_footerF.setLayoutX(100);
-        lbl_footerF.setLayoutY(1600);
-        lbl_footerF.getStyleClass().add("footer-text");
-
-        Label lbl_phoneNumberF = new Label("123-456-7890 | support@pokedexdatabase.com | @ 2023 Pokédex Database");
-        lbl_phoneNumberF.setLayoutX(100);
-        lbl_phoneNumberF.setLayoutY(1630);
-        lbl_phoneNumberF.getStyleClass().add("footer-text");
-
-        // Images and ImageViews
-        Image discordImageF = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\discord.png");
-        ImageView discordImageViewF = new ImageView(discordImageF);
-        discordImageViewF.setPreserveRatio(true);
-        discordImageViewF.setFitWidth(100);
-        discordImageViewF.setLayoutX(1700);
-        discordImageViewF.setLayoutY(1570);
-
-        Image facebookImageF = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\facebook.png");
-        ImageView facebookImageViewF = new ImageView(facebookImageF);
-        facebookImageViewF.setPreserveRatio(true);
-        facebookImageViewF.setFitWidth(100);
-        facebookImageViewF.setLayoutX(1600);
-        facebookImageViewF.setLayoutY(1575);
-
-        Image linkedinImageF = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\linkedin.png");
-        ImageView linkedinImageViewF = new ImageView(linkedinImageF);
-        linkedinImageViewF.setPreserveRatio(true);
-        linkedinImageViewF.setFitWidth(100);
-        linkedinImageViewF.setLayoutX(1500);
-        linkedinImageViewF.setLayoutY(1565);
-
-        Image instagramImageF = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\instagram.png");
-        ImageView instagramImageViewF = new ImageView(instagramImageF);
-        instagramImageViewF.setPreserveRatio(true);
-        instagramImageViewF.setFitWidth(90);
-        instagramImageViewF.setLayoutX(1400);
-        instagramImageViewF.setLayoutY(1570);
-
-
-        // Background for lbl_footer
-        Rectangle footerBackgroundF = new Rectangle(0, 1500, screenSize.getWidth(), 200);
-        footerBackgroundF.setFill(Color.web("#717e8e"));
-
-        // Put lbl_footer on top of background
-        Group footerGroupF = new Group(footerBackgroundF, lbl_footerTitleF, lbl_footerF, lbl_phoneNumberF, discordImageViewF, facebookImageViewF, linkedinImageViewF,
-            instagramImageViewF);
-
-        // HBox to put everything together
-        HBox hb_footerF = new HBox(footerGroupF);
-        hb_footerF.setAlignment(Pos.CENTER);
-
-        instagramImageViewF.setOnMouseClicked(event -> {
-            getHostServices().showDocument("https://www.instagram.com/pokemon/");
-        });
-
-        facebookImageViewF.setOnMouseClicked(event -> {
-            getHostServices().showDocument("https://www.facebook.com/Pokemon/");
-        });
-
-        linkedinImageViewF.setOnMouseClicked(event -> {
-            getHostServices().showDocument("https://www.linkedin.com/company/pokemon/");
-        });
-
-        discordImageViewF.setOnMouseClicked(event -> {
-            getHostServices().showDocument("https://www.discord.com/");
-        });
-
+        HBox hb_footerF = createFooter();
 ////////////////////////////////////////////////////////////////////////////////////////
     //FIRE FOOTER END
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -993,6 +846,82 @@ public class App extends Application {
             currentIndex = (currentIndex + 1) % cardContainer.getChildren().size();
             cardContainer.getChildren().get(currentIndex).toFront();
         }
+    }
+    public HBox createFooter() {
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+        Label lbl_footerTitle = new Label("Pokédex Database");
+        lbl_footerTitle.setLayoutX(100);
+        lbl_footerTitle.setLayoutY(1530);
+        lbl_footerTitle.getStyleClass().add("footer-title-text");
+
+        Label lbl_footer  = new Label("All content & design ©AbaJEthan licensed under Devika Maini CS2450");
+        lbl_footer.setLayoutX(100);
+        lbl_footer.setLayoutY(1600);
+        lbl_footer.getStyleClass().add("footer-text");
+
+        Label lbl_phoneNumber = new Label("123-456-7890 | support@pokedexdatabase.com | @ 2023 Pokédex Database");
+        lbl_phoneNumber.setLayoutX(100);
+        lbl_phoneNumber.setLayoutY(1630);
+        lbl_phoneNumber.getStyleClass().add("footer-text");
+
+        // Images and ImageViews
+        Image discordImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\discord.png");
+        ImageView discordImageView = new ImageView(discordImage);
+        discordImageView.setPreserveRatio(true);
+        discordImageView.setFitWidth(100);
+        discordImageView.setLayoutX(1700);
+        discordImageView.setLayoutY(1570);
+
+        Image facebookImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\facebook.png");
+        ImageView facebookImageView = new ImageView(facebookImage);
+        facebookImageView.setPreserveRatio(true);
+        facebookImageView.setFitWidth(100);
+        facebookImageView.setLayoutX(1600);
+        facebookImageView.setLayoutY(1575);
+
+        Image linkedinImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\linkedin.png");
+        ImageView linkedinImageView = new ImageView(linkedinImage);
+        linkedinImageView.setPreserveRatio(true);
+        linkedinImageView.setFitWidth(100);
+        linkedinImageView.setLayoutX(1500);
+        linkedinImageView.setLayoutY(1565);
+
+        Image instagramImage = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\instagram.png");
+        ImageView instagramImageView = new ImageView(instagramImage);
+        instagramImageView.setPreserveRatio(true);
+        instagramImageView.setFitWidth(90);
+        instagramImageView.setLayoutX(1400);
+        instagramImageView.setLayoutY(1570);
+
+
+        // Background for lbl_footer
+        Rectangle footerBackground = new Rectangle(0, 1500, screenSize.getWidth(), 200);
+        footerBackground.setFill(Color.web("#717e8e"));
+
+        // Put lbl_footer on top of background
+        Group footerGroup = new Group(footerBackground, lbl_footerTitle, lbl_footer, lbl_phoneNumber, discordImageView, facebookImageView, linkedinImageView,
+            instagramImageView);
+
+        // HBox to put everything together
+        HBox hb_footer = new HBox(footerGroup);
+        hb_footer.setAlignment(Pos.CENTER);
+        
+            instagramImageView.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.instagram.com/pokemon/");
+        });
+
+        facebookImageView.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.facebook.com/Pokemon/");
+        });
+
+        linkedinImageView.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.linkedin.com/company/pokemon/");
+        });
+
+        discordImageView.setOnMouseClicked(event -> {
+            getHostServices().showDocument("https://www.discord.com/");
+        });
+        return hb_footer;
     }
 
     public static class Card extends HBox {
