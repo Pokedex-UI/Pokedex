@@ -368,15 +368,15 @@ public class App extends Application {
 
         // Add your cards (rectangles with images and text) to the cardContainer
         // addCard method at bottom of code
-        addCard("\nMy Fire Poke\t     637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\fire.png");
-        addCard("\nMy Water Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firebk.png");
-        addCard("\nMy Grass Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\grass.png");
-        addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
-        addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
-        addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
-        addCard("\nMy Roky Poke    637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
-        addCard("\nMy Fire Poke\t     637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\fire.png");
-        addCard("\nMy Water Poke   637","\n\nType:\t\t  Fire\nAbilities:\t\t  Flame Body\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firebk.png");
+        addCard("\nCharizard - 006","Generation 1\nEvolves from:\nCharmeleon\nCharmander\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\charizard.png");
+        addCard("\nTyphlosion - 157","Generation 2\nEvolves from:\nQuilava\nCyndaquil\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\typhlosion.png");
+        addCard("\nBlaziken - 257","Generation 3\nEvolves from:\nCombusken\nTorchic\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\blaziken.png");
+        addCard("\nBlastoise - 009","Generation 1\nEvolves from:\nWartotle\nSquirtle\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\blastoise.png");
+        addCard("\nFeraligatr - 260","Generation 2\nEvolves from:\nCroconaw\nTotodile\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\feraligatr.png");
+        addCard("\nSwampert - 637","Generation 3\nEvolves from:\nMarshtomp\nMudkip\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\swampert.png");
+        addCard("\nVenusaur - 003","Generation 1\nEvolves from:\nIvysaur\nBulbasaur\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\venusaur.png");
+        addCard("\nMeganium - 154","Generation 2\nEvolves from:\nBayleef\nChikorita\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\meganium.png");
+        addCard("\nSceptile - 254","Generation 3\nEvolves from:\nGrovyle\nTreecko\n", "file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\sceptile.png");
 
         // Feature pokemon functionality
         ScrollPane FeaturePokeScrollPane = new ScrollPane();
@@ -790,19 +790,20 @@ public class App extends Application {
         public Card(String titleTxt, String infoTxt, ImageView imageView) {
             Text labelText = new Text(titleTxt);
             Text labelText2 = new Text(infoTxt);
+            labelText2.setTextAlignment(TextAlignment.CENTER);
 
             // Set the alignment of the label to the bottom center
-            labelText.setStyle("-fx-fill: White; -fx-font-size: 18px; -fx-font-weight: bold;"); // Set the text color
-            labelText2.setStyle("-fx-fill: White; -fx-font-size: 12px; -fx-font-weight: thin;"); // Set the text color
+            labelText.setStyle("-fx-fill: White; -fx-font-size: 22px; -fx-font-weight: bold;"); // Set the text color
+            labelText2.setStyle("-fx-fill: White; -fx-font-size: 18px; -fx-font-weight: normal;"); // Set the text color
 
             StackPane txStackPane = new StackPane(labelText);
             txStackPane.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
-            txStackPane.setAlignment(Pos.CENTER_LEFT);
+            txStackPane.setAlignment(Pos.CENTER);
             txStackPane.setPadding(new Insets(0,0,0,8));
 
             StackPane infoStackPane = new StackPane(labelText2);
             infoStackPane.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
-            infoStackPane.setAlignment(Pos.CENTER_LEFT);
+            infoStackPane.setAlignment(Pos.BOTTOM_CENTER);
             infoStackPane.setPadding(new Insets(0,0,0,8));
 
             // Create a VBox to hold the image and label
