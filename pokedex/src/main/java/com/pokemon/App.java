@@ -510,20 +510,25 @@ public class App extends Application {
         // Pokedex Entries
 
         // Row 1
-        Image charmander = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\charmander.jpg");
+        Image charmander = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\charmander.png");
         ImageView charmanderImageView = new ImageView(charmander);
         charmanderImageView.setPreserveRatio(true);
         charmanderImageView.setFitWidth(175);
+        charmanderImageView.getStyleClass().add("fire-images");
 
-        Image charmeleon = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\charmeleon.jpg");
+        Image charmeleon = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\charmeleon.png");
         ImageView charmeleonImageView = new ImageView(charmeleon);
         charmeleonImageView.setPreserveRatio(true);
         charmeleonImageView.setFitWidth(175);
+        charmeleonImageView.getStyleClass().add("fire-images");
 
-        Image charizard = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\charizard.jpg");
+
+        Image charizard = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\charizard.png");
         ImageView charizardImageView = new ImageView(charizard);
         charizardImageView.setPreserveRatio(true);
         charizardImageView.setFitWidth(175);
+        charizardImageView.getStyleClass().add("fire-images");
+
 
         /*
             Labels and VBoxes
@@ -533,15 +538,20 @@ public class App extends Application {
         VBox charmanderVBox = new VBox(charmanderLabel, charmanderGen);
         charmanderVBox.setAlignment(Pos.CENTER);
 
+
         Label charmeleonLabel = new Label("Charmeleon");
         Label charmeleonGen = new Label("Generation 3");
         VBox charmeleonVBox = new VBox(charmeleonLabel, charmeleonGen);
         charmeleonVBox.setAlignment(Pos.CENTER);
+        // charmeleonLabel.getStyleClass().add("pokedex-text");
+
 
         Label charizardLabel = new Label("Charizard");
         Label charizardGen = new Label("Generation 3");
         VBox charizardVBox = new VBox(charizardLabel, charizardGen);
         charizardVBox.setAlignment(Pos.CENTER);
+        // charizardLabel.getStyleClass().add("pokedex-text");
+
 
         /*
             Hbox rows
@@ -556,20 +566,23 @@ public class App extends Application {
         /*
             Images and ImageViews
         */
-        Image cyndaquil = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\cyndaquil.jpg");
+        Image cyndaquil = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\cyndaquil.png");
         ImageView cyndaquilImageView = new ImageView(cyndaquil);
         cyndaquilImageView.setPreserveRatio(true);
         cyndaquilImageView.setFitWidth(175);
+        cyndaquilImageView.getStyleClass().add("fire-images");
 
-        Image quilava = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\quilava.jpg");
+        Image quilava = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\quilava.png");
         ImageView quilavaImageView = new ImageView(quilava);
         quilavaImageView.setPreserveRatio(true);
         quilavaImageView.setFitWidth(175);
+        quilavaImageView.getStyleClass().add("fire-images");
 
-        Image typhlosion = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\typhlosion.jpg");
+        Image typhlosion = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\typhlosion.png");
         ImageView typhlosionImageView = new ImageView(typhlosion);
         typhlosionImageView.setPreserveRatio(true);
         typhlosionImageView.setFitWidth(175);
+        typhlosionImageView.getStyleClass().add("fire-images");
 
         /*
             Labels and VBoxes
@@ -617,20 +630,65 @@ public class App extends Application {
         blazikenVBox.setAlignment(Pos.CENTER);
 
         // Row 3
-        Image torchic = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\torchic.jpg");
+        Image torchic = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\torchic.png");
         ImageView torchicImageView = new ImageView(torchic);
         torchicImageView.setPreserveRatio(true);
         torchicImageView.setFitWidth(175);
+        torchicImageView.getStyleClass().add("fire-images");
 
-        Image combusken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\combusken.jpg");
+        Image combusken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\combusken.png");
         ImageView combuskenImageView = new ImageView(combusken);
         combuskenImageView.setPreserveRatio(true);
         combuskenImageView.setFitWidth(175);
+        combuskenImageView.getStyleClass().add("fire-images");
 
-        Image blaziken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Fire Pokemon\\blaziken.jpg");
+        Image blaziken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\blaziken.png");
         ImageView blazikenImageView = new ImageView(blaziken);
         blazikenImageView.setPreserveRatio(true);
         blazikenImageView.setFitWidth(175);
+        blazikenImageView.getStyleClass().add("fire-images");
+
+        /*
+            Hbox rows
+        */
+        HBox pokedexRow3 = new HBox(255, torchicVBox, combuskenVBox, blazikenVBox);
+        pokedexRow3.setAlignment(Pos.CENTER);
+
+        HBox sc2Row3 = new HBox(150, torchicImageView, combuskenImageView, blazikenImageView);
+        sc2Row3.setAlignment(Pos.CENTER);
+
+        // VBox that puts the pokedex together
+        VBox pokedexVbox = new VBox(50,sc2Row1, pokedexRow1, sc2Row2, pokedexRow2, sc2Row3, pokedexRow3);
+
+////////////////////////////////////////////////////////////////////////////////////////
+    //FIRE FOOTER START
+////////////////////////////////////////////////////////////////////////////////////////
+        /*
+            Footer:
+            Changed lbl_footer to lbl_footerFire (Fire Pokedex page)
+            Changed footerBackground to footerBackgroundFire (Fire Pokedex page)
+         */
+        HBox hb_footerF = createFooter();
+////////////////////////////////////////////////////////////////////////////////////////
+    //FIRE FOOTER END
+////////////////////////////////////////////////////////////////////////////////////////
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // VBox that puts everything together
+        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, pokedexVbox, hb_footerF);
+        layout2.setStyle("-fx-background-color: white");
+
+        // (OPTIONAL) ADD THE BACKGROUND TO THE FIRE SCENE2
+        layout2.setStyle("-fx-background-image: url(file:./pokedex/src/main/java/com/resources/Abanob/backdrop2.jpg);" + "-fx-background-size: cover;");
+
+
+        // Add the rootGRP to a ScrollPane to allow scrolling
+        ScrollPane fireScrollPane = new ScrollPane(layout2);
+        fireScrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
+        fireScrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
+
+        scene2 = new Scene(fireScrollPane, screenSize.getWidth(), screenSize.getHeight());
+        scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         //POKEDEX POPUPS
         
@@ -684,67 +742,20 @@ public class App extends Application {
         blazikenImageView.setOnMouseClicked(event -> {
             blazikenPopup.show(blazikenImageView.getScene().getWindow());
         });
-
-
-////////////////////////////////////////////////////////////////////////////////////////
-    //FIRE FOOTER START
-////////////////////////////////////////////////////////////////////////////////////////
-        /*
-            Footer:
-            Changed lbl_footer to lbl_footerFire (Fire Pokedex page)
-            Changed footerBackground to footerBackgroundFire (Fire Pokedex page)
-         */
-     // Labels with general information
-        HBox hb_footerF = createFooter();
-////////////////////////////////////////////////////////////////////////////////////////
-    //FIRE FOOTER END
-////////////////////////////////////////////////////////////////////////////////////////
-        /*
-            Hbox rows
-        */
-        HBox pokedexRow3 = new HBox(255, torchicVBox, combuskenVBox, blazikenVBox);
-        pokedexRow3.setAlignment(Pos.CENTER);
-
-        HBox sc2Row3 = new HBox(150, torchicImageView, combuskenImageView, blazikenImageView);
-        sc2Row3.setAlignment(Pos.CENTER);
-
-        // VBox that puts the pokedex together
-        VBox pokedexVbox = new VBox(50, sc2Row1, pokedexRow1, sc2Row2, pokedexRow2, sc2Row3, pokedexRow3);
-
-        // VBox that puts everything together
-        VBox layout2 = new VBox(hb_homeTitleSc2, hb_hometaskbarSc2, pokedexVbox, hb_footerF);
-        layout2.setStyle("-fx-background-color: white");
-
-        // (OPTIONAL) ADD THE BACKGROUND TO THE FIRE SCENE2
-        layout2.setStyle("-fx-background-image: url(file:///D:/CPP/CS%202450%20UI/PokePics/backdrop2.jpg);" + "-fx-background-size: cover;");
-
-
-        // Add the rootGRP to a ScrollPane to allow scrolling
-        ScrollPane fireScrollPane = new ScrollPane(layout2);
-        fireScrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
-        fireScrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
-
-        scene2 = new Scene(fireScrollPane, screenSize.getWidth(), screenSize.getHeight());
-        scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////
+//POKEDEX POPUP END
+//////////////////////////////////////////
 
         VBox vb_HomePage = new VBox(hb_header, hb_hometaskbar, hb_missionStatement, hb_typeCards, hb_featuredPokemonBanner, hb_scrollPane, hb_footer);
         vb_HomePage.setAlignment(Pos.CENTER);
 
-        Image image = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\water.png");
-        ImageView imgview = new ImageView(image);
 
-        BackgroundImage bckimg = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-
-        Background background = new Background(bckimg);;
-
-        vb_HomePage.setStyle("-fx-background-image: url(file:///C:/Users/Josh/Documents/School/CS%202450/FinalProject/Pokedex/pokedex/src/main/java/com/resources/Abanob/backdrop2.jpg);" + "-fx-background-size: cover;");
+        vb_HomePage.setStyle("-fx-background-image: url(file:./pokedex/src/main/java/com/resources/Abanob/backdrop2.jpg);" + "-fx-background-size: cover;");
 
         // Add the rootGRP to a ScrollPane to allow scrolling
         ScrollPane scrollPane = new ScrollPane(vb_HomePage);
         scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
         scrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
-        scrollPane.setBackground(background);
 
         scene1 = new Scene(scrollPane, screenSize.getWidth(), screenSize.getHeight());
         scene1.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
