@@ -56,6 +56,7 @@ public class App extends Application {
     private Font biggerFont2 = Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 32);
     private Font smallerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 14);
     private Font slightlyBiggerFont =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 22);
+    private Font slightlyBiggerFont2 =  Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 32);
 
     public static void main(String[] args) {
         launch();
@@ -139,7 +140,7 @@ public class App extends Application {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // 3. BEGIN MISSION STATEMENT        
+        // 3. BEGIN MISSION STATEMENT
 
         // Text - Welcome to the Pokemon Database!
         Text txtMissionHeader = new Text("Welcome to the Pokemon Database!");
@@ -181,7 +182,7 @@ public class App extends Application {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // 4. BEGIN 3 POKEMON TYPE CARDS      
+        // 4. BEGIN 3 POKEMON TYPE CARDS
 
         // Initialize Card images
         Image fireImgbg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\firecard2copy.jpg");
@@ -331,9 +332,9 @@ public class App extends Application {
         recGrassfrntgrnd.setOnMouseExited(event -> {
                 fadeInGrass.playFromStart();
         });
-        
+
         Group rootGRP = new Group(recFire ,recFireText, recWater,recWaterText,recGrass,recGrassText,
-        txtFireDescrip,txtFireTitle,txtWaterDescrip,txtWaterTitle, txtGrassTitle,txtGrassDescrip,recFirefrntgrnd,recWaterfrntgrnd,recGrassfrntgrnd);  
+        txtFireDescrip,txtFireTitle,txtWaterDescrip,txtWaterTitle, txtGrassTitle,txtGrassDescrip,recFirefrntgrnd,recWaterfrntgrnd,recGrassfrntgrnd);
 
         HBox hb_typeCards = new HBox(rootGRP);
         hb_typeCards.setAlignment(Pos.CENTER);
@@ -453,7 +454,7 @@ public class App extends Application {
         HBox hb_footer = createFooter();
         // 7. END FOOTER
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+
         /*
             Functionality to move between scenes:
                 - Click on Pokedex
@@ -465,14 +466,33 @@ public class App extends Application {
             primaryStage.setScene(scene2);
         });
 
+        recFirefrntgrnd.setOnMouseClicked(event ->
+        {
+            primaryStage.setScene(scene2);
+        });
+
         // Scene 2 (Pokedex)
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Two charizard images on the header
+        Image dbTitleImg1Fire = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
+        Image dbTitleImg2Fire = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
+
+        // ImageViews to show charizard images
+        ImageView imageView1Fire = new ImageView(dbTitleImg1Fire);
+        imageView1Fire.setFitWidth(140);
+        imageView1Fire.setFitHeight(100);
+        imageView1Fire.getStyleClass().add("shadow-label");
+        ImageView imageView2Fire = new ImageView(dbTitleImg2Fire);
+        imageView2Fire.setFitWidth(140);
+        imageView2Fire.setFitHeight(100);
+        imageView2Fire.getStyleClass().add("shadow-label");
 
         // Header code
         Label lbl_dbTitleSc2 = new Label("Pokédex Database");
         lbl_dbTitleSc2.getStyleClass().add("title-label");
 
-        HBox hb_homeTitleSc2 = new HBox(lbl_dbTitleSc2);
+        HBox hb_homeTitleSc2 = new HBox(40,imageView1Fire, lbl_dbTitleSc2,imageView2Fire);
         hb_homeTitleSc2.getStyleClass().add("hbox-with-gradient");
         hb_homeTitleSc2.setAlignment(Pos.CENTER);
 
@@ -526,7 +546,7 @@ public class App extends Application {
         Image charizard = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\charizard.png");
         ImageView charizardImageView = new ImageView(charizard);
         charizardImageView.setPreserveRatio(true);
-        charizardImageView.setFitWidth(175);
+        charizardImageView.setFitWidth(225);
         charizardImageView.getStyleClass().add("fire-images");
 
 
@@ -534,12 +554,14 @@ public class App extends Application {
             Labels and VBoxes
         */
         Label charmanderLabel = new Label("Charmander");
+        charmanderLabel.setFont(slightlyBiggerFont2);
         Label charmanderGen = new Label("Generation 1");
         VBox charmanderVBox = new VBox(charmanderLabel, charmanderGen);
         charmanderVBox.setAlignment(Pos.CENTER);
 
 
         Label charmeleonLabel = new Label("Charmeleon");
+        charmeleonLabel.setFont(slightlyBiggerFont2);
         Label charmeleonGen = new Label("Generation 3");
         VBox charmeleonVBox = new VBox(charmeleonLabel, charmeleonGen);
         charmeleonVBox.setAlignment(Pos.CENTER);
@@ -547,6 +569,7 @@ public class App extends Application {
 
 
         Label charizardLabel = new Label("Charizard");
+        charizardLabel.setFont(slightlyBiggerFont2);
         Label charizardGen = new Label("Generation 3");
         VBox charizardVBox = new VBox(charizardLabel, charizardGen);
         charizardVBox.setAlignment(Pos.CENTER);
@@ -556,10 +579,10 @@ public class App extends Application {
         /*
             Hbox rows
         */
-        HBox pokedexRow1 = new HBox(255, charmanderVBox, charmeleonVBox, charizardVBox);
+        HBox pokedexRow1 = new HBox(280, charmanderVBox, charmeleonVBox, charizardVBox);
         pokedexRow1.setAlignment(Pos.CENTER);
 
-        HBox sc2Row1 = new HBox(150, charmanderImageView, charmeleonImageView, charizardImageView);
+        HBox sc2Row1 = new HBox(245, charmanderImageView, charmeleonImageView, charizardImageView);
         sc2Row1.setAlignment(Pos.CENTER);
 
         // Row 2
@@ -569,7 +592,7 @@ public class App extends Application {
         Image cyndaquil = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\cyndaquil.png");
         ImageView cyndaquilImageView = new ImageView(cyndaquil);
         cyndaquilImageView.setPreserveRatio(true);
-        cyndaquilImageView.setFitWidth(175);
+        cyndaquilImageView.setFitWidth(225);
         cyndaquilImageView.getStyleClass().add("fire-images");
 
         Image quilava = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\quilava.png");
@@ -588,16 +611,19 @@ public class App extends Application {
             Labels and VBoxes
         */
         Label cyndaquilLabel = new Label("Cyndaquil");
+        cyndaquilLabel.setFont(slightlyBiggerFont2);
         Label cyndaquilGen = new Label("Generation 2");
         VBox cyndaquilVBox = new VBox(cyndaquilLabel, cyndaquilGen);
         cyndaquilVBox.setAlignment(Pos.CENTER);
 
         Label quilavaLabel = new Label("Quilava");
+        quilavaLabel.setFont(slightlyBiggerFont2);
         Label quilavaGen = new Label("Generation 2");
         VBox quilavaVBox = new VBox(quilavaLabel, quilavaGen);
         quilavaVBox.setAlignment(Pos.CENTER);
 
         Label typhlosionLabel = new Label("Typhlosion");
+        typhlosionLabel.setFont(slightlyBiggerFont2);
         Label typhlosionGen = new Label("Generation 2");
         VBox typhlosionVBox = new VBox(typhlosionLabel, typhlosionGen);
         typhlosionVBox.setAlignment(Pos.CENTER);
@@ -605,26 +631,29 @@ public class App extends Application {
         /*
             Hbox rows
         */
-        HBox pokedexRow2 = new HBox(255, cyndaquilVBox, quilavaVBox, typhlosionVBox);
+        HBox pokedexRow2 = new HBox(330, cyndaquilVBox, quilavaVBox, typhlosionVBox);
         pokedexRow2.setAlignment(Pos.CENTER);
 
-        HBox sc2Row2 = new HBox(150, cyndaquilImageView, quilavaImageView, typhlosionImageView);
+        HBox sc2Row2 = new HBox(260, cyndaquilImageView, quilavaImageView, typhlosionImageView);
         sc2Row2.setAlignment(Pos.CENTER);
 
         /*
             Labels and VBoxes
         */
         Label torchicLabel = new Label("Torchic");
+        torchicLabel.setFont(slightlyBiggerFont2);
         Label torchicGen = new Label("Generation 3");
         VBox torchicVBox = new VBox(torchicLabel, torchicGen);
         torchicVBox.setAlignment(Pos.CENTER);
 
         Label combuskenLabel = new Label("Combusken");
+        combuskenLabel.setFont(slightlyBiggerFont2);
         Label combuskenGen = new Label("Generation 3");
         VBox combuskenVBox = new VBox(combuskenLabel, combuskenGen);
         combuskenVBox.setAlignment(Pos.CENTER);
 
         Label blazikenLabel = new Label("Blaziken");
+        blazikenLabel.setFont(slightlyBiggerFont2);
         Label blazikenGen = new Label("Generation 3");
         VBox blazikenVBox = new VBox(blazikenLabel, blazikenGen);
         blazikenVBox.setAlignment(Pos.CENTER);
@@ -639,7 +668,7 @@ public class App extends Application {
         Image combusken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\combusken.png");
         ImageView combuskenImageView = new ImageView(combusken);
         combuskenImageView.setPreserveRatio(true);
-        combuskenImageView.setFitWidth(175);
+        combuskenImageView.setFitWidth(225);
         combuskenImageView.getStyleClass().add("fire-images");
 
         Image blaziken = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\blaziken.png");
@@ -651,14 +680,15 @@ public class App extends Application {
         /*
             Hbox rows
         */
-        HBox pokedexRow3 = new HBox(255, torchicVBox, combuskenVBox, blazikenVBox);
+        HBox pokedexRow3 = new HBox(330, torchicVBox, combuskenVBox, blazikenVBox);
         pokedexRow3.setAlignment(Pos.CENTER);
 
-        HBox sc2Row3 = new HBox(150, torchicImageView, combuskenImageView, blazikenImageView);
+        HBox sc2Row3 = new HBox(250, torchicImageView, combuskenImageView, blazikenImageView);
         sc2Row3.setAlignment(Pos.CENTER);
 
         // VBox that puts the pokedex together
         VBox pokedexVbox = new VBox(50,sc2Row1, pokedexRow1, sc2Row2, pokedexRow2, sc2Row3, pokedexRow3);
+        pokedexVbox.setPadding(new Insets(40,0,40,0));
 
 ////////////////////////////////////////////////////////////////////////////////////////
     //FIRE FOOTER START
@@ -691,7 +721,7 @@ public class App extends Application {
         scene2.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         //POKEDEX POPUPS
-        
+
         //CREATES ALL POPUPS, REFRENCE THIS FOR PARAMETERS
         //INSERT POKEMON POPUPS HERE
         //createPopup(String name, String image, String species, String height, String weight, String abilities
@@ -772,23 +802,23 @@ public class App extends Application {
     private Popup createPopup(String name, String image, String species, String height, String weight, String abilities) {
         // Create a popup
         Popup popup = new Popup();
-    
+
         //Popup background is the image background
         //Popup content has the actual images and text
         StackPane popUpBackground = new StackPane();
         VBox popUpContent = new VBox(10);
         popUpContent.setAlignment(Pos.CENTER); // Center the content vertically
-    
+
         Image pokedexBackground = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\pokedexbg.png");
         Rectangle background = new Rectangle(600, 650);
         Rectangle blackBorder = new Rectangle(610, 660);
         blackBorder.setFill(Color.BLACK);
         background.setFill(new ImagePattern(pokedexBackground));
-    
+
         ImageView popUpImageView = new ImageView("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\" + image + ".png");
-        popUpImageView.setFitWidth(400);  
-        popUpImageView.setFitHeight(400); 
-    
+        popUpImageView.setFitWidth(400);
+        popUpImageView.setFitHeight(400);
+
         popUpContent.getChildren().addAll(
             new Button("Exit"),
             createStyledLabel(name, 30, FontWeight.BOLD, Color.BLACK),
@@ -798,15 +828,15 @@ public class App extends Application {
             createStyledLabel("Weight: " + weight, 19, FontWeight.NORMAL, Color.WHITE),
             createStyledLabel("Abilities: " + abilities, 19, FontWeight.NORMAL, Color.WHITE)
         );
-    
+
         popUpBackground.getChildren().addAll(blackBorder, background, popUpContent);
-    
+
         // Set up fade-in animation
         popUpBackground.setOpacity(0.0);
         FadeTransition fadeIn = new FadeTransition(Duration.millis(500), popUpBackground);
         fadeIn.setFromValue(0.0);
         fadeIn.setToValue(1.0);
-    
+
         // Set action on button click to close the popup
         Button exitButton = (Button) popUpContent.getChildren().get(0); // Adjust the index based on your content
         exitButton.getStyleClass().add("bttn-label");
@@ -817,12 +847,12 @@ public class App extends Application {
             fadeOut.setOnFinished(e -> popup.hide());
             fadeOut.play();
         });
-    
+
         popup.getContent().add(popUpBackground);
-    
+
         // Play the fade-in animation when the popup is shown
         popup.setOnShown(e -> fadeIn.play());
-    
+
         return popup;
     }
 
@@ -916,7 +946,7 @@ public class App extends Application {
         // HBox to put everything together
         HBox hb_footer = new HBox(footerGroup);
         hb_footer.setAlignment(Pos.CENTER);
-        
+
             instagramImageView.setOnMouseClicked(event -> {
             getHostServices().showDocument("https://www.instagram.com/pokemon/");
         });
