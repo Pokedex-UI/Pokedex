@@ -49,7 +49,7 @@ import javafx.util.Duration;
 public class App extends Application {
     private HBox cardContainer;
     private int currentIndex = 0;
-    private Scene scene1, scene2;
+    private Scene scene1, scene2, scene3;
     private Font font = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 75);
     private Font biggerFont = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 130);
     private Font missionHeaderFont = Font.font("SERIF", FontWeight.BOLD, FontPosture.REGULAR, 32);
@@ -775,6 +775,156 @@ public class App extends Application {
 //////////////////////////////////////////
 //POKEDEX POPUP END
 //////////////////////////////////////////
+
+
+        // Scene 3 (Pokedex)
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Two charizard images on the header
+        Image dbTitleImg1Water = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
+        Image dbTitleImg2Water = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
+
+        // ImageViews to show charizard images
+        ImageView imageView1Water = new ImageView(dbTitleImg1Water);
+        imageView1Water.setFitWidth(140);
+        imageView1Water.setFitHeight(100);
+        imageView1Water.getStyleClass().add("shadow-label");
+        ImageView imageView2Water = new ImageView(dbTitleImg2Water);
+        imageView2Water.setFitWidth(140);
+        imageView2Water.setFitHeight(100);
+        imageView2Water.getStyleClass().add("shadow-label");
+
+        // Header code
+        Label lbl_dbTitleSc3 = new Label("Pokédex Database");
+        lbl_dbTitleSc3.getStyleClass().add("title-label");
+
+        HBox hb_homeTitleSc3 = new HBox(40,imageView1Fire, lbl_dbTitleSc2,imageView2Fire);
+        hb_homeTitleSc3.getStyleClass().add("hbox-with-gradient");
+        hb_homeTitleSc3.setAlignment(Pos.CENTER);
+
+        //// Menubar code
+        // Home Button
+        Button bttnHomeSc3 = new Button("Home");
+        bttnHomeSc3.getStyleClass().add("bttn-label2");
+        bttnHomeSc3.setPrefWidth(screenSize.getWidth()/2);
+
+
+        // Pokedex menu items
+        Menu pokedexMenuSc3 = new Menu("                                          Pokédex");
+        MenuItem fireItemSc3 = new MenuItem("Fire Pokédex");
+        MenuItem waterItemSc3 = new MenuItem("Water Pokédex");
+        MenuItem grassItemSc3 = new MenuItem("Grass Pokédex");
+        pokedexMenuSc3.getItems().addAll(fireItemSc3,waterItemSc3,grassItemSc3);
+
+        // Pokedex menu styling
+        MenuBar homeMenuBarSc3 = new MenuBar();
+        homeMenuBarSc3.getMenus().addAll(pokedexMenuSc2);
+        homeMenuBarSc3.getStyleClass().add("bttn-label");
+        homeMenuBarSc3.setPrefWidth((screenSize.getWidth())/2);
+
+
+        HBox hb_hometaskbarSc3 = new HBox(bttnHomeSc3,homeMenuBarSc3);
+        hb_hometaskbarSc3.setAlignment(Pos.CENTER);
+        hb_hometaskbarSc3.setPadding(new Insets(0,0,20,0));
+
+        // Home button functionality
+        bttnHomeSc3.setOnAction(event ->
+        {
+            primaryStage.setScene(scene1);
+        });
+
+        // Pokedex Entries
+
+        // Row 1
+        Image blastoise = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\blastoise.jpg");
+        ImageView blastoiseImageView = new ImageView(blastoise);
+        blastoiseImageView.setPreserveRatio(true);
+        blastoiseImageView.setFitWidth(175);
+        blastoiseImageView.getStyleClass().add("water-images");
+
+        Image croconaw = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\croconaw.jpg");
+        ImageView croconawImageView = new ImageView(croconaw);
+        croconawImageView.setPreserveRatio(true);
+        croconawImageView.setFitWidth(175);
+        croconawImageView.getStyleClass().add("water-images");
+
+
+        Image feraligatr = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\feraligatr.jpg");
+        ImageView feraligatrImageView = new ImageView(feraligatr);
+        feraligatrImageView.setPreserveRatio(true);
+        feraligatrImageView.setFitWidth(175);
+        feraligatrImageView.getStyleClass().add("water-images");
+
+
+        /*
+            Labels and VBoxes
+        */
+        Label blastoiseLabel = new Label("Blastoise");
+        blastoiseLabel.setFont(slightlyBiggerFont2);
+        Label blastoiseGen = new Label("Generation 1");
+        VBox blastoiseVBox = new VBox(blastoiseLabel, blastoiseGen);
+        blastoiseVBox.setAlignment(Pos.CENTER);
+
+
+        Label croconawLabel = new Label("Croconaw");
+        croconawLabel.setFont(slightlyBiggerFont2);
+        Label croconawGen = new Label("Generation 2");
+        VBox croconawVBox = new VBox(croconawLabel, croconawGen);
+        croconawVBox.setAlignment(Pos.CENTER);
+        // charmeleonLabel.getStyleClass().add("pokedex-text");
+
+
+        Label feraligatrLabel = new Label("Feraligatr");
+        feraligatrLabel.setFont(slightlyBiggerFont2);
+        Label feraligatrGen = new Label("Generation 2");
+        VBox feraligatrVBox = new VBox(feraligatrLabel, feraligatrGen);
+        feraligatrVBox.setAlignment(Pos.CENTER);
+        // charizardLabel.getStyleClass().add("pokedex-text");
+
+
+        /*
+            Hbox rows
+        */
+        HBox pokedexWaterRow1 = new HBox(280, blastoiseVBox, croconawVBox, feraligatrVBox);
+        pokedexWaterRow1.setAlignment(Pos.CENTER);
+
+        HBox sc3Row1 = new HBox(245, blastoiseImageView, croconawImageView, feraligatrImageView);
+        sc3Row1.setAlignment(Pos.CENTER);
+
+        // VBox that puts the pokedex together
+        VBox pokedexSc3Vbox = new VBox(50,sc3Row1, pokedexWaterRow1);
+        pokedexSc3Vbox.setPadding(new Insets(40,0,40,0));
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // VBox that puts everything together
+        VBox layout3 = new VBox(hb_homeTitleSc3, hb_hometaskbarSc3, pokedexSc3Vbox, hb_footerF);
+        layout3.setStyle("-fx-background-color: white");
+
+        // (OPTIONAL) ADD THE BACKGROUND TO THE FIRE SCENE2
+        layout3.setStyle("-fx-background-image: url(file:./pokedex/src/main/java/com/resources/Abanob/backdrop2.jpg);" + "-fx-background-size: cover;");
+
+
+        // Add the rootGRP to a ScrollPane to allow scrolling
+        ScrollPane waterScrollPane = new ScrollPane(layout3);
+        waterScrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
+        waterScrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
+
+        scene3 = new Scene(waterScrollPane, screenSize.getWidth(), screenSize.getHeight());
+        scene3.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+
+        waterItem.setOnAction(event ->
+        {
+            primaryStage.setScene(scene3);
+        });
+
+        recWaterfrntgrnd.setOnMouseClicked(event ->
+        {
+            primaryStage.setScene(scene3);
+        });
+
+
+
 
         VBox vb_HomePage = new VBox(hb_header, hb_hometaskbar, hb_missionStatement, hb_typeCards, hb_featuredPokemonBanner, hb_scrollPane, hb_footer);
         vb_HomePage.setAlignment(Pos.CENTER);
