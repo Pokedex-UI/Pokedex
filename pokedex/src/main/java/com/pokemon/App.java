@@ -836,123 +836,213 @@ public class App extends Application {
         // Pokedex Entries
 
         // Row 1
-        Image blastoise = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\blastoise.jpg");
+        Image squirtle = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\squirtle.png");
+        ImageView squirtleImageView = new ImageView(squirtle);
+        squirtleImageView.setPreserveRatio(true);
+        squirtleImageView.setFitWidth(175);
+        squirtleImageView.getStyleClass().add("water-images");
+
+        Image wartortle = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\wartortle.png");
+        ImageView wartortleImageView = new ImageView(wartortle);
+        wartortleImageView.setPreserveRatio(true);
+        wartortleImageView.setFitWidth(175);
+        wartortleImageView.getStyleClass().add("water-images");
+
+        Image blastoise = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\blastoise.png");
         ImageView blastoiseImageView = new ImageView(blastoise);
         blastoiseImageView.setPreserveRatio(true);
         blastoiseImageView.setFitWidth(175);
         blastoiseImageView.getStyleClass().add("water-images");
 
-        Image croconaw = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\croconaw.jpg");
-        ImageView croconawImageView = new ImageView(croconaw);
-        croconawImageView.setPreserveRatio(true);
-        croconawImageView.setFitWidth(175);
-        croconawImageView.getStyleClass().add("water-images");
-
-
-        Image feraligatr = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\feraligatr.jpg");
-        ImageView feraligatrImageView = new ImageView(feraligatr);
-        feraligatrImageView.setPreserveRatio(true);
-        feraligatrImageView.setFitWidth(175);
-        feraligatrImageView.getStyleClass().add("water-images");
-
 
         /*
             Labels and VBoxes
         */
+        Label squirtleLabel = new Label("Squirtle");
+        squirtleLabel.setFont(slightlyBiggerFont2);
+        Label squirtleGen = new Label("Generation 1");
+        VBox squirtleVBox = new VBox(squirtleLabel, squirtleGen);
+        squirtleVBox.setAlignment(Pos.CENTER);
+
+        Label wartortleLabel = new Label("Wartortle");
+        wartortleLabel.setFont(slightlyBiggerFont2);
+        Label wartortleGen = new Label("Generation 1");
+        VBox wartortleVBox = new VBox(wartortleLabel, wartortleGen);
+        wartortleVBox.setAlignment(Pos.CENTER);
+        
         Label blastoiseLabel = new Label("Blastoise");
         blastoiseLabel.setFont(slightlyBiggerFont2);
         Label blastoiseGen = new Label("Generation 1");
         VBox blastoiseVBox = new VBox(blastoiseLabel, blastoiseGen);
         blastoiseVBox.setAlignment(Pos.CENTER);
 
+        /*
+            Hbox rows
+        */
+        HBox pokedexWaterRow1 = new HBox(280, squirtleVBox, wartortleVBox, blastoiseVBox);
+        pokedexWaterRow1.setAlignment(Pos.CENTER);
+
+        HBox sc3Row1 = new HBox(245, squirtleImageView, wartortleImageView, blastoiseImageView);
+        sc3Row1.setAlignment(Pos.CENTER);
+
+
+
+        // Row 2
+        Image totodile = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\totodile.png");
+        ImageView totodileImageView = new ImageView(totodile);
+        totodileImageView.setPreserveRatio(true);
+        totodileImageView.setFitWidth(175);
+        totodileImageView.getStyleClass().add("water-images");
+
+        Image croconaw = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\croconaw.png");
+        ImageView croconawImageView = new ImageView(croconaw);
+        croconawImageView.setPreserveRatio(true);
+        croconawImageView.setFitWidth(175);
+        croconawImageView.getStyleClass().add("water-images");
+
+        Image feraligatr = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\feraligatr.png");
+        ImageView feraligatrImageView = new ImageView(feraligatr);
+        feraligatrImageView.setPreserveRatio(true);
+        feraligatrImageView.setFitWidth(175);
+        feraligatrImageView.getStyleClass().add("water-images");
+
+        /*
+            Labels and VBoxes
+        */
+        Label totodileLabel = new Label("Totodile");
+        totodileLabel.setFont(slightlyBiggerFont2);
+        Label totodileGen = new Label("Generation 2");
+        VBox totodileVBox = new VBox(totodileLabel, totodileGen);
+        totodileVBox.setAlignment(Pos.CENTER);
 
         Label croconawLabel = new Label("Croconaw");
         croconawLabel.setFont(slightlyBiggerFont2);
         Label croconawGen = new Label("Generation 2");
         VBox croconawVBox = new VBox(croconawLabel, croconawGen);
         croconawVBox.setAlignment(Pos.CENTER);
-        // charmeleonLabel.getStyleClass().add("pokedex-text");
-
 
         Label feraligatrLabel = new Label("Feraligatr");
         feraligatrLabel.setFont(slightlyBiggerFont2);
         Label feraligatrGen = new Label("Generation 2");
         VBox feraligatrVBox = new VBox(feraligatrLabel, feraligatrGen);
         feraligatrVBox.setAlignment(Pos.CENTER);
-        // charizardLabel.getStyleClass().add("pokedex-text");
-
-
         /*
             Hbox rows
         */
-        HBox pokedexWaterRow1 = new HBox(280, blastoiseVBox, croconawVBox, feraligatrVBox);
-        pokedexWaterRow1.setAlignment(Pos.CENTER);
+        HBox pokedexWaterRow2 = new HBox(280, totodileVBox, croconawVBox, feraligatrVBox);
+        pokedexWaterRow2.setAlignment(Pos.CENTER);
 
-        HBox sc3Row1 = new HBox(245, blastoiseImageView, croconawImageView, feraligatrImageView);
-        sc3Row1.setAlignment(Pos.CENTER);
+        HBox sc3Row2 = new HBox(245, totodileImageView, croconawImageView, feraligatrImageView);
+        sc3Row2.setAlignment(Pos.CENTER);
+       
 
-/*         // VBox that puts the pokedex together
-        VBox pokedexSc3Vbox = new VBox(50,sc3Row1, pokedexWaterRow1);
-        pokedexSc3Vbox.setPadding(new Insets(40,0,40,0)); */
-
-
-        // Row 2
-        Image marshtomp = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\marshtomp.jpg");
-        ImageView marshtompImageView = new ImageView(marshtomp);
-        marshtompImageView.setPreserveRatio(true);
-        marshtompImageView.setFitWidth(175);
-        marshtompImageView.getStyleClass().add("water-images");
-
-        Image mudkip = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\mudkip.jpg");
+        //Row 3
+        Image mudkip = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\mudkip.png");
         ImageView mudkipImageView = new ImageView(mudkip);
         mudkipImageView.setPreserveRatio(true);
         mudkipImageView.setFitWidth(175);
         mudkipImageView.getStyleClass().add("water-images");
 
-        Image squirtle = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\squirtle.jpg");
-        ImageView squirtleImageView = new ImageView(squirtle);
-        squirtleImageView.setPreserveRatio(true);
-        squirtleImageView.setFitWidth(175);
-        squirtleImageView.getStyleClass().add("water-images");
-
+        Image marshtomp = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\marshtomp.png");
+        ImageView marshtompImageView = new ImageView(marshtomp);
+        marshtompImageView.setPreserveRatio(true);
+        marshtompImageView.setFitWidth(175);
+        marshtompImageView.getStyleClass().add("water-images");
+            
+        Image swampert = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\swampert.png");
+        ImageView swampertImageView = new ImageView(swampert);
+        swampertImageView.setPreserveRatio(true);
+        swampertImageView.setFitWidth(175);
+        swampertImageView.getStyleClass().add("water-images");
 
         /*
             Labels and VBoxes
         */
+        Label mudkipLabel = new Label("Mudkip");
+        mudkipLabel.setFont(slightlyBiggerFont2);
+        Label mudkipGen = new Label("Generation 3");
+        VBox mudkipVBox = new VBox(mudkipLabel, mudkipGen);
+        mudkipVBox.setAlignment(Pos.CENTER);
+
         Label marshtompLabel = new Label("Marshtomp");
         marshtompLabel.setFont(slightlyBiggerFont2);
         Label marshtompGen = new Label("Generation 3");
         VBox marshtompVBox = new VBox(marshtompLabel, marshtompGen);
         marshtompVBox.setAlignment(Pos.CENTER);
 
-
-        Label mudkipLabel = new Label("Mudkip");
-        mudkipLabel.setFont(slightlyBiggerFont2);
-        Label mudkipGen = new Label("Generation 3");
-        VBox mudkipVBox = new VBox(mudkipLabel, mudkipGen);
-        mudkipVBox.setAlignment(Pos.CENTER);
-        // charmeleonLabel.getStyleClass().add("pokedex-text");
-
-
-        Label squirtleLabel = new Label("Squirtle");
-        squirtleLabel.setFont(slightlyBiggerFont2);
-        Label squirtleGen = new Label("Generation 1");
-        VBox squirtleVBox = new VBox(squirtleLabel, squirtleGen);
-        squirtleVBox.setAlignment(Pos.CENTER);
-        // charizardLabel.getStyleClass().add("pokedex-text");
-
+        Label swampertLabel = new Label("Swampert");
+        swampertLabel.setFont(slightlyBiggerFont2);
+        Label swampertGen = new Label("Generation 3");
+        VBox swampertVBox = new VBox(swampertLabel, swampertGen);
+        swampertVBox.setAlignment(Pos.CENTER);
 
         /*
             Hbox rows
         */
-        HBox pokedexWaterRow2 = new HBox(280, marshtompVBox, mudkipVBox, squirtleVBox);
-        pokedexWaterRow2.setAlignment(Pos.CENTER);
+        HBox pokedexWaterRow3 = new HBox(280, mudkipVBox, marshtompVBox, swampertVBox);
+        pokedexWaterRow3.setAlignment(Pos.CENTER);
 
-        HBox sc3Row2 = new HBox(245, marshtompImageView, mudkipImageView, squirtleImageView);
-        sc3Row2.setAlignment(Pos.CENTER);
+        HBox sc3Row3 = new HBox(245, mudkipImageView, marshtompImageView, swampertImageView);
+        sc3Row3.setAlignment(Pos.CENTER);
 
+
+        //WATER POPUPS
+        Popup squirtlePopup = createPopup(squirtleLabel.getText(), squirtleLabel.getText(), "Young Turtle Pokémon", "0.5m", "19.7lbs", "Torrent");
+        // Set action on ImageView click to show the popup
+        squirtleImageView.setOnMouseClicked(event -> {
+            squirtlePopup.show(squirtleImageView.getScene().getWindow());
+        });
+        Popup wartortlePopup = createPopup(wartortleLabel.getText(), wartortleLabel.getText(), "Turtle Pokémon", "1m", "49.6lbs", "Rain Dish");
+        // Set action on ImageView click to show the popup
+        wartortleImageView.setOnMouseClicked(event -> {
+            wartortlePopup.show(wartortleImageView.getScene().getWindow());
+        });
+        Popup blastoisePopup = createPopup(blastoiseLabel.getText(), blastoiseLabel.getText(), "Shellfish Pokémon", "1.6m", "188.7lbs", "Rain Dish");
+        // Set action on ImageView click to show the popup
+        blastoiseImageView.setOnMouseClicked(event -> {
+            blastoisePopup.show(blastoiseImageView.getScene().getWindow());
+        });        
+
+        Popup totodilePopup = createPopup(totodileLabel.getText(), totodileLabel.getText(), "Big Jaw Pokémon", "0.5m", "19.7lbs", "Torrent");
+        // Set action on ImageView click to show the popup
+        totodileImageView.setOnMouseClicked(event -> {
+            totodilePopup.show(totodileImageView.getScene().getWindow());
+        });
+        
+        Popup croconawPopup = createPopup(croconawLabel.getText(), croconawLabel.getText(), "Big Jaw Pokémon", "1.1m", "55.7lbs", "Torrent");
+        // Set action on ImageView click to show the popup
+        croconawImageView.setOnMouseClicked(event -> {
+            croconawPopup.show(croconawImageView.getScene().getWindow());
+        });
+        
+        Popup feraligatrPopup = createPopup(feraligatrLabel.getText(), feraligatrLabel.getText(), "Big Jaw Pokémon", "2.3m", "195.7lbs", "Sheer Force");
+        // Set action on ImageView click to show the popup
+        feraligatrImageView.setOnMouseClicked(event -> {
+            feraligatrPopup.show(feraligatrImageView.getScene().getWindow());
+        });
+
+        
+        Popup mudkipPopup = createPopup(mudkipLabel.getText(), mudkipLabel.getText(), "Mud Fish Pokémon", "0.4m", "13.7lbs", "Torrent");
+        // Set action on ImageView click to show the popup
+        mudkipImageView.setOnMouseClicked(event -> {
+            mudkipPopup.show(mudkipImageView.getScene().getWindow());
+        });
+        
+        Popup marshtompPopup = createPopup(marshtompLabel.getText(), marshtompLabel.getText(), "Mud Fish Pokémon", "0.7m", "69.7lbs", "Torrent");
+        // Set action on ImageView click to show the popup
+        marshtompImageView.setOnMouseClicked(event -> {
+            marshtompPopup.show(marshtompImageView.getScene().getWindow());
+        });
+
+        
+        Popup swampertPopup = createPopup(swampertLabel.getText(), swampertLabel.getText(), "Mud Fish Pokémon", "1.5m", "194.7lbs", "Damp");
+        // Set action on ImageView click to show the popup
+        swampertImageView.setOnMouseClicked(event -> {
+            swampertPopup.show(swampertImageView.getScene().getWindow());
+        });
+        
         // VBox that puts the pokedex together
-        VBox pokedexSc3Vbox = new VBox(50,sc3Row1, pokedexWaterRow1,sc3Row2,pokedexWaterRow2);
+        VBox pokedexSc3Vbox = new VBox(50,sc3Row1, pokedexWaterRow1,sc3Row2,pokedexWaterRow2, sc3Row3, pokedexWaterRow3);
         pokedexSc3Vbox.setPadding(new Insets(40,0,40,0));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
