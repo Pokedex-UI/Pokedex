@@ -891,8 +891,68 @@ public class App extends Application {
         HBox sc3Row1 = new HBox(245, blastoiseImageView, croconawImageView, feraligatrImageView);
         sc3Row1.setAlignment(Pos.CENTER);
 
-        // VBox that puts the pokedex together
+/*         // VBox that puts the pokedex together
         VBox pokedexSc3Vbox = new VBox(50,sc3Row1, pokedexWaterRow1);
+        pokedexSc3Vbox.setPadding(new Insets(40,0,40,0)); */
+
+
+        // Row 2
+        Image marshtomp = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\marshtomp.jpg");
+        ImageView marshtompImageView = new ImageView(marshtomp);
+        marshtompImageView.setPreserveRatio(true);
+        marshtompImageView.setFitWidth(175);
+        marshtompImageView.getStyleClass().add("water-images");
+
+        Image mudkip = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\mudkip.jpg");
+        ImageView mudkipImageView = new ImageView(mudkip);
+        mudkipImageView.setPreserveRatio(true);
+        mudkipImageView.setFitWidth(175);
+        mudkipImageView.getStyleClass().add("water-images");
+
+        Image squirtle = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Water Pokemon\\squirtle.jpg");
+        ImageView squirtleImageView = new ImageView(squirtle);
+        squirtleImageView.setPreserveRatio(true);
+        squirtleImageView.setFitWidth(175);
+        squirtleImageView.getStyleClass().add("water-images");
+
+
+        /*
+            Labels and VBoxes
+        */
+        Label marshtompLabel = new Label("Marshtomp");
+        marshtompLabel.setFont(slightlyBiggerFont2);
+        Label marshtompGen = new Label("Generation 3");
+        VBox marshtompVBox = new VBox(marshtompLabel, marshtompGen);
+        marshtompVBox.setAlignment(Pos.CENTER);
+
+
+        Label mudkipLabel = new Label("Mudkip");
+        mudkipLabel.setFont(slightlyBiggerFont2);
+        Label mudkipGen = new Label("Generation 3");
+        VBox mudkipVBox = new VBox(mudkipLabel, mudkipGen);
+        mudkipVBox.setAlignment(Pos.CENTER);
+        // charmeleonLabel.getStyleClass().add("pokedex-text");
+
+
+        Label squirtleLabel = new Label("Squirtle");
+        squirtleLabel.setFont(slightlyBiggerFont2);
+        Label squirtleGen = new Label("Generation 1");
+        VBox squirtleVBox = new VBox(squirtleLabel, squirtleGen);
+        squirtleVBox.setAlignment(Pos.CENTER);
+        // charizardLabel.getStyleClass().add("pokedex-text");
+
+
+        /*
+            Hbox rows
+        */
+        HBox pokedexWaterRow2 = new HBox(280, marshtompVBox, mudkipVBox, squirtleVBox);
+        pokedexWaterRow2.setAlignment(Pos.CENTER);
+
+        HBox sc3Row2 = new HBox(245, marshtompImageView, mudkipImageView, squirtleImageView);
+        sc3Row2.setAlignment(Pos.CENTER);
+
+        // VBox that puts the pokedex together
+        VBox pokedexSc3Vbox = new VBox(50,sc3Row1, pokedexWaterRow1,sc3Row2,pokedexWaterRow2);
         pokedexSc3Vbox.setPadding(new Insets(40,0,40,0));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
