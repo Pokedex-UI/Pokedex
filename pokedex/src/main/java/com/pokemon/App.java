@@ -1046,8 +1046,9 @@ public class App extends Application {
         pokedexSc3Vbox.setPadding(new Insets(40,0,40,0));
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // VBox that puts everything together
-        VBox layout3 = new VBox(hb_homeTitleSc3, hb_hometaskbarSc3, pokedexSc3Vbox, hb_footerF);
+        // VBox that puts everything together and footer declaration
+        HBox hb_footerW = createFooter();
+        VBox layout3 = new VBox(hb_homeTitleSc3, hb_hometaskbarSc3, pokedexSc3Vbox, hb_footerW);
         layout3.setStyle("-fx-background-color: white");
 
         // (OPTIONAL) ADD THE BACKGROUND TO THE FIRE SCENE2
