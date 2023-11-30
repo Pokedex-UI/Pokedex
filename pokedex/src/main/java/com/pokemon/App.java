@@ -82,30 +82,7 @@ public class App extends Application {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 1. BEGIN HEADER
-
-        // Two charizard images on the header
-        Image dbTitleImg1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
-        Image dbTitleImg2 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
-
-        // ImageViews to show charizard images
-        ImageView imageView1 = new ImageView(dbTitleImg1);
-        imageView1.setFitWidth(140);
-        imageView1.setFitHeight(100);
-        imageView1.getStyleClass().add("shadow-label");
-        ImageView imageView2 = new ImageView(dbTitleImg2);
-        imageView2.setFitWidth(140);
-        imageView2.setFitHeight(100);
-        imageView2.getStyleClass().add("shadow-label");
-
-        // Label with header title
-        Label lbl_dbTitle = new Label("Pokédex Database");
-        lbl_dbTitle.getStyleClass().add("title-label");
-
-        // HBox to put everything together
-        HBox hb_header = new HBox(40,imageView1,lbl_dbTitle,imageView2);
-        hb_header.getStyleClass().add("hbox-with-gradient");
-        hb_header.setAlignment(Pos.TOP_CENTER);
-
+        HBox hb_header = createHeader();
         // 1. END HEADER
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -780,29 +757,9 @@ public class App extends Application {
         // Scene 3 (Pokedex)
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Two charizard images on the header
-        Image dbTitleImg1Water = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
-        Image dbTitleImg2Water = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
+        //Header declaration
+        HBox hb_headerFire = createHeader();
 
-        // ImageViews to show charizard images
-        ImageView imageView1Water = new ImageView(dbTitleImg1Water);
-        imageView1Water.setFitWidth(140);
-        imageView1Water.setFitHeight(100);
-        imageView1Water.getStyleClass().add("shadow-label");
-        ImageView imageView2Water = new ImageView(dbTitleImg2Water);
-        imageView2Water.setFitWidth(140);
-        imageView2Water.setFitHeight(100);
-        imageView2Water.getStyleClass().add("shadow-label");
-
-        // Header code
-        Label lbl_dbTitleSc3 = new Label("Pokédex Database");
-        lbl_dbTitleSc3.getStyleClass().add("title-label");
-
-        HBox hb_homeTitleSc3 = new HBox(40,imageView1Fire, lbl_dbTitleSc2,imageView2Fire);
-        hb_homeTitleSc3.getStyleClass().add("hbox-with-gradient");
-        hb_homeTitleSc3.setAlignment(Pos.CENTER);
-
-        //// Menubar code
         // Home Button
         Button bttnHomeSc3 = new Button("Home");
         bttnHomeSc3.getStyleClass().add("bttn-label2");
@@ -1048,7 +1005,7 @@ public class App extends Application {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // VBox that puts everything together and footer declaration
         HBox hb_footerW = createFooter();
-        VBox layout3 = new VBox(hb_homeTitleSc3, hb_hometaskbarSc3, pokedexSc3Vbox, hb_footerW);
+        VBox layout3 = new VBox(hb_headerFire, hb_hometaskbarSc3, pokedexSc3Vbox, hb_footerW);
         layout3.setStyle("-fx-background-color: white");
 
         // (OPTIONAL) ADD THE BACKGROUND TO THE FIRE SCENE2
@@ -1076,8 +1033,8 @@ public class App extends Application {
 
 
 
-
-        VBox vb_HomePage = new VBox(hb_header, hb_hometaskbar, hb_missionStatement, hb_typeCards, hb_featuredPokemonBanner, hb_scrollPane, hb_footer);
+        HBox hb_headerWater = createHeader();
+        VBox vb_HomePage = new VBox(hb_headerWater, hb_hometaskbar, hb_missionStatement, hb_typeCards, hb_featuredPokemonBanner, hb_scrollPane, hb_footer);
         vb_HomePage.setAlignment(Pos.CENTER);
 
 
@@ -1189,6 +1146,33 @@ public class App extends Application {
             cardContainer.getChildren().get(currentIndex).toFront();
         }
     }
+
+    public HBox createHeader() {
+        // Two charizard images on the header
+        Image dbTitleImg1 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
+        Image dbTitleImg2 = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
+
+        // ImageViews to show charizard images
+        ImageView imageView1 = new ImageView(dbTitleImg1);
+        imageView1.setFitWidth(140);
+        imageView1.setFitHeight(100);
+        imageView1.getStyleClass().add("shadow-label");
+        ImageView imageView2 = new ImageView(dbTitleImg2);
+        imageView2.setFitWidth(140);
+        imageView2.setFitHeight(100);
+        imageView2.getStyleClass().add("shadow-label");
+
+        // Label with header title
+        Label lbl_dbTitle = new Label("Pokédex Database");
+        lbl_dbTitle.getStyleClass().add("title-label");
+
+        // HBox to put everything together
+        HBox hb_header = new HBox(40,imageView1,lbl_dbTitle,imageView2);
+        hb_header.getStyleClass().add("hbox-with-gradient");
+        hb_header.setAlignment(Pos.TOP_CENTER);
+        
+        return hb_header;
+    }
     public HBox createFooter() {
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         Label lbl_footerTitle = new Label("Pokédex Database");
@@ -1196,7 +1180,7 @@ public class App extends Application {
         lbl_footerTitle.setLayoutY(1530);
         lbl_footerTitle.getStyleClass().add("footer-title-text");
 
-        Label lbl_footer  = new Label("All content & design ©AbaJEthan licensed under Devika Maini CS2450");
+        Label lbl_footer  = new Label("All content & design ©AbaJEthan. All rights reserved.");
         lbl_footer.setLayoutX(100);
         lbl_footer.setLayoutY(1600);
         lbl_footer.getStyleClass().add("footer-text");
