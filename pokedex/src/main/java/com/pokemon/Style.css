@@ -83,6 +83,11 @@
     -fx-text-fill: white;
 }
 
+#menu-bar, .menu-button, .context-menu, .menu_options {
+    -fx-accent: linear-gradient(to right, derive(#FFD700, -25%), derive(#FFA500, -25%));
+
+}
+
 .menu:hover {
     -fx-background-color: transparent;
 }
