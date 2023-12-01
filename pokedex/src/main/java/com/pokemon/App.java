@@ -367,56 +367,8 @@ public class App extends Application {
         FeaturePokeScrollPane.setLayoutY(1100);
         FeaturePokeScrollPane.setLayoutX(0);
 
-        Image leftArrImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\leftArr.png");
-        ImageView buttnImage = new ImageView(leftArrImg);
-        buttnImage.setFitWidth(40);
-        buttnImage.setFitHeight(80);
-
-        Image rightArrImg = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\rightArr.png");
-        ImageView buttnImage2 = new ImageView(rightArrImg);
-        buttnImage2.setFitWidth(40);
-        buttnImage2.setFitHeight(80);
-
-        Button leftButton = new Button();
-        leftButton.setOnAction(e -> scrollLeft());
-        leftButton.setStyle("-fx-background-color: transparent; -fx-font-weight: bold; -fx-font-size: 32px;");
-        leftButton.setGraphic(buttnImage);
-
-        Button rightButton = new Button();
-        rightButton.setStyle("-fx-background-color: transparent; -fx-font-weight: bold;");
-        rightButton.setGraphic(buttnImage2);
-
-        FadeTransition fadeIn_R_Bttn = new FadeTransition(Duration.millis(35), rightButton);
-        fadeIn_R_Bttn.setFromValue(0.0);
-        fadeIn_R_Bttn.setToValue(1.0);
-
-        FadeTransition fadeOut_R_Bttn = new FadeTransition(Duration.millis(35), rightButton);
-        fadeOut_R_Bttn.setFromValue(0.0);
-        fadeOut_R_Bttn.setToValue(1.0);
-
-        rightButton.setOnAction(e -> {
-            fadeIn_R_Bttn.playFromStart();
-            fadeOut_R_Bttn.playFromStart();
-            scrollRight();});
-
-            FadeTransition fadeIn_L_Bttn = new FadeTransition(Duration.millis(35), leftButton);
-        fadeIn_L_Bttn.setFromValue(0.0);
-        fadeIn_L_Bttn.setToValue(1.0);
-
-        FadeTransition fadeOut_L_Bttn = new FadeTransition(Duration.millis(35), leftButton);
-        fadeOut_L_Bttn.setFromValue(0.0);
-        fadeOut_L_Bttn.setToValue(1.0);
-
-        leftButton.setOnAction(e -> {
-            fadeIn_L_Bttn.playFromStart();
-            fadeOut_L_Bttn.playFromStart();
-            scrollRight();});
-
-        HBox hb_horizScrollBar_buttons = new HBox(1670,leftButton, rightButton);//--------------------------------------NOTE: You may need to change the 1550px scpace between buttons
-        hb_horizScrollBar_buttons.setLayoutY(1200);
-
         // Put ScrollPane and Scroll bar buttons in group together
-        Group scrollPaneGroup = new Group(FeaturePokeScrollPane, hb_horizScrollBar_buttons);
+        Group scrollPaneGroup = new Group(FeaturePokeScrollPane);
 
         // HBox to put everything together
         HBox hb_scrollPane = new HBox(scrollPaneGroup);
