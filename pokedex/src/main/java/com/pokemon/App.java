@@ -49,7 +49,7 @@ import javafx.util.Duration;
 public class App extends Application {
     private HBox cardContainer;
     private int currentIndex = 0;
-    private Scene scene1, scene2, scene3;
+    private Scene scene1, scene2, scene3, scene4;
     private Font font = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 75);
     private Font biggerFont = Font.font("Brush Script MT", FontWeight.BOLD, FontPosture.REGULAR, 130);
     private Font missionHeaderFont = Font.font("SERIF", FontWeight.BOLD, FontPosture.REGULAR, 32);
@@ -428,7 +428,9 @@ public class App extends Application {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // 7. BEGIN FOOTER
+
         HBox hb_footer = createFooter();
+
         // 7. END FOOTER
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -446,6 +448,16 @@ public class App extends Application {
         recFirefrntgrnd.setOnMouseClicked(event ->
         {
             primaryStage.setScene(scene2);
+        });
+
+        grassItem.setOnAction(event ->
+        {
+            primaryStage.setScene(scene4);
+        });
+
+        recGrassfrntgrnd.setOnMouseClicked(event ->
+        {
+            primaryStage.setScene(scene4);
         });
 
         // Scene 2 (Pokedex)
@@ -479,7 +491,6 @@ public class App extends Application {
         bttnHomeSc2.getStyleClass().add("bttn-label2");
         bttnHomeSc2.setPrefWidth(screenSize.getWidth()/2);
 
-
         // Pokedex menu items
         Menu pokedexMenuSc2 = new Menu("                                          Pokédex");
         MenuItem fireItemSc2 = new MenuItem("Fire Pokédex");
@@ -503,6 +514,18 @@ public class App extends Application {
         {
             primaryStage.setScene(scene1);
         });
+
+        // Navigate to other pokedexes
+        grassItemSc2.setOnAction(event ->
+        {
+            primaryStage.setScene(scene4);
+        });
+
+        waterItemSc2.setOnAction(event ->
+        {
+            primaryStage.setScene(scene3);
+        });
+
 
         // Pokedex Entries
 
@@ -1020,6 +1043,16 @@ public class App extends Application {
         scene3 = new Scene(waterScrollPane, screenSize.getWidth(), screenSize.getHeight());
         scene3.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
+        // Navigate to other pokedexes
+        fireItemSc3.setOnAction(event ->
+        {
+            primaryStage.setScene(scene2);
+        });
+
+        grassItemSc3.setOnAction(event ->
+        {
+            primaryStage.setScene(scene4);
+        });
 
         waterItem.setOnAction(event ->
         {
@@ -1032,6 +1065,320 @@ public class App extends Application {
         });
 
 
+        // Scene 4 (Pokedex)
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Two charizard images on the header
+        Image dbTitleImg1Grass = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle11.png");
+        Image dbTitleImg2Grass = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\Abanob\\dbtitle22.png");
+
+        // ImageViews to show charizard images
+        ImageView imageView1Grass = new ImageView(dbTitleImg1Grass);
+        imageView1Grass.setFitWidth(140);
+        imageView1Grass.setFitHeight(100);
+        imageView1Grass.getStyleClass().add("shadow-label");
+        ImageView imageView2Grass = new ImageView(dbTitleImg2Grass);
+        imageView2Grass.setFitWidth(140);
+        imageView2Grass.setFitHeight(100);
+        imageView2Grass.getStyleClass().add("shadow-label");
+
+        // Header code
+        Label lbl_dbTitleSc4 = new Label("Pokédex Database");
+        lbl_dbTitleSc4.getStyleClass().add("title-label");
+
+        HBox hb_homeTitleSc4 = new HBox(40,imageView1Grass, lbl_dbTitleSc4,imageView2Grass);
+        hb_homeTitleSc4.getStyleClass().add("hbox-with-gradient");
+        hb_homeTitleSc4.setAlignment(Pos.CENTER);
+
+        //// Menubar code
+        // Home Button
+        Button bttnHomeSc4 = new Button("Home");
+        bttnHomeSc4.getStyleClass().add("bttn-label2");
+        bttnHomeSc4.setPrefWidth(screenSize.getWidth()/2);
+
+
+        // Pokedex menu items
+        Menu pokedexMenuSc4 = new Menu("                                          Pokédex");
+        MenuItem fireItemSc4 = new MenuItem("Fire Pokédex");
+        MenuItem waterItemSc4 = new MenuItem("Water Pokédex");
+        MenuItem grassItemSc4 = new MenuItem("Grass Pokédex");
+        pokedexMenuSc4.getItems().addAll(fireItemSc4,waterItemSc4,grassItemSc4);
+
+        // Pokedex menu styling
+        MenuBar homeMenuBarSc4 = new MenuBar();
+        homeMenuBarSc4.getMenus().addAll(pokedexMenuSc4);
+        homeMenuBarSc4.getStyleClass().add("bttn-label");
+        homeMenuBarSc4.setPrefWidth((screenSize.getWidth())/2);
+
+
+        HBox hb_hometaskbarSc4 = new HBox(bttnHomeSc4,homeMenuBarSc4);
+        hb_hometaskbarSc4.setAlignment(Pos.CENTER);
+        hb_hometaskbarSc4.setPadding(new Insets(0,0,20,0));
+
+        // Home button functionality
+        bttnHomeSc4.setOnAction(event ->
+        {
+            primaryStage.setScene(scene1);
+        });
+
+        // Navigate to other pokedexes
+        fireItemSc4.setOnAction(event ->
+        {
+            primaryStage.setScene(scene2);
+        });
+
+        waterItemSc4.setOnAction(event ->
+        {
+            primaryStage.setScene(scene3);
+        });
+
+        // Pokedex Entries
+
+        // Row 1
+        Image bulbasaur = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\bulbasaur.png");
+        ImageView bulbasaurImageView = new ImageView(bulbasaur);
+        bulbasaurImageView.setPreserveRatio(true);
+        bulbasaurImageView.setFitWidth(175);
+        bulbasaurImageView.getStyleClass().add("grass-images");
+
+        Image ivysaur = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\ivysaur.png");
+        ImageView ivysaurImageView = new ImageView(ivysaur);
+        ivysaurImageView.setPreserveRatio(true);
+        ivysaurImageView.setFitWidth(175);
+        ivysaurImageView.getStyleClass().add("grass-images");
+
+
+        Image venusaur = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\venusaur.png");
+        ImageView venusaurImageView = new ImageView(venusaur);
+        venusaurImageView.setPreserveRatio(true);
+        venusaurImageView.setFitWidth(225);
+        venusaurImageView.getStyleClass().add("grass-images");
+
+
+        /*
+            Labels and VBoxes
+        */
+        Label bulbasaurLabel = new Label("Bulbasaur");
+        bulbasaurLabel.setFont(slightlyBiggerFont2);
+        Label bulbasaurGen = new Label("Generation 1");
+        VBox bulbasaurVBox = new VBox(bulbasaurLabel, bulbasaurGen);
+        bulbasaurVBox.setAlignment(Pos.CENTER);
+
+
+        Label ivysaurLabel = new Label("Ivysaur");
+        ivysaurLabel.setFont(slightlyBiggerFont2);
+        Label ivysaurGen = new Label("Generation 1");
+        VBox ivysaurVBox = new VBox(ivysaurLabel, ivysaurGen);
+        ivysaurVBox.setAlignment(Pos.CENTER);
+        // charmeleonLabel.getStyleClass().add("pokedex-text");
+
+
+        Label venusaurLabel = new Label("Venusaur");
+        venusaurLabel.setFont(slightlyBiggerFont2);
+        Label venusaurGen = new Label("Generation 1");
+        VBox venusaurVBox = new VBox(venusaurLabel, venusaurGen);
+        venusaurVBox.setAlignment(Pos.CENTER);
+        // charizardLabel.getStyleClass().add("pokedex-text");
+
+
+        /*
+            Hbox rows
+        */
+        HBox pokedexRow1Sc4 = new HBox(280, bulbasaurVBox, ivysaurVBox, venusaurVBox);
+        pokedexRow1Sc4.setAlignment(Pos.CENTER);
+
+        HBox sc4Row1 = new HBox(245, bulbasaurImageView, ivysaurImageView, venusaurImageView);
+        sc4Row1.setAlignment(Pos.CENTER);
+
+        // Row 2
+        /*
+            Images and ImageViews
+        */
+        Image chikorita = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\chikorita.png");
+        ImageView chikoritaImageView = new ImageView(chikorita);
+        chikoritaImageView.setPreserveRatio(true);
+        chikoritaImageView.setFitWidth(225);
+        chikoritaImageView.getStyleClass().add("grass-images");
+
+        Image bayleef = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\bayleef.png");
+        ImageView bayleefImageView = new ImageView(bayleef);
+        bayleefImageView.setPreserveRatio(true);
+        bayleefImageView.setFitWidth(175);
+        bayleefImageView.getStyleClass().add("grass-images");
+
+        Image meganium = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\meganium.png");
+        ImageView meganiumImageView = new ImageView(meganium);
+        meganiumImageView.setPreserveRatio(true);
+        meganiumImageView.setFitWidth(175);
+        meganiumImageView.getStyleClass().add("grass-images");
+
+        /*
+            Labels and VBoxes
+        */
+        Label chikoritaLabel = new Label("Chikorita");
+        chikoritaLabel.setFont(slightlyBiggerFont2);
+        Label chikoritaGen = new Label("Generation 2");
+        VBox chikoritaVBox = new VBox(chikoritaLabel, chikoritaGen);
+        chikoritaVBox.setAlignment(Pos.CENTER);
+
+        Label bayleefLabel = new Label("Bayleef");
+        bayleefLabel.setFont(slightlyBiggerFont2);
+        Label bayleefGen = new Label("Generation 2");
+        VBox bayleefVBox = new VBox(bayleefLabel, bayleefGen);
+        bayleefVBox.setAlignment(Pos.CENTER);
+
+        Label meganiumLabel = new Label("Meganium");
+        meganiumLabel.setFont(slightlyBiggerFont2);
+        Label meganiumGen = new Label("Generation 2");
+        VBox meganiumVBox = new VBox(meganiumLabel, meganiumGen);
+        meganiumVBox.setAlignment(Pos.CENTER);
+
+        /*
+            Hbox rows
+        */
+        HBox pokedexRow2Sc4 = new HBox(330, chikoritaVBox, bayleefVBox, meganiumVBox);
+        pokedexRow2Sc4.setAlignment(Pos.CENTER);
+
+        HBox sc4Row2 = new HBox(260, chikoritaImageView, bayleefImageView, meganiumImageView);
+        sc4Row2.setAlignment(Pos.CENTER);
+
+        // Row 3
+        Image treecko = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\treecko.png");
+        ImageView treeckoImageView = new ImageView(treecko);
+        treeckoImageView.setPreserveRatio(true);
+        treeckoImageView.setFitWidth(175);
+        treeckoImageView.getStyleClass().add("grass-images");
+
+        Image grovyle = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\grovyle.png");
+        ImageView grovyleImageView = new ImageView(grovyle);
+        grovyleImageView.setPreserveRatio(true);
+        grovyleImageView.setFitWidth(225);
+        grovyleImageView.getStyleClass().add("grass-images");
+
+        Image sceptile = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\sceptile.png");
+        ImageView sceptileImageView = new ImageView(sceptile);
+        sceptileImageView.setPreserveRatio(true);
+        sceptileImageView.setFitWidth(175);
+        sceptileImageView.getStyleClass().add("grass-images");
+
+        /*
+            Labels and VBoxes
+        */
+        Label treeckoLabel = new Label("Treecko");
+        treeckoLabel.setFont(slightlyBiggerFont2);
+        Label treeckoGen = new Label("Generation 3");
+        VBox treeckoVBox = new VBox(treeckoLabel, treeckoGen);
+        treeckoVBox.setAlignment(Pos.CENTER);
+
+        Label grovyleLabel = new Label("Grovyle");
+        grovyleLabel.setFont(slightlyBiggerFont2);
+        Label grovyleGen = new Label("Generation 3");
+        VBox grovyleVBox = new VBox(grovyleLabel, grovyleGen);
+        grovyleVBox.setAlignment(Pos.CENTER);
+
+        Label sceptileLabel = new Label("Sceptile");
+        sceptileLabel.setFont(slightlyBiggerFont2);
+        Label sceptileGen = new Label("Generation 3");
+        VBox sceptileVBox = new VBox(sceptileLabel, sceptileGen);
+        sceptileVBox.setAlignment(Pos.CENTER);
+
+        /*
+            Hbox rows
+        */
+        HBox pokedexRow3Sc4 = new HBox(330, treeckoVBox, grovyleVBox, sceptileVBox);
+        pokedexRow3Sc4.setAlignment(Pos.CENTER);
+
+        HBox sc4Row3 = new HBox(250, treeckoImageView, grovyleImageView, sceptileImageView);
+        sc4Row3.setAlignment(Pos.CENTER);
+
+        // VBox that puts the pokedex together
+        VBox pokedexVboxSc4 = new VBox(50,sc4Row1, pokedexRow1Sc4, sc4Row2, pokedexRow2Sc4, sc4Row3, pokedexRow3Sc4);
+        pokedexVboxSc4.setPadding(new Insets(40,0,40,0));
+
+////////////////////////////////////////////////////////////////////////////////////////
+    //GRASS FOOTER START
+////////////////////////////////////////////////////////////////////////////////////////
+        /*
+            Footer:
+            Changed lbl_footer to lbl_footerFire (Fire Pokedex page)
+            Changed footerBackground to footerBackgroundFire (Fire Pokedex page)
+         */
+        HBox hb_footerFSc4 = createFooter();
+////////////////////////////////////////////////////////////////////////////////////////
+    //GRASS FOOTER END
+////////////////////////////////////////////////////////////////////////////////////////
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // VBox that puts everything together
+        VBox layout2Sc4 = new VBox(hb_homeTitleSc4, hb_hometaskbarSc4, pokedexVboxSc4, hb_footerFSc4);
+        layout2Sc4.setStyle("-fx-background-color: white");
+
+        // (OPTIONAL) ADD THE BACKGROUND TO THE GRASS SCENE
+        layout2Sc4.setStyle("-fx-background-image: url(file:./pokedex/src/main/java/com/resources/Abanob/backdrop2.jpg);" + "-fx-background-size: cover;");
+
+        // Add the rootGRP to a ScrollPane to allow scrolling
+        ScrollPane grassScrollPane = new ScrollPane(layout2Sc4);
+        grassScrollPane.setFitToWidth(true); // Allow the ScrollPane to resize horizontally
+        grassScrollPane.setFitToHeight(true); // Allow the ScrollPane to resize vertically
+
+        scene4 = new Scene(grassScrollPane, screenSize.getWidth(), screenSize.getHeight());
+        scene4.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+        //POKEDEX POPUPS
+
+        //CREATES ALL POPUPS, REFRENCE THIS FOR PARAMETERS
+        //INSERT POKEMON POPUPS HERE
+        //createPopup(String name, String image, String species, String height, String weight, String abilities
+        Popup bulbasaurPopup = createPopup(bulbasaurLabel.getText(), bulbasaurLabel.getText(), "Seed Pokémon", "0.7m", "15.2lbs", "Overgrow");
+        // Set action on ImageView click to show the popup
+        bulbasaurImageView.setOnMouseClicked(event -> {
+            bulbasaurPopup.show(bulbasaurImageView.getScene().getWindow());
+        });
+
+        Popup ivysaurPopup = createPopup(ivysaurLabel.getText(), ivysaurLabel.getText(), "Seed Pokémon", "1.0m", "28.7lbs", "Overgrow");
+        // Set action on ImageView click to show the popup
+        ivysaurImageView.setOnMouseClicked(event -> {
+            ivysaurPopup.show(ivysaurImageView.getScene().getWindow());
+        });
+
+        Popup venusaurPopup = createPopup(venusaurLabel.getText(), venusaurLabel.getText(), "Seed Pokémon", "2.0m", "220.5lbs", "Overgrow");
+        // Set action on ImageView click to show the popup
+        venusaurImageView.setOnMouseClicked(event -> {
+            venusaurPopup.show(venusaurImageView.getScene().getWindow());
+        });
+
+        Popup chikoritaPopup = createPopup(chikoritaLabel.getText(),chikoritaLabel.getText(), "Leaf Pokémon", "0.9m", "14.1lbs", "Overgrow");
+        chikoritaImageView.setOnMouseClicked(event -> {
+            chikoritaPopup.show(chikoritaImageView.getScene().getWindow());
+        });
+
+        Popup bayleefPopup = createPopup(bayleefLabel.getText(),bayleefLabel.getText(), "Leaf Pokémon", "1.2m", "34.8lbs", "Overgrow");
+        bayleefImageView.setOnMouseClicked(event -> {
+            bayleefPopup.show(bayleefImageView.getScene().getWindow());
+        });
+
+        Popup meganiumPopup = createPopup(meganiumLabel.getText(),meganiumLabel.getText(), "Herb Pokémon", "1.8m", "221.6lbs", "Overgrow");
+        meganiumImageView.setOnMouseClicked(event -> {
+            meganiumPopup.show(meganiumImageView.getScene().getWindow());
+        });
+
+        Popup treeckoPopup = createPopup(treeckoLabel.getText(),treeckoLabel.getText(), "Wood Gecko Pokémon", "0.5m", "11.0lbs", "Overgrow");
+        treeckoImageView.setOnMouseClicked(event -> {
+            treeckoPopup.show(treeckoImageView.getScene().getWindow());
+        });
+
+        Popup grovylePopup = createPopup(grovyleLabel.getText(),grovyleLabel.getText(), "Wood Gecko Pokémon", "0.9m", "47.6lbs", "Overgrow");
+        grovyleImageView.setOnMouseClicked(event -> {
+            grovylePopup.show(grovyleImageView.getScene().getWindow());
+        });
+
+        Popup sceptilePopup = createPopup(sceptileLabel.getText(),sceptileLabel.getText(), "Forest Pokémon", "1.7m", "115.1lbs", "Overgrow");
+        sceptileImageView.setOnMouseClicked(event -> {
+            sceptilePopup.show(sceptileImageView.getScene().getWindow());
+        });
+//////////////////////////////////////////
+//POKEDEX POPUP END
+//////////////////////////////////////////
 
         HBox hb_headerWater = createHeader();
         VBox vb_HomePage = new VBox(hb_headerWater, hb_hometaskbar, hb_missionStatement, hb_typeCards, hb_featuredPokemonBanner, hb_scrollPane, hb_footer);
