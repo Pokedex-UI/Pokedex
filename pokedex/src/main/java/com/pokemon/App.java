@@ -750,7 +750,7 @@ public class App extends Application {
 
         // Pokedex menu styling
         MenuBar homeMenuBarSc3 = new MenuBar();
-        homeMenuBarSc3.getMenus().addAll(pokedexMenuSc2);
+        homeMenuBarSc3.getMenus().addAll(pokedexMenuSc3);
         homeMenuBarSc3.getStyleClass().add("bttn-label");
         homeMenuBarSc3.setPrefWidth((screenSize.getWidth())/2);
 
@@ -801,7 +801,7 @@ public class App extends Application {
         Label wartortleGen = new Label("Generation 1");
         VBox wartortleVBox = new VBox(wartortleLabel, wartortleGen);
         wartortleVBox.setAlignment(Pos.CENTER);
-        
+
         Label blastoiseLabel = new Label("Blastoise");
         blastoiseLabel.setFont(slightlyBiggerFont2);
         Label blastoiseGen = new Label("Generation 1");
@@ -866,7 +866,7 @@ public class App extends Application {
 
         HBox sc3Row2 = new HBox(245, totodileImageView, croconawImageView, feraligatrImageView);
         sc3Row2.setAlignment(Pos.CENTER);
-       
+
 
         //Row 3
         Image mudkip = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\mudkip.png");
@@ -880,7 +880,7 @@ public class App extends Application {
         marshtompImageView.setPreserveRatio(true);
         marshtompImageView.setFitWidth(175);
         marshtompImageView.getStyleClass().add("water-images");
-            
+
         Image swampert = new Image("file:.\\pokedex\\src\\main\\java\\com\\resources\\transparent_pokemon\\swampert.png");
         ImageView swampertImageView = new ImageView(swampert);
         swampertImageView.setPreserveRatio(true);
@@ -933,46 +933,46 @@ public class App extends Application {
         // Set action on ImageView click to show the popup
         blastoiseImageView.setOnMouseClicked(event -> {
             blastoisePopup.show(blastoiseImageView.getScene().getWindow());
-        });        
+        });
 
         Popup totodilePopup = createPopup(totodileLabel.getText(), totodileLabel.getText(), "Big Jaw Pokémon", "0.5m", "19.7lbs", "Torrent");
         // Set action on ImageView click to show the popup
         totodileImageView.setOnMouseClicked(event -> {
             totodilePopup.show(totodileImageView.getScene().getWindow());
         });
-        
+
         Popup croconawPopup = createPopup(croconawLabel.getText(), croconawLabel.getText(), "Big Jaw Pokémon", "1.1m", "55.7lbs", "Torrent");
         // Set action on ImageView click to show the popup
         croconawImageView.setOnMouseClicked(event -> {
             croconawPopup.show(croconawImageView.getScene().getWindow());
         });
-        
+
         Popup feraligatrPopup = createPopup(feraligatrLabel.getText(), feraligatrLabel.getText(), "Big Jaw Pokémon", "2.3m", "195.7lbs", "Sheer Force");
         // Set action on ImageView click to show the popup
         feraligatrImageView.setOnMouseClicked(event -> {
             feraligatrPopup.show(feraligatrImageView.getScene().getWindow());
         });
 
-        
+
         Popup mudkipPopup = createPopup(mudkipLabel.getText(), mudkipLabel.getText(), "Mud Fish Pokémon", "0.4m", "13.7lbs", "Torrent");
         // Set action on ImageView click to show the popup
         mudkipImageView.setOnMouseClicked(event -> {
             mudkipPopup.show(mudkipImageView.getScene().getWindow());
         });
-        
+
         Popup marshtompPopup = createPopup(marshtompLabel.getText(), marshtompLabel.getText(), "Mud Fish Pokémon", "0.7m", "69.7lbs", "Torrent");
         // Set action on ImageView click to show the popup
         marshtompImageView.setOnMouseClicked(event -> {
             marshtompPopup.show(marshtompImageView.getScene().getWindow());
         });
 
-        
+
         Popup swampertPopup = createPopup(swampertLabel.getText(), swampertLabel.getText(), "Mud Fish Pokémon", "1.5m", "194.7lbs", "Damp");
         // Set action on ImageView click to show the popup
         swampertImageView.setOnMouseClicked(event -> {
             swampertPopup.show(swampertImageView.getScene().getWindow());
         });
-        
+
         // VBox that puts the pokedex together
         VBox pokedexSc3Vbox = new VBox(50,sc3Row1, pokedexWaterRow1,sc3Row2,pokedexWaterRow2, sc3Row3, pokedexWaterRow3);
         pokedexSc3Vbox.setPadding(new Insets(40,0,40,0));
@@ -1469,7 +1469,7 @@ public class App extends Application {
         HBox hb_header = new HBox(40,imageView1,lbl_dbTitle,imageView2);
         hb_header.getStyleClass().add("hbox-with-gradient");
         hb_header.setAlignment(Pos.TOP_CENTER);
-        
+
         return hb_header;
     }
     public HBox createFooter() {
