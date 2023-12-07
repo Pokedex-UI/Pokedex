@@ -247,7 +247,7 @@ public class App extends Application {
         txtFireDescrip.setFont(smallerFont);
         txtFireDescrip.setLayoutX(centerPos-(129 + 69));   // 129 is the width of the frontground rectangle / 2
 
-        Text txtWaterTitle =new Text(344,720,"  GYRADOS");
+        Text txtWaterTitle =new Text(344,720,"   GYRADOS");
         txtWaterTitle.setFont(biggerFont2);
         txtWaterTitle.setLayoutX(centerPos - 69);
 
@@ -255,7 +255,7 @@ public class App extends Application {
         txtWaterDescrip.setFont(smallerFont);
         txtWaterDescrip.setLayoutX(centerPos -69);
 
-        Text txtGrassTitle =new Text(605,720,"  SCEPTILE");
+        Text txtGrassTitle =new Text(605,720,"   SCEPTILE");
         txtGrassTitle.setFont(biggerFont2);
         txtGrassTitle.setLayoutX(centerPos + (129 - 69));
 

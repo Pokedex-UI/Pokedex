@@ -29,10 +29,10 @@
     -fx-effect: dropshadow(gaussian, rgba(228, 0, 0, 0.95), 50, 0, 0, 0);
 }
 .grass-images:hover{
-    -fx-effect: dropshadow(gaussian, rgba(0, 228, 61, 0.95), 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(0, 228, 61, 0.95), 50, 0, 0, 0);
 }
 .water-images:hover{
-    -fx-effect: dropshadow(gaussian, rgba(23, 0, 228, 0.95), 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(23, 0, 228, 0.95), 50, 0, 0, 0);
 }
 
 .title-label {
